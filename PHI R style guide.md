@@ -2,7 +2,7 @@
 title: "R style guide for PHI analysts"
 author: "Anna Price and David Caldwell"
 date: "September 2017"
-output: html_document
+output: github_document
 ---
 
 ***
