@@ -62,7 +62,7 @@ setwd("INSERT FILEPATH HERE")
 data <- read.csv('FILENAME.csv')                                  # If csv file
 data <- xlsx::read.xlsx('FILENAME.xls', sheetIndex = 1)           # If xls file
 data <- xlsx::read.xlsx('FILENAME.xlsx', sheetIndex = 1)          # If xlsx file
-data <- haven::read_sav('FILENAME.sav')                           # If sav file
+data <- as.data.frame(haven::read_sav('FILENAME.sav'))            # If sav file
 
 # Changing variable names to match script. Replace "VARIABLE_NAME" with the variable name found in data
 # If you only have a single geography or measure, delete the corresponding rows from the command below:
