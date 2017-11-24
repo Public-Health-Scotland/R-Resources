@@ -1,5 +1,5 @@
-# R-HSC-Scotland
+# Using R in PHI
 
-As part of the Transforming Publishing Programme work we have put together an R style guide for analysts in order to ensure that our R code is readable, shareable and reusable. We have developed this document with support from our critical friend, David McAllister, and the aspiration is that it will eventually be used by all staff across PHI, and shared with NRS and the SG.
+As part of the Transforming Publishing Programme work we have put together an R style guide for analysts in order to ensure that our R code is readable, shareable and reusable. We consider this to be an evolving guide to how R code should be written within PHI. It is designed to allow enough flexibility for analysts working on different projects, while maintaining consistency across the organisation and ensuring that code can be easily shared.
 
-We consider this to be an evolving guide to how R code should be written within PHI, so we would be very grateful for any feedback you have on it. We have already received some useful feedback regarding shortcuts for creating sections, a more recent version of Hadley Wickham’s style guide and the haven function for reading SPSS files – we are aware of the haven function but haven’t tested it yet so it would be really helpful to know if people regularly use this!
+Two example scripts written in the recommended style will be available shortly, one for data wrangling and one for data visualisation. Two additional scripts are currently available which can be used by analysts to produce run charts and XmR charts (both types of Statistical Process Control, or SPC, charts) in R.
