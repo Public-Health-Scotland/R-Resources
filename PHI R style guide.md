@@ -1,9 +1,6 @@
----
-title: "R style guide for PHI analysts"
-author: "Anna Price and David Caldwell"
-date: "September 2017"
-output: github_document
----
+# R style guide for PHI analysts
+## Anna Price and David Caldwell
+## September 2017
 
 ***
 
@@ -37,7 +34,7 @@ Every script should begin with the following basic information:
 
 All scripts should be split into numbered sections. Use at least three hashes at the start of a section header in order to clearly differentiate section titles from general annotations. Follow the section header with at least four dashes or hashes so that sections can be collapsed and an automatic contents table is created in the Jump To menu at the bottom of the editor for navigation. (Note that when writing Rmarkdown scripts, collapsable sections are created using at least one hash at the start of a line.)
 
-![](images/jump to menu screenshot.png)
+![](https://i.imgur.com/KwT2GBl.png)
 
 We recommend using sub-sections, especially if particular sections are very long.
 
