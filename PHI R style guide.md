@@ -90,7 +90,7 @@ if (x <= 10) {
 
 We recommend the following packages:
 
-* `RODBC` for accessing SMRA data
+* `odbc` for accessing SMRA data
 * `haven` for reading spss files (NOTE: haven does not support .zsav compressed files, which will need to either be saved as .sav files or exported to .csv before reading into R)
 * `tidyverse` for data manipulation and more generally for writing R code in the "tidy" way (NOTE: tidyverse conflicts with the plyr package so should be reloaded after you are finished using plyr
 
