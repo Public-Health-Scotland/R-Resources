@@ -68,7 +68,7 @@ Use one hash to comment out annotations.
 
 R is a functional language. Using functions improves code readability, testability and shareability. Functions should generally be used in preference to loops in order to reduce the amount of code needed. 
 
-Small functions which are specific to one piece of analysis should be defined in the housekeeping section at the start, but generic functions which are used across a project or multiple projects should be saved in a separate script and sourced in.
+Small functions which are specific to one piece of analysis should be defined in the housekeeping section at the start, but generic functions which are used across a project or multiple projects should be saved in a separate script and sourced in. Function names should be verbs which describe what the function does.
 
 
 ### 6 - Checks and warnings
