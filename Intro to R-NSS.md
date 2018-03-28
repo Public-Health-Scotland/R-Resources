@@ -3,7 +3,7 @@
 ***
 
 Type - documentation  
-Written/run on - R Studio SERVER  
+Written/run on - GitHub
 
 ***
 
