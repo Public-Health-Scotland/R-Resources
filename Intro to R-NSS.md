@@ -7,14 +7,39 @@ Written/run on - GitHub
 
 ***
 
+## Table of contents
+
+* [Introduction](#introduction)
+* [Installation](#installation)
+* [RStudio](#rstudio)
+* [R particularities](#r-particularities )
+  * [Objects](#objects)
+  * [Functions](#functions)
+  * [Data types](#data-types)
+* [Packages](#packages)
+  * [Install packages](#install-packages)
+  * [Loading packages](#loading-packages)
+  * [Most common packages](#most-common-packages)
+* [Workspace](#workspace)
+  * [Working directory and projects](#working-directory-and-projects)
+* [Coding](#coding)
+* [Getting help](#getting-help)
+* [Load and save data](#load-and-save-data)
+* [Connect to ODBC databases](#connect-to-odbc-databases)
+* [Git](#git)
+* [Useful resources](#useful-resources)
+
+
 ## Introduction 
+
 The purpose of this document is to help new R users to set up the program and understand a few of the basic concepts behind this programming language. It will also cover some of the specific features of using R in NSS (Fig. 1). R tutorials and resources are widely and freely available on the Internet, so instead of duplicating efforts, this guide will point users towards some useful resources for each section. At the end of this document you will find a compilation of all of the links referenced throughout this document.  We have provided links to sites NSS staff have found helpful but there are many more resources available online.
 
-![](https://imgur.com/hYOtPNI.png)
+<img src="https://imgur.com/hYOtPNI.png"  height="550px">
 
 *Figure 1. Diagram summarizing the software infrastructure around R.*
 
 ## Installation
+
 There are two ways you can use R: through a programme installed in your local computer (desktop) or through a version installed in an [NSS Server](http://nssrstudio.csa.scot.nhs.uk/). (server). 
 
 To use R desktop you first need to ask CSD to install it for you. Request both R and RStudio as the latter makes writing programs/scripts a lot easier. RStudio is an interface to R. The latest version available for PHI is R 3.3.2 and RStudio 0.99.473 (January 2018). If you need to connect to SMRA databases using R desktop, you will need to specify that you need R Core 3.3.2 with SMRA ODBC collection. You need to install them from software center after IT has confirmed the availability.
@@ -109,7 +134,7 @@ There are two R packages that can help you to keep your coding style consistent 
 ## Getting help
 There is loads of information to help you using R. The best way is usually to Google what you are trying to do. There are also ways of getting the help and understanding how a specific function works using R. Read this to get to know how to do it. There is also a PHI R user group (Nss.rusergroup@nhs.net) which you can email to see if anyone can help you.
 
-## Load/save data
+## Load and save data
 As a general rule you should save data objects in RDS format (the native R format). R can deal with them better and faster. They are also compressed, taking less space than a csv. For this file format use the functions saveRDS/readRDS. 
 
 If you need to read or write csv files, especially if they are large, use the functions read_csv/write_csv (readr package) or fread/fwrite (data.table package). Keep in mind that these functions produce slightly different data structures and this might affect how you need to proceed with your analysis (read more [here](http://analyticstraining.com/2015/if-youre-a-data-analyst-you-should-read-this-review-of-hadleys-readr-0-1-0-right-now/)).
@@ -132,6 +157,7 @@ For more information on using Git with R read [this](http://happygitwithr.com/) 
 * [RStudio - RStudio official page](https://www.rstudio.com/)
 #### Specific to NSS
 * [PHI github account](https://github.com/Health-SocialCare-Scotland) - code repository.
+* [PHI R style guide](https://github.com/Health-SocialCare-Scotland/R-HSC-Scotland/blob/master/PHI%20R%20style%20guide.md)
 * [Guide on how to connect to SMRA using R and R server](http://www.isdscotland.org/About-ISD/Methodologies/_docs/Using-R-with-SMRA-V1-0-FINAL.pdf)
 * [Guide on how to connect to API’s using R](https://github.com/jsphdms/R_web_APIs)
 #### Tutorials
@@ -142,8 +168,9 @@ For more information on using Git with R read [this](http://happygitwithr.com/) 
 * [RStudio compilation of resources ](https://www.rstudio.com/online-learning/)
 #### Books
 * [R for data science](http://r4ds.had.co.nz/) – book on using R for data science.
-* [R in a nutshell](http://datascience.tat.ac.in/files/R in a Nutshell.pdf) -  reference book on R.
-* [R Graphics Cookbook](https://ase.tufts.edu/bugs/guide/assets/R Graphics Cookbook.pdf) – reference to create graphics.
+* [R in a nutshell](https://visualization.sites.clemson.edu/reu/resources/RText.pdf) -  reference book on R.
+* [R Cookbook](http://www.bagualu.net/wordpress/wp-content/uploads/2015/10/R_Cookbook.pdf) – reference book on R.
+* [R Graphics Cookbook](http://bioinformaticsonline.com/file/download/29638) – reference to create graphics.
 * [R Inferno](http://www.burns-stat.com/pages/Tutor/R_inferno.pdf) - recopilation of tricks and advice for R common problems.
 #### Some usegful sites where to dig information
 * [RStudio cheatsheets](https://www.rstudio.com/resources/cheatsheets/) - Cheatsheets for different packages of R.
