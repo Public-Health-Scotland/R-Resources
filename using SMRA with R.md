@@ -1,9 +1,9 @@
 
 ## Table of contents
 
-[1. Introduction](1.-Introduction-and-definitions)
+[Introduction](#introduction-and-definitions)
 
-[2.	Requesting access](2.-Requesting-access)
+[2.	Requesting access](#requesting-access)
 
 [3.	RStudio server: Logging in and basic navigation](3.-RStudio-server:-Logging-in-and-basic-navigation)
 
@@ -17,9 +17,9 @@
 
 [8.	Cohort method](8.-Cohort-method)
 
-# 1.	Introduction and definitions
-The purpose of this paper is to set out guidance for using the SMRA databases with RStudio, specifically RStudio server (although the code examples and much of the other information are transferable to RStudio desktop).  It is intended to be understandable to first time users of R/SMRA/SQL, and includes step by step instructions to access the server and basic examples of R and SQL code to allow new users to get started using SMRA with R. It is NOT intended to be a comprehensive introduction to R, RStudio or SQL, although it does include links to further resources on these topics
-.
+# Introduction and definitions
+The purpose of this paper is to set out guidance for using the SMRA databases with RStudio, specifically RStudio server (although the code examples and much of the other information are transferable to RStudio desktop).  It is intended to be understandable to first time users of R/SMRA/SQL, and includes step by step instructions to access the server and basic examples of R and SQL code to allow new users to get started using SMRA with R. It is NOT intended to be a comprehensive introduction to R, RStudio or SQL, although it does include links to further resources on these topics.
+
 ## Definitions
 ### The SMRA database  
 The SMRA database is a relational database, specifically an Oracle database. The data contained in the SMRA database is secondary care data in the form of the Scottish Morbidity Records (SMRs). The SMRs record hospital activity (including outpatient clinics). The SMRA also contains NRS death records, which can similarly be linked to hospital records. 
@@ -41,7 +41,7 @@ Why use SMRA with RStudio server?
 
 •	Accessing the server allows analyses to be run on larger datasets even on slower internet connections (an advantage when working at home), as all the data is accessed and processed remotely.
 
-# 2.	Requesting access 
+# Requesting access 
 ## Databases
 
 •	First you need to be able to access some or all of the SMR datasets. Request access using the Access to Data form in the usual way (ask your line manger if you are not sure how to do this/where to find the form).
