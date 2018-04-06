@@ -3,19 +3,19 @@
 
 [Introduction](#introduction-and-definitions)
 
-[2.	Requesting access](#requesting-access)
+[Requesting access](#requesting-access)
 
-[3.	RStudio server: Logging in and basic navigation](3.-RStudio-server:-Logging-in-and-basic-navigation)
+[RStudio server: Logging in and basic navigation](#rstudio-server:-logging-in-and-basic-navigation)
 
-[4.	Opening a connection to SMRA](4.-Opening-a-connection-to-SMRA) 
+[Opening a connection to SMRA](#opening-a-connection-to-smra) 
 
-[5.Views and variables in SMRA](5.-Views-and-variables-in-SMRA)
+[Views and variables in SMRA](#views-and-variables-in-smra)
 
-[6.	Extracting data from SMRA](6.-Extracting-data-from-SMRA)
+[Extracting data from SMRA](#extracting-data-from-smra)
 
-[7.	Using SQL to extract data efficiently](7.-Using-SQL-to-extract-data-efficiently)
+[Using SQL to extract data efficiently](using-sql-to-extract-data-efficiently)
 
-[8.	Cohort method](8.-Cohort-method)
+[Cohort method](#cohort-method)
 
 # Introduction and definitions
 The purpose of this paper is to set out guidance for using the SMRA databases with RStudio, specifically RStudio server (although the code examples and much of the other information are transferable to RStudio desktop).  It is intended to be understandable to first time users of R/SMRA/SQL, and includes step by step instructions to access the server and basic examples of R and SQL code to allow new users to get started using SMRA with R. It is NOT intended to be a comprehensive introduction to R, RStudio or SQL, although it does include links to further resources on these topics.
@@ -69,7 +69,7 @@ See ["Intro to R NSS.md"](Intro%20to%20R-NSS.md) for detailed instructions.
 
 * o	On the System DSN tab you should see an entry called SMRA. If not, raise a Change Request with the Customer Support Desk to have the SMRA ODBC DSN installed on your PC. 
 
-# 3.	RStudio server: Logging in and basic navigation. 
+# RStudio server: Logging in and basic navigation. 
 ## Logging in
 
 The RStudio server is located at: http://nssRStudio.csa.scot.nhs.uk/. Login using your username and the password you normally use to access the stats area through the file system and through SPSS.
@@ -108,7 +108,7 @@ Signing out and leaving your R session open has the downside of continuing to co
 You can quit your R session by selecting the “Quit Session…” option in the File menu, selecting the “Quit Session…” option in the Session menu or clicking the “Quit Session” button at the top-right of the RStudio Server interface.
 
 
-# 4.	Opening a connection to SMRA
+# Opening a connection to SMRA
 ## Loading required packages
 First, load the required libraries using the following code. Copy the following code into the upper left hand pane in RStudio, highlight all the text and hit ctrl+return or click on the Run icon above the pane:
 
@@ -147,7 +147,7 @@ At the end of the session close the channel using:
 
     odbcClose(channel)
 
-# 5.	Views and variables in SMRA
+# Views and variables in SMRA
 
 Code to get information on the views and variables available to you in SMRA
 
@@ -264,7 +264,7 @@ It should look something like this:
     9           101     1    T208H
     10          104     1    G516H`
 
-# 7.	Using SQL to extract data efficiently
+# Using SQL to extract data efficiently
 
 It is best practice to make good use of SQL code to reduce the amount of data you extract from the database and to perform as much data wrangling as possible in the database, especially for operations that are repeated many times.  This increases efficiency. A comprehensive guide to efficient use of SQL code is beyond the scope of this paper, however:
 
@@ -391,7 +391,7 @@ This is cumbersome and harder to read than assigning a shorthand name.
 
 •	It is also possible to join more than two tables at once
 
-# 8.	Cohort method
+# Cohort method
 
 This method is used to extract data from SMRA based on individual patient identifiers this might be used to extract information about a study cohort for example.
 The process of uploading and using a table is as follows:
