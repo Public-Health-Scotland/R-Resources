@@ -30,9 +30,9 @@ Why use SMRA with RStudio server?
 •	If you already have access to the SMR databases you need, e.g. you already access these data sources through SPSS or business objects, you can move onto the next step.
 
 ## R /RStudio Desktop.
-•	If you wish to access SMRA via the desktop version of RStudio, you will need R and RStudio installed on your machine. Check the Microsoft system centre to see if R or RStudio is available for you to install.
+•	If you wish to access SMRA via the desktop version of RStudio, you will need R and RStudio installed on your machine. 
 
-•	If not, make a request to IT to have the current R version with the connection to the ODBC installed on your machine. 
+See ["Intro to R NSS.md"](Intro%20to%20R-NSS.md) for detailed instructions.
 
 
 ### RStudio server
