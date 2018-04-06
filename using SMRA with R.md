@@ -1,3 +1,22 @@
+
+## Table of contents
+
+[1. Introduction](1.-Introduction-and-definitions)
+
+[2.	Requesting access](2.-Requesting-access)
+
+[3.	RStudio server: Logging in and basic navigation](3.-RStudio-server:-Logging-in-and-basic-navigation)
+
+[4.	Opening a connection to SMRA](4.-Opening-a-connection-to-SMRA) 
+
+[5.Views and variables in SMRA](5.-Views-and-variables-in-SMRA)
+
+[6.	Extracting data from SMRA](6.-Extracting-data-from-SMRA)
+
+[7.	Using SQL to extract data efficiently](7.-Using-SQL-to-extract-data-efficiently)
+
+[8.	Cohort method](8.-Cohort-method)
+
 # 1.	Introduction and definitions
 The purpose of this paper is to set out guidance for using the SMRA databases with RStudio, specifically RStudio server (although the code examples and much of the other information are transferable to RStudio desktop).  It is intended to be understandable to first time users of R/SMRA/SQL, and includes step by step instructions to access the server and basic examples of R and SQL code to allow new users to get started using SMRA with R. It is NOT intended to be a comprehensive introduction to R, RStudio or SQL, although it does include links to further resources on these topics
 .
@@ -128,7 +147,9 @@ At the end of the session close the channel using:
 
     odbcClose(channel)
 
-# 5.	Code to get information on the views and variables available to you in SMRA
+# 5.	Views and variables in SMRA
+
+Code to get information on the views and variables available to you in SMRA
 
 Now the connection is open, you can inspect the data views available to you and the variables contained within those views. The analysis 'views' can be thought of as tables in the database containing a category of information. For example the Scottish morbidity records (SMR00, SMR01, SMR02, SMR04) each have their separate views. 
 
@@ -162,7 +183,7 @@ In order to view the variables, we can preview the table. Further details of var
 
     `odbcPreviewObject(channel, table="ANALYSIS.SMR01_PI", rowLimit=0)`
 
-6.	Extract data from SMRA
+#6.	Extracting data from SMRA
 
 To extract data from SMRA, you need to use SQL code, to 'query' the database. 
 
@@ -370,7 +391,8 @@ This is cumbersome and harder to read than assigning a shorthand name.
 
 •	It is also possible to join more than two tables at once
 
-# 8	Cohort method
+# 8.	Cohort method
+
 This method is used to extract data from SMRA based on individual patient identifiers this might be used to extract information about a study cohort for example.
 The process of uploading and using a table is as follows:
 
