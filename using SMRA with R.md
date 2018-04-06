@@ -28,7 +28,7 @@ The SMRA database is a relational database, specifically an Oracle database. The
 SQL stands for Structured Query Language. It is a language used in programming and designed for managing and extracting data held in a relational database management system. We use SQL to 'query' the database to extract data. It is rare that you would ever want to extract all the information held in a database, so SQL queries will contain instructions so that only data you need. NSS databases use the Oracle system, therefore we use Oracle SQL to access it. 
 
 ### RStudio server
-R is a system for statistical computation and graphics. RStudio is a software application for the R language. It is essentially a more user friendly and versatile way to use R than the basic R environment. RStudio can be run as a desktop version or on a server accessible through a webpage. An introduction to use of RStudio can be accessed for free here.
+R is a system for statistical computation and graphics. RStudio is a software application for the R language. It is essentially a more user friendly and versatile way to use R than the basic R environment. RStudio can be run as a desktop version or on a server accessible through a webpage. An introduction to use of RStudio can be accessed for free [here](https://www.datacamp.com/courses/working-with-the-rstudio-ide-part-1).
 
 ### Advantages of using RStudio server to access SMRA
 Why use SMRA with RStudio server? 
