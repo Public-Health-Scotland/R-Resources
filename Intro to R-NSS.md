@@ -98,7 +98,7 @@ New versions of packages are released all the time, with new functions, bug fixi
 Before you can start to use a package you have installed, you need to load it in your R session. This means that if you close R and reopen it again you will have to go through this process again. You can use contextual menus to load packages into your sessions, but that is not good practice. Always code the loading of packages directly into your script, including this at the beginning of your code in a housekeeping section. To call packages you can use the function library(packagename).
 
 ### Most common packages
-Sometimes it can be difficult to know what package to use for what. These curated lists, [one by RStudio](https://github.com/rstudio/RStartHere), [one by rOpenSci](https://ropensci.org/packages/) and [one by PHI](https://github.com/Health-SocialCare-Scotland/R-HSC-Scotland/blob/master/PHI%20R%20style%20guide.md) summarize some of the most popular and useful packages used for different purposes.
+Sometimes it can be difficult to know what package to use for what. These curated lists, [one by RStudio](https://github.com/rstudio/RStartHere), [one by rOpenSci](https://ropensci.org/packages/) and [one by PHI](https://github.com/Health-SocialCare-Scotland/R-Resources/blob/master/PHI%20R%20style%20guide.md) summarize some of the most popular and useful packages used for different purposes.
 
 Probably the most popular set of packages for data manipulation is the [tidyverse](https://www.tidyverse.org/). They share a common style and logic and they have changed how people code in R. One of the main characteristics of “tidy” coding is the use of the [pipe operator (%>%)](http://magrittr.tidyverse.org/) which structures the sequences of data operations in a logical way. This creates a much more readable and simpler code than the style of base R (the default functions of R).
 
@@ -127,7 +127,7 @@ Another way of doing it is through saving your workspace in the location you wan
 It will open a “Save Workspace As” dialogue box, and you can choose a file path and give it a file name. Close RStudio. Go to the location where the file has been saved. The file you created has an extension “.RData”. Click on this file, and RStudio will open again with this location as the working directory. You can check it by using the function getwd().
 
 ## Coding
-To make your code more readable and shareable please read and follow the [PHI R style guide](https://github.com/Health-SocialCare-Scotland/R-HSC-Scotland/blob/master/PHI%20R%20style%20guide.md) and this [general R coding guide](http://adv-r.had.co.nz/Style.html0. Using these guides will help anyone that has to use your code in the future, including yourself! They also include some useful tips that will make your life easier. One important thing to note is that R is case sensitive. This can cause many headaches. Try to keep all object, variable and file names in lower case.
+To make your code more readable and shareable please read and follow the [PHI R style guide](https://github.com/Health-SocialCare-Scotland/R-Resources/blob/master/PHI%20R%20style%20guide.md) and this [general R coding guide](http://adv-r.had.co.nz/Style.html0. Using these guides will help anyone that has to use your code in the future, including yourself! They also include some useful tips that will make your life easier. One important thing to note is that R is case sensitive. This can cause many headaches. Try to keep all object, variable and file names in lower case.
 
 There are two R packages that can help you to keep your coding style consistent and do part of the work for you: [formatR](https://yihui.name/formatr/) and [lintR](https://cran.r-project.org/web/packages/lintr/README.html). You can find some useful tips about coding [here](https://support.rstudio.com/hc/en-us/articles/200710523-Navigating-Code), [here](https://support.rstudio.com/hc/en-us/articles/200484568-Code-Folding-and-Sections) and [here](https://code.tutsplus.com/tutorials/3-key-software-principles-you-must-understand--net-25161).
 
@@ -157,7 +157,7 @@ For more information on using Git with R read [this](http://happygitwithr.com/) 
 * [RStudio - RStudio official page](https://www.rstudio.com/)
 #### Specific to NSS
 * [PHI github account](https://github.com/Health-SocialCare-Scotland) - code repository.
-* [PHI R style guide](https://github.com/Health-SocialCare-Scotland/R-HSC-Scotland/blob/master/PHI%20R%20style%20guide.md)
+* [PHI R style guide](https://github.com/Health-SocialCare-Scotland/R-Resources/blob/master/PHI%20R%20style%20guide.md)
 * [Guide on how to connect to SMRA using R and R server](http://www.isdscotland.org/About-ISD/Methodologies/_docs/Using-R-with-SMRA-V1-0-FINAL.pdf)
 * [Guide on how to connect to API’s using R](https://github.com/jsphdms/R_web_APIs)
 #### Tutorials
