@@ -5,7 +5,7 @@
 
 [Requesting access](#requesting-access)
 
-[RStudio server: Logging in and basic navigation](#rstudio-server:-logging-in-and-basic-navigation)
+[RStudio server: Logging in and basic navigation](#rstudio-server-logging-in-and-basic-navigation)
 
 [Opening a connection to SMRA](#opening-a-connection-to-smra) 
 
@@ -13,7 +13,7 @@
 
 [Extracting data from SMRA](#extracting-data-from-smra)
 
-[Using SQL to extract data efficiently](using-sql-to-extract-data-efficiently)
+[Using SQL to extract data efficiently](#using-sql-to-extract-data-efficiently)
 
 [Cohort method](#cohort-method)
 
@@ -183,7 +183,7 @@ In order to view the variables, we can preview the table. Further details of var
 
     `odbcPreviewObject(channel, table="ANALYSIS.SMR01_PI", rowLimit=0)`
 
-#6.	Extracting data from SMRA
+# Extracting data from SMRA
 
 To extract data from SMRA, you need to use SQL code, to 'query' the database. 
 
