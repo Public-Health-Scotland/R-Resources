@@ -172,6 +172,7 @@ For more information on using Git with R read [this](http://happygitwithr.com/) 
 * [R Cookbook](http://www.bagualu.net/wordpress/wp-content/uploads/2015/10/R_Cookbook.pdf) – reference book on R.
 * [R Graphics Cookbook](http://bioinformaticsonline.com/file/download/29638) – reference to create graphics.
 * [R Inferno](http://www.burns-stat.com/pages/Tutor/R_inferno.pdf) - recopilation of tricks and advice for R common problems.
+* [Efficient R programming](https://csgillespie.github.io/efficientR/) - on how to make code faster to type, to run and more scalable.
 #### Some usegful sites where to dig information
 * [RStudio cheatsheets](https://www.rstudio.com/resources/cheatsheets/) - Cheatsheets for different packages of R.
 * [Statistical tools for high-throughput data analysis](http://www.sthda.com/english/) - Articles, guides on packages, wiki.
