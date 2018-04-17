@@ -100,7 +100,7 @@ Sometimes you may need a previous version of an R package rather than the latest
 
 Previous versions of packages can be installed in a number of ways - more information on this can be found in the [RStudio support](https://support.rstudio.com/hc/en-us/articles/219949047-Installing-older-versions-of-packages). These methods require [Rtools](https://cran.r-project.org/bin/windows/Rtools/) to build/compile the packages. If you do not have Rtools installed, then you can use this code instead (in this example, to install a specific version of [ggplot2](http://ggplot2.org/)):
 
-```r
+```{r}
 library(versions)
 install.versions("ggplot2", "2.0.0")
 ```
