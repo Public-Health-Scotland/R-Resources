@@ -64,7 +64,7 @@ R works through objects. This is a complicated topic and it will make more sense
 R commands are called functions and they allow you to perform almost any action. You can create your own functions and R is especially well designed to work with them. You can read more about this topic [here](http://adv-r.had.co.nz/Functional-programming.html) and [here](https:\www.datacamp.com\community\tutorials\functions-in-r-a-tutorial#gs.oYNGp38).
 
 ### Data types
-R can be used to analyse many different types of data, such as vectors, data frames, matrixes and lists. You can find a good introduction to them [here](https://www.statmethods.net/input/datatypes.html).
+R can be used to analyse many different types of data, such as vectors, data frames, matrixes and lists. You can find a good introduction to them [here](https://www.statmethods.net/input/datatypes.html) and
 [here](http://www.aliquote.org/articles/tech/RStudio.pdf)
 
 ## Packages
@@ -127,7 +127,7 @@ Another way of doing it is through saving your workspace in the location you wan
 It will open a “Save Workspace As” dialogue box, and you can choose a file path and give it a file name. Close RStudio. Go to the location where the file has been saved. The file you created has an extension “.RData”. Click on this file, and RStudio will open again with this location as the working directory. You can check it by using the function getwd().
 
 ## Coding
-To make your code more readable and shareable please read and follow the [PHI R style guide](https://github.com/Health-SocialCare-Scotland/R-Resources/blob/master/PHI%20R%20style%20guide.md) and this [general R coding guide](http://adv-r.had.co.nz/Style.html0. Using these guides will help anyone that has to use your code in the future, including yourself! They also include some useful tips that will make your life easier. One important thing to note is that R is case sensitive. This can cause many headaches. Try to keep all object, variable and file names in lower case.
+To make your code more readable and shareable please read and follow the [PHI R style guide](https://github.com/Health-SocialCare-Scotland/R-Resources/blob/master/PHI%20R%20style%20guide.md) and this [general R coding guide](http://adv-r.had.co.nz/Style.html0). Using these guides will help anyone that has to use your code in the future, including yourself! They also include some useful tips that will make your life easier. One important thing to note is that R is case sensitive. This can cause many headaches. Try to keep all object, variable and file names in lower case.
 
 There are two R packages that can help you to keep your coding style consistent and do part of the work for you: [formatR](https://yihui.name/formatr/) and [lintR](https://cran.r-project.org/web/packages/lintr/README.html). You can find some useful tips about coding [here](https://support.rstudio.com/hc/en-us/articles/200710523-Navigating-Code), [here](https://support.rstudio.com/hc/en-us/articles/200484568-Code-Folding-and-Sections) and [here](https://code.tutsplus.com/tutorials/3-key-software-principles-you-must-understand--net-25161).
 
