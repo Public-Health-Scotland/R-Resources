@@ -18,6 +18,7 @@ Written/run on - GitHub
   * [Data types](#data-types)
 * [Packages](#packages)
   * [Install packages](#install-packages)
+  * [Install previous versions of packages](#install-previous-versions-of-packages)
   * [Loading packages](#loading-packages)
   * [Most common packages](#most-common-packages)
 * [Workspace](#workspace)
@@ -93,6 +94,9 @@ New versions of packages are released all the time, with new functions, bug fixi
 ![](https://imgur.com/h2YbCvb.png)
 
 *Figure 4. Updating packages through the contextual menu.*
+
+### Install previous versions of packages
+Sometimes you may need a previous version of an R package rather than the latest version to run code that may have been written some time ago. For instance, you may need the same package version that was used when an analysis was originally carried out. This is because functionality within packages may change over time and some functions may even become [deprecated](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Deprecated.html) from one version to the next. Previous versions of packages can be installed in a number of ways - more information on this can be found in the [RStudio support](https://support.rstudio.com/hc/en-us/articles/219949047-Installing-older-versions-of-packages). If you need information on version numbers for previous packages, find your package from the [CRAN package list](https://cran.r-project.org/web/packages/available_packages_by_name.html), then look for '**Old sources**' and click the link to get to the archives. For example, previous versions of the [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) package can be found [here](https://cran.r-project.org/src/contrib/Archive/dplyr) and the version numbers are displayed on the filenames.
 
 ### Loading packages
 Before you can start to use a package you have installed, you need to load it in your R session. This means that if you close R and reopen it again you will have to go through this process again. You can use contextual menus to load packages into your sessions, but that is not good practice. Always code the loading of packages directly into your script, including this at the beginning of your code in a housekeeping section. To call packages you can use the function library(packagename).
