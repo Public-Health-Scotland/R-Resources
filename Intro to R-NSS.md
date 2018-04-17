@@ -98,7 +98,7 @@ New versions of packages are released all the time, with new functions, bug fixi
 ### Install previous versions of packages
 Sometimes you may need a previous version of an R package rather than the latest version to run code that may have been written some time ago. For instance, you may need the same package version that was used when an analysis was originally carried out. This is because functionality within packages may change over time and some functions may even become [deprecated](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Deprecated.html) from one version to the next. 
 
-Previous versions of packages can be installed in a number of ways - more information on this can be found in the [RStudio support](https://support.rstudio.com/hc/en-us/articles/219949047-Installing-older-versions-of-packages). These methods require [Rtools](https://cran.r-project.org/bin/windows/Rtools/) to build/compile the packages. If you do not have Rtools installed, then you can use this code instead (in this example, to install a specific version of [ggplot2](http://ggplot2.org/)):
+Previous versions of packages can be installed in a number of ways - more information on this can be found in the [RStudio support](https://support.rstudio.com/hc/en-us/articles/219949047-Installing-older-versions-of-packages). These methods require [Rtools](https://cran.r-project.org/bin/windows/Rtools/) to build/compile the packages from source. If you do not have Rtools installed, then you can use this code instead (in this example, to install a specific version of [ggplot2](http://ggplot2.org/)):
 
 ```{r}
 library(versions)
