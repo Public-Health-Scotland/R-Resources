@@ -1,3 +1,5 @@
+# Public Health & Intelligence <img align="right" src="https://www.aspenpeople.co.uk/immunology/images/logo.png" height="90px">
+
 # Introduction to R in NSS
 
 ***
@@ -12,7 +14,8 @@ Written/run on - GitHub
 * [Introduction](#introduction)
 * [Installation](#installation)
 * [RStudio](#rstudio)
-* [R particularities](#r-particularities )
+* [R particularities](#r-particularities)
+  * [Scripts](#scripts)
   * [Objects](#objects)
   * [Functions](#functions)
   * [Data types](#data-types)
@@ -50,6 +53,8 @@ If you want to use R server, please refer to the [R server guidelines](http://ww
 ## RStudio
 RStudio is a visual interface that facilitates the task of programming in R. This [short video](https://www.youtube.com/watch?v=5p04znmmgQ8) will guide you through the different parts and panels of the layout of RStudio.
 
+One important thing to note is that any code you enter in the console panel and press enter will get automatically executed. If you write the same code in the source/script panel this will not run automatically. You will have to select it and press run or Ctrl+R. As a general rule, write your code in a script.
+
 The appearance and layout of R/RStudio can be customized, for example panel sizes can be modified or color schemes changed. Read more about customization [here](https://support.rstudio.com/hc/en-us/articles/200549016-Customizing-RStudio) and [here](http://www.aliquote.org/articles/tech/RStudio.pdf).
 
 Both R and RStudio are periodically updated and you may need to pay attention to the versions that you are running as most R packages have version dependency. To check your R version run the command “version”; to check your RStudio version go to “Help/About RStudio”.  
@@ -57,6 +62,8 @@ Both R and RStudio are periodically updated and you may need to pay attention to
 Currently, there is a known compatibility issue with the version of R and RStudio that NSS is providing.  This issue means the viewer panel (where interactive plots are displayed) does not work as it should and plots will only work when open as a new window.
 
 ## R particularities 
+### Scripts
+An R script is a text file that holds a list of R commands. It is the equivalent to a SPSS syntax. Saving your code in a script file allows you to save it, re run it, share it, and modify it. You can also run code in the console panel, but this will not get saved anywhere. Generally you should write your code in scripts. A very useful feature of scripts is that you can call them using the [source function](http://www.dummies.com/programming/r/how-to-source-a-script-in-r/) and they will run automatically.
 
 ### Objects
 R works through objects. This is a complicated topic and it will make more sense once you get more familiar with R. In a nutshell, an object is an element that R creates and manipulates. They can be many different things: a plot, a dataset, some text, etc. To create an object you need to assign an operation to a name, and this is done using the arrow operator (<-). For example: x <- 3 creates an object with value 3. The value gets stored in R memory and can be used in further operations, for example x*2 will result in 6. For more detailed information on objects you can read [this](https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Preface).
