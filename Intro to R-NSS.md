@@ -46,7 +46,7 @@ The purpose of this document is to help new R users to set up the program and un
 
 There are two ways you can use R: through a programme installed in your local computer (desktop) or through a version installed in an [NSS Server](http://nssrstudio.csa.scot.nhs.uk/). (server). 
 
-To use R desktop you first need to ask CSD to install it for you. Request both R and RStudio as the latter makes writing programs/scripts a lot easier. RStudio is an interface to R. The latest version available for PHI is R 3.3.2 and RStudio 0.99.473 (January 2018). If you need to connect to SMRA databases using R desktop, you will need to specify that you need R Core 3.3.2 with SMRA ODBC collection. You need to install them from software center after IT has confirmed the availability.
+To use R desktop you first need to ask CSD to install it for you. Request both R and RStudio as the latter makes writing programs/scripts a lot easier. RStudio is an interface to R. The latest version available for PHI is R 3.3.2 and RStudio 1.0.136 (January 2018). If you need to connect to SMRA databases using R desktop, you will need to specify that you need R Core 3.3.2 with SMRA ODBC collection. You need to install them from software center after IT has confirmed the availability.
 
 If you want to use R server, please refer to the [R server guidelines](http://www.isdscotland.org/About-ISD/Methodologies/_docs/Using-R-with-SMRA-V1-0-FINAL.pdf). You will have to request a login -from CSD. The current R version for the server is 3.2.0 and for RStudio 0.99.473 (January 2018).
 
@@ -59,7 +59,7 @@ The appearance and layout of R/RStudio can be customized, for example panel size
 
 Both R and RStudio are periodically updated and you may need to pay attention to the versions that you are running as most R packages have version dependency. To check your R version run the command “version”; to check your RStudio version go to “Help/About RStudio”.  
 
-Currently, there is a known compatibility issue with the version of R and RStudio that NSS is providing.  This issue means the viewer panel (where interactive plots are displayed) does not work as it should and plots will only work when open as a new window.
+Currently, if you request RStudio, you may be given an older version (0.99.473). There is a known compatibility issue between R 3.3.2 and this version of RStudio that NSS is providing.  This issue means the viewer panel (where interactive plots are displayed) does not work as it should and plots will only work when open as a new window. If this happens, you should request that the later version of RStudio is installed (1.0.136).
 
 ## R particularities 
 ### Scripts
