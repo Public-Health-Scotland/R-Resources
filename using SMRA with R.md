@@ -405,6 +405,10 @@ Example:
   `x<-as.data.frame(cbind(LINK_NO, INCOHORT))`
 
 
+###IMPORTANT NOTE
+
+Variable names must be in ALL CAPITALS to be used in an SQL query later. Tables with non-capitalised variable names will upload, but you will not be able to use the non-capitalised names in an SQL query.
+
 2.	Upload to SMRA using the dbWriteTable function 
 
    ` dbWriteTable(SMRA, "test", x)`
@@ -451,3 +455,4 @@ To check it has been removed:
 `dbListTables(SMRA,schema="<USERNAME>")`
 
 NB It is of course possible to extract information based on a personal table containing other fields in addition to LINK_NO to further refine the selection, perhaps years of interest in combination with LINK_NO. 
+
