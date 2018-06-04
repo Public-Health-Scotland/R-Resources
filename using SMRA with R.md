@@ -209,11 +209,11 @@ This opens a new blank text file
 
 E.g. To extract age, sex and location (i.e. hospital code) from all SMR01 records for men over 100:
 
-`SELECT AGE_IN_YEARS, SEX, LOCATION FROM ANALYSIS.SMR01_PI WHERE AGE_IN_YEARS>100 AND SEX=1 rownames<=10`
+`SELECT AGE_IN_YEARS, SEX, LOCATION FROM ANALYSIS.SMR01_PI WHERE AGE_IN_YEARS>100 AND SEX=1 AND  ROWNUM<=10`
 
 Save the file with a ".sql" extension.
 
-NB rownames <=10 is used to limit the number of rows returned to 10. This will reduce the time it takes to run this example. In practice, you may want to retrieve a limited number of rows when setting up a query in order to check that the query is returning the expected information/ the variables selected are the correct ones.
+NB AND  ROWNUM<=10 is used to limit the number of rows returned to 10. This will reduce the time it takes to run this example. In practice, you may want to retrieve a limited number of rows when setting up a query in order to check that the query is returning the expected information/ the variables selected are the correct ones.
 
 3.	Read the SQL query to execute against the SMRA database from an external file: 
 
@@ -230,7 +230,7 @@ NB rownames <=10 is used to limit the number of rows returned to 10. This will r
     table1<- tbl_df (dbGetQuery(channel, statement="SELECT 
     AGE_IN_YEARS, SEX, LOCATION 
     FROM ANALYSIS.SMR01_PI 
-    WHERE AGE_IN_YEARS>100 AND SEX=1 rownames<=10"))
+    WHERE AGE_IN_YEARS>100 AND SEX=1 AND  ROWNUM<=10"))
 
 The SQL code is exactly the same as written in a separate file, but in this case it is wrapped in paste(""). 
 
@@ -311,7 +311,7 @@ Other useful functions include:
                   ANALYSIS.SMR01_PI 
                   WHERE 
                   AGE_IN_YEARS>100 AND SEX=1
-    ORDER BY LINK_NO, ADMISSION_DATE, DISCHARGE_DATE, ADMISSION, DISCHARGE, URI "))
+    ORDER BY LINK_NO, ADMISSION_DATE, DISCHARGE_DATE, ADMISSION, DISCHARGE, URI"))
 
 •	You can also limit extracts by date. The following code restricts the extract to a time period of BETWEEN 1st January 2010  AND 30th of April 2010.
 
@@ -371,7 +371,7 @@ We wish to JOIN death dates on to a group of SMR01 records.
                        LEFT JOIN
                        ANALYSIS.GRO_DEATHS_C T2   
                        ON T1.LINK_NO= T2.LINK_NO
-                       WHERE rownum<=100")
+                       WHERE ROWNUM<=100")
 
  head(SMR_Join)
 
