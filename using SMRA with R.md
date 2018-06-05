@@ -434,7 +434,7 @@ This syntax, with the double and single quote positions inverted, will result in
 
 4.	Using the table to retrieve information from SMRA using a JOIN command:
 
-   ` SMR_cohort <- tbl_df(dbGetQuery(SMRA, 
+    SMR_cohort <- tbl_df(dbGetQuery(SMRA, 
                          statement='SELECT 
                          T2.LINK_NO,T2.LOCATION, T2.ADMISSION_DATE, T2.DISCHARGE_DATE, 
                          T2.MAIN_CONDITION, T2.CIS_MARKER, T1.INCOHORT
@@ -443,7 +443,7 @@ This syntax, with the double and single quote positions inverted, will result in
                         LEFT JOIN
                         ANALYSIS.SMR01_PI T2
                         ON T1.LINK_NO = T2.LINK_NO
-                       ORDER BY T2.LINK_NO, T2.ADMISSION_DATE, T2.DISCHARGE_DATE, T2.ADMISSION, T2.DISCHARGE, T2.URI' ))`
+                       ORDER BY T2.LINK_NO, T2.ADMISSION_DATE, T2.DISCHARGE_DATE, T2.ADMISSION, T2.DISCHARGE, T2.URI' ))
 
 
 5.	Delete the table once you have finished using it using dbRemoveTable 
@@ -463,29 +463,30 @@ Uploading dates from R to SMRA is a little complicated, you will need to do some
 The example below extracts SMR00 data in the year to infection. The uploaded file contains a list of UPI numbers and two dates, indicating a sample date and a date one year before the sample, and these dates are used to limit the data extracted.
  
  Create table with dates in CCYYMMDD format.:
-  ` LINK_NO<-c(00000119, 75881029, 45960570, 00019300, 01959251, 01959200, 11949200, 02939132, 00000383)
-   SPECDATE<-c(20141114, 20140412, 20130530, 20130607, 20140125, 20141118, 20130701, 20141212, 20140503)
-   SPECDATE1YR<-  SPECDATE-10000` 
+
+    LINK_NO<-c(00000119, 75881029, 45960570, 00019300, 01959251, 01959200, 11949200, 02939132, 00000383)
+    SPECDATE<-c(20141114, 20140412, 20130530, 20130607, 20140125, 20141118, 20130701, 20141212, 20140503)
+    SPECDATE1YR<-  SPECDATE-10000` 
    
-  `test<-as.data.frame(cbind(UPI_NUMBER, SPECDATE, SPECDATE1YR))`
+    test<-as.data.frame(cbind(UPI_NUMBER, SPECDATE, SPECDATE1YR))`
  
- ` dbWriteTable(SMRA, "test", x)`
+    dbWriteTable(SMRA, "test", x)`
   
   
-`data <- tbl_df(dbGetQuery(channel, statement=
-  'SELECT
-  T0.LINK_NO, T0.SPECDATE, T0.SPECDATE1YR,  
-  T1.LINK_NO, T1.CLINIC_DATE, to_number(to_char(T1.CLINIC_DATE,\'YYYYMMDD\')) AS CLINIC_DATE_NUM, 
-  T1.LOCATION, T1.SPECIALTY, T1.SIGNIFICANT_FACILITY,
-  T1.MAIN_OPERATION, T1.OTHER_OPERATION_1, T1.OTHER_OPERATION_2, T1.OTHER_OPERATION_3,
-  T1.DATE_OF_MAIN_OPERATION, T1.DATE_OF_OTHER_OPERATION_1, T1.DATE_OF_OTHER_OPERATION_2, 
-  T1.DATE_OF_OTHER_OPERATION_3
-  FROM <USERNAME>."TEMP" T0, ANALYSIS.SMR00_PI T1 
-  WHERE T0.LINK_NO = T1.LINK_NO (+)
-  AND to_number(to_char(T1.CLINIC_DATE,\'YYYYMMDD\')) >= T0.SPECDATE1YR 
-  AND to_number(to_char(T1.CLINIC_DATE,\'YYYYMMDD\')) <= T0.SPECDATE
-  ORDER BY T0.UPI, T0.SPECDATE, T1.CLINIC_DATE'
-  )
-)`
+    data <- tbl_df(dbGetQuery(channel, statement=
+                   'SELECT
+                   T0.LINK_NO, T0.SPECDATE, T0.SPECDATE1YR,  
+                   T1.LINK_NO, T1.CLINIC_DATE, to_number(to_char(T1.CLINIC_DATE,\'YYYYMMDD\')) AS CLINIC_DATE_NUM, 
+                   T1.LOCATION, T1.SPECIALTY, T1.SIGNIFICANT_FACILITY,
+                   T1.MAIN_OPERATION, T1.OTHER_OPERATION_1, T1.OTHER_OPERATION_2, T1.OTHER_OPERATION_3,
+                   T1.DATE_OF_MAIN_OPERATION, T1.DATE_OF_OTHER_OPERATION_1, T1.DATE_OF_OTHER_OPERATION_2, 
+                   T1.DATE_OF_OTHER_OPERATION_3
+                   FROM <USERNAME>."TEMP" T0, ANALYSIS.SMR00_PI T1 
+                   WHERE T0.LINK_NO = T1.LINK_NO (+)
+                   AND to_number(to_char(T1.CLINIC_DATE,\'YYYYMMDD\')) >= T0.SPECDATE1YR 
+                   AND to_number(to_char(T1.CLINIC_DATE,\'YYYYMMDD\')) <= T0.SPECDATE
+                   ORDER BY T0.UPI, T0.SPECDATE, T1.CLINIC_DATE'
+     )
+    )
 
 
