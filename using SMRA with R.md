@@ -456,3 +456,36 @@ To check it has been removed:
 
 NB It is of course possible to extract information based on a personal table containing other fields in addition to LINK_NO to further refine the selection, perhaps years of interest in combination with LINK_NO. 
 
+6. Important note on uploading dates
+
+Uploading dates from R to SMRA is a little complicated, you will need to do some formatting in SQL. Before uploading, you first need to convert the dates in the cohort file to a numeric field in CCYYMMDD format. You will then nee to alter the type of the SMR dates to the same numeric format during the extraction. 
+
+The example below extracts SMR00 data in the year to infection. The uploaded file contains a list of UPI numbers and two dates, indicating a sample date and a date one year before the sample, and these dates are used to limit the data extracted.
+ 
+ Create table with dates in CCYYMMDD format.:
+  ` LINK_NO<-c(00000119, 75881029, 45960570, 00019300, 01959251, 01959200, 11949200, 02939132, 00000383)
+   SPECDATE<-c(20141114, 20140412, 20130530, 20130607, 20140125, 20141118, 20130701, 20141212, 20140503)
+   SPECDATE1YR<-  SPECDATE-10000` 
+   
+  `test<-as.data.frame(cbind(UPI_NUMBER, SPECDATE, SPECDATE1YR))`
+ 
+ ` dbWriteTable(SMRA, "test", x)`
+  
+  
+`data <- tbl_df(dbGetQuery(channel, statement=
+  'SELECT
+  T0.LINK_NO, T0.SPECDATE, T0.SPECDATE1YR,  
+  T1.LINK_NO, T1.CLINIC_DATE, to_number(to_char(T1.CLINIC_DATE,\'YYYYMMDD\')) AS CLINIC_DATE_NUM, 
+  T1.LOCATION, T1.SPECIALTY, T1.SIGNIFICANT_FACILITY,
+  T1.MAIN_OPERATION, T1.OTHER_OPERATION_1, T1.OTHER_OPERATION_2, T1.OTHER_OPERATION_3,
+  T1.DATE_OF_MAIN_OPERATION, T1.DATE_OF_OTHER_OPERATION_1, T1.DATE_OF_OTHER_OPERATION_2, 
+  T1.DATE_OF_OTHER_OPERATION_3
+  FROM <USERNAME>."TEMP" T0, ANALYSIS.SMR00_PI T1 
+  WHERE T0.LINK_NO = T1.LINK_NO (+)
+  AND to_number(to_char(T1.CLINIC_DATE,\'YYYYMMDD\')) >= T0.SPECDATE1YR 
+  AND to_number(to_char(T1.CLINIC_DATE,\'YYYYMMDD\')) <= T0.SPECDATE
+  ORDER BY T0.UPI, T0.SPECDATE, T1.CLINIC_DATE'
+  )
+)`
+
+
