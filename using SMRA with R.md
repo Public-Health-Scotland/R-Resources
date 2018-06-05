@@ -400,9 +400,9 @@ The process of uploading and using a table is as follows:
 
 Example:
 
-   ` LINK_NO<-c(00000119, 75881029, 45960570, 00019300, 01959251, 01959200, 11949200, 02939132, 00000383)
+    LINK_NO<-c(00000119, 75881029, 45960570, 00019300, 01959251, 01959200, 11949200, 02939132, 00000383)
     INCOHORT<-rep("yes", 9)`
-  `x<-as.data.frame(cbind(LINK_NO, INCOHORT))`
+    x<-as.data.frame(cbind(LINK_NO, INCOHORT))`
 
 
 ###IMPORTANT NOTE
@@ -411,12 +411,14 @@ Variable names must be in ALL CAPITALS to be used in an SQL query later. Tables 
 
 2.	Upload to SMRA using the dbWriteTable function 
 
-   ` dbWriteTable(SMRA, "test", x)`
+    ` dbWriteTable(SMRA, "test", x)`
+     
 The table will be uploaded to a schema that is your username. To see a list of tables that you have uploaded run:
 
-    `dbListTables(SMRA,schema="<USERNAME>")`
+     dbListTables(SMRA,schema="<USERNAME>")
 
 Replacing <USERNAME> with the username you use to access SMRA, in all capitals.
+
 
 3.	Use the uploaded table in a query. 
 
@@ -426,33 +428,37 @@ Example:
 
 This syntax works:
 
-    `test <- dbGetQuery(SMRA,statement='SELECT * FROM <USERNAME>."test" ') `
+    test <- dbGetQuery(SMRA,statement='SELECT * FROM <USERNAME>."test" ') 
 
 This syntax, with the double and single quote positions inverted, will result in an error.
 
-    `test <- dbGetQuery(SMRA,statement="select * from '<USERNAME>.test'")`
+    test <- dbGetQuery(SMRA,statement="select * from '<USERNAME>.test'")
 
-4.	Using the table to retrieve information from SMRA using a JOIN command:
 
-    SMR_cohort <- tbl_df(dbGetQuery(SMRA, 
-                         statement='SELECT 
+4.	Using the table to retrieve information from SMRA using a JOIN command.
+
+Syntax:
+
+    SMR_cohort <- tbl_df(dbGetQuery(SMRA, statement='SELECT 
                          T2.LINK_NO,T2.LOCATION, T2.ADMISSION_DATE, T2.DISCHARGE_DATE, 
                          T2.MAIN_CONDITION, T2.CIS_MARKER, T1.INCOHORT
                          FROM
-                        <USERNAME>."test" T1 
-                        LEFT JOIN
-                        ANALYSIS.SMR01_PI T2
-                        ON T1.LINK_NO = T2.LINK_NO
-                       ORDER BY T2.LINK_NO, T2.ADMISSION_DATE, T2.DISCHARGE_DATE, T2.ADMISSION, T2.DISCHARGE, T2.URI' ))
+                         <USERNAME>."test" T1 
+                         LEFT JOIN
+                         ANALYSIS.SMR01_PI T2
+                         ON T1.LINK_NO = T2.LINK_NO
+                         ORDER BY T2.LINK_NO, T2.ADMISSION_DATE, T2.DISCHARGE_DATE, T2.ADMISSION, T2.DISCHARGE, T2.URI' ))
+
+
 
 
 5.	Delete the table once you have finished using it using dbRemoveTable 
 
-    `dbRemoveTable(SMRA, "test")`
+    dbRemoveTable(SMRA, "test")
 
 To check it has been removed:
 
-`dbListTables(SMRA,schema="<USERNAME>")`
+    dbListTables(SMRA,schema="<USERNAME>")
 
 NB It is of course possible to extract information based on a personal table containing other fields in addition to LINK_NO to further refine the selection, perhaps years of interest in combination with LINK_NO. 
 
