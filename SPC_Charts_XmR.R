@@ -190,13 +190,6 @@ for (j in 1:length(measure)){
         
       }
       
-      # Checking if the current data point sits on the median line and if so skip to the 
-      # next data point and continue counting
-      if (Measure_values[k] == med){ 
-        
-        next
-        
-      }
       
     } 
 
