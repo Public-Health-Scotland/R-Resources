@@ -85,8 +85,13 @@ if (x <= 10) {
 }
 ```
 
+### 7 - Projects
 
-### 7 - Recommended packages and tidyverse
+It is recommended that you use RStudio projects, which organize your work into different contexts each one with a different working directory. Projects eliminate the need to set up your working directory each time, allow you to use Git for version control and allow you to have multiple R sessions open at the same time (each one with a different project), as well other perks to help you manage your work. 
+
+A blank R project structure can be downloaded from [this repository](https://github.com/Health-SocialCare-Scotland/r-project-structure). A similar blank structure for R Shiny apps can be found [here](https://github.com/Health-SocialCare-Scotland/rshiny-project-structure).
+
+### 8 - Recommended packages and tidyverse
 
 We recommend the following packages:
 
@@ -97,7 +102,7 @@ We recommend the following packages:
 We recommend using the pipe operator (%>%) from the tidyverse package in order to make code more readable. This operator is used to pass a value forward into the first argument of an expression or function and can be pronounced as "then". Pipes should be used to link a sequence of functions into one call, with a new line after each pipe. Also note that "tidy" data analysis is best performed on data in a tidy (long) format, where each column represents one variable and each row represents one observation ([Hadley Wickham, 2014](https://www.jstatsoft.org/article/view/v059i10)).
 
 
-### 8 - Recommended style guide
+### 9 - Recommended style guide
 
 We recommend following Hadley Wickham's [tidyverse style guide](http://style.tidyverse.org/).
 Please refer to this document for guidance on:
@@ -114,6 +119,6 @@ To help clean up your code, the `lintr` package provides an automated check for 
 An example R script written in the recommended style is also available for further reference.
 
 
-### 9 - R User Group
+### 10 - R User Group
 
 The PHI R User Group shares good practice amoungst the user community and is a useful support system for users requiring assistance. For more information and to sign up to the mailing list contact: NSS.Rusergroup@nhs.net.
