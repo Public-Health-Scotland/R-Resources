@@ -134,7 +134,7 @@ It is best practice to never save the working environment. This means that every
 ### Working directory and projects
 There are several ways of setting up your working directory, which helps to organize your work in directories and avoid you having to type over and over filepaths. 
 
-It is recommended that you use RStudio projects. Projects organize your work into different contexts each one with a different working directory. Projects eliminate the need to set up your working directory each time, allow you to use Git for version control and allow you to have multiple R sessions open at the same time (each one with a different project), as well having other perks to help you manage your work. Read [this page](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) to know how to create and use projects.
+It is recommended that you use RStudio projects. Projects organize your work into different contexts each one with a different working directory. Projects eliminate the need to set up your working directory each time, allow you to use Git for version control and allow you to have multiple R sessions open at the same time (each one with a different project), as well having other perks to help you manage your work. Read [this page](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) to know how to create and use projects. You can use a similar structure to the one outlined in this [blank R project structure](https://github.com/Health-SocialCare-Scotland/rshiny-project-structure).
 
 You can also define your working directory using the function setwd(“filepath”) You can retrieve your working directory using getwd(“filepath”).
 
@@ -180,6 +180,7 @@ For more information on using Git with R read [this](http://happygitwithr.com/) 
 * [PHI R style guide](https://github.com/Health-SocialCare-Scotland/R-Resources/blob/master/PHI%20R%20style%20guide.md)
 * [Guide on how to connect to SMRA using R and R server](http://www.isdscotland.org/About-ISD/Methodologies/_docs/Using-R-with-SMRA-V1-0-FINAL.pdf)
 * [Guide on how to connect to API’s using R](https://github.com/jsphdms/R_web_APIs)
+* [Blank R project structure](https://github.com/Health-SocialCare-Scotland/rshiny-project-structure) and [blank R Shiny app structure](https://github.com/Health-SocialCare-Scotland/rshiny-project-structure)
 #### Tutorials
 * [NeonScience](http://www.neonscience.org/resources/data-tutorials)
 * [Coursera ](https://www.coursera.org/learn/r-programming)
