@@ -46,9 +46,9 @@ The purpose of this document is to help new R users to set up the program and un
 
 There are two ways you can use R: through a programme installed in your local computer (desktop) or through a version installed in an [NSS Server](http://nssrstudio.csa.scot.nhs.uk/). (server). 
 
-To use R desktop you first need to ask CSD to install it for you. Request both R and RStudio as the latter makes writing programs/scripts a lot easier. RStudio is an interface to R. The latest version available for PHI is R 3.3.2 and RStudio 1.0.136 (January 2018). If you need to connect to SMRA databases using R desktop, you will need to specify that you need R Core 3.3.2 with SMRA ODBC collection. You need to install them from software center after IT has confirmed the availability.
+To use R desktop you first need to ask CSD to install it for you. Request both R and RStudio as the latter makes writing programs/scripts a lot easier. RStudio is an interface to R. The latest version available for PHI is R 3.5.1 and RStudio 1.1.456 (October 2018). If you need to connect to SMRA databases using R desktop, you will need to specify that you need R Core 3.3.2 with SMRA ODBC collection. You need to install them from software center after IT has confirmed the availability.
 
-If you want to use R server, please refer to the [R server guidelines](http://www.isdscotland.org/About-ISD/Methodologies/_docs/Using-R-with-SMRA-V1-0-FINAL.pdf). You will have to request a login -from CSD. The current R version for the server is 3.2.0 and for RStudio 0.99.473 (January 2018).
+If you want to use R server, please refer to the [R server guidelines](http://www.isdscotland.org/About-ISD/Methodologies/_docs/Using-R-with-SMRA-V1-0-FINAL.pdf). You will have to request a login -from CSD. The current R version for the server is 3.2.3 and for RStudio 0.99.896 (October 2018).
 
 ## RStudio
 RStudio is a visual interface that facilitates the task of programming in R. This [short video](https://www.youtube.com/watch?v=5p04znmmgQ8) will guide you through the different parts and panels of the layout of RStudio.
@@ -58,8 +58,6 @@ One important thing to note is that any code you enter in the console panel and 
 The appearance and layout of R/RStudio can be customized, for example panel sizes can be modified or color schemes changed. Read more about customization [here](https://support.rstudio.com/hc/en-us/articles/200549016-Customizing-RStudio) and [here](http://www.aliquote.org/articles/tech/RStudio.pdf).
 
 Both R and RStudio are periodically updated and you may need to pay attention to the versions that you are running as most R packages have version dependency. To check your R version run the command “version”; to check your RStudio version go to “Help/About RStudio”.  
-
-Currently, if you request RStudio, you may be given an older version (0.99.473). There is a known compatibility issue between R 3.3.2 and this version of RStudio that NSS is providing.  This issue means the viewer panel (where interactive plots are displayed) does not work as it should and plots will only work when open as a new window. If this happens, you should request that the later version of RStudio is installed (1.0.136).
 
 ## R particularities 
 ### Scripts
