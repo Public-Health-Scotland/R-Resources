@@ -19,7 +19,6 @@ Every script should begin with the following basic information:
 * Original author(s)\*
 * Orginal date\*
 
-* Type of script (e.g. extraction, preparation, modelling)                          
 * Written/run on (e.g. R Studio SERVER)
 * Version of R that the script was written for
 * Versions of packages that the script requires (these can be retrieved using the `sessionInfo()` function)
@@ -28,7 +27,7 @@ Every script should begin with the following basic information:
 
 * Approximate run time  
 
-\*Only the original author and date are required if Git (or another version control system) is being used to track changes to a script. If this is not the case, then the most recent analyst to edit the file and the date that this was done should also be recorded.
+\*This information is not required if Git (or another version control system) is being used to track changes to a script. If this is not the case, then the most recent analyst to edit the file and the date that this was done should also be recorded.
 
 ### 2 - Sections
 
