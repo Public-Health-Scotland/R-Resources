@@ -96,9 +96,11 @@ We recommend the following packages:
 
 * `odbc` for accessing SMRA data
 * `haven` for reading spss files (NOTE: haven does not support .zsav compressed files, which will need to either be saved as .sav files or exported to .csv before reading into R)
-* `tidyverse` for data manipulation and more generally for writing R code in the "tidy" way (NOTE: tidyverse conflicts with the plyr package so should be reloaded after you are finished using plyr
+* The `tidyverse` suite of packages for data manipulation and more generally for writing R code in the "tidy" way. The [tidyverse](https://www.tidyverse.org/) includes packages such as dplyr, magrittr, ggplot2, tidyr and readr. Since the tidyverse is now a large collection of packages, we recommend that you do not load all of them at once (e.g. using `library(tidyverse)`), but instead load the specific tidyverse packages required in your code.
 
-We recommend using the pipe operator (%>%) from the tidyverse package in order to make code more readable. This operator is used to pass a value forward into the first argument of an expression or function and can be pronounced as "then". Pipes should be used to link a sequence of functions into one call, with a new line after each pipe. Also note that "tidy" data analysis is best performed on data in a tidy (long) format, where each column represents one variable and each row represents one observation ([Hadley Wickham, 2014](https://www.jstatsoft.org/article/view/v059i10)).
+We recommend using the pipe operator (%>%) from the magrittr (and now dplyr) packages in order to make code more readable. This operator is used to pass a value forward into the first argument of an expression or function and can be pronounced as "then". Pipes should be used to link a sequence of functions into one call, with a new line after each pipe. Also note that "tidy" data analysis is best performed on data in a tidy (long) format, where each column represents one variable and each row represents one observation ([Hadley Wickham, 2014](https://www.jstatsoft.org/article/view/v059i10)).
+
+NOTE: tidyverse conflicts with the plyr package so should be reloaded after you are finished using plyr
 
 
 ### 9 - Recommended style guide
@@ -114,8 +116,6 @@ Please refer to this document for guidance on:
 * assignment
 
 To help clean up your code, the `lintr` package provides an automated check for compliance with the tidyverse style guide and warns you about potential mistakes or problems.
-
-An example R script written in the recommended style is also available for further reference.
 
 
 ### 10 - R User Group
