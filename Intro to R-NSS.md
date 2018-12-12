@@ -114,15 +114,27 @@ install.versions("ggplot2", "2.0.0")
 If you need information on version numbers for previous packages, find your package from the [CRAN package list](https://cran.r-project.org/web/packages/available_packages_by_name.html), then look for '**Old sources**' and click the link to get to the archives. For example, previous versions of the [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) package can be found [here](https://cran.r-project.org/src/contrib/Archive/dplyr) and the version numbers are displayed on the filenames.
 
 ### Install packages from Github Offline
-Many packages that are in development are hosted on Github, often with the intention of putting the package onto CRAN later when it is more *production-ready*. When using R within the NSS network, you will usually need to install packages hosted on Github offline. This requires [Rtools](https://cran.r-project.org/bin/windows/Rtools/) to be installed. With this in place, the first thing is to navigate to the Github webpage hosting the package you want to install – here, the [bubbles package](https://github.com/jcheng5/bubbles) is used as an example.
+Many packages that are in development are hosted on Github, often with the intention of putting the package onto CRAN later when it is more *production-ready*. When using R within the NSS network, you will usually need to install packages hosted on Github offline as it is likely you will not be allowed to download packages directly from Github within R using `devtools::install_github()`. This requires [Rtools](https://cran.r-project.org/bin/windows/Rtools/) to be installed. With this in place, the first thing is to navigate to the Github webpage hosting the package you want to install – here, the [bubbles package](https://github.com/jcheng5/bubbles) is used as an example. On the package's Github page, click the "Clone or download" box, then click "Download ZIP" (Fig.5) and save the zip file somewhere convenient on your computer.
 
 ![](https://github.com/alan-y/img/blob/master/github_download.png)
 
-*Figure AY1. Downloading packages from Github as a zip file.*
+*Figure 5. Downloading packages from Github as a zip file.*
 
-![](https://github.com/alan-y/img/blob/master/open_cmd.png)
+By default, the zip file will be named according to the pattern "packagename-master" (for this example, "bubbles-master.zip"). The next step is to open RStudio and set the working directory to where the zip file is stored (See the [Working directory and projects](#working-directory-and-projects) section in this guide). Then type the following commands in R
 
-*Figure AY2. Starting command prompt at a specific directory.*
+```{r}
+unzip("bubbles-master.zip")
+file.rename("bubbles-master", "bubbles")
+shell("R CMD build bubbles")
+```
+
+This will create a tarball (or source) version of the package in the current directory. At the time of writing, the bubbles package is version 0.2 so the file will be called "bubbles_0.2.tar.gz". The version number of the package will be changing over time as it is being developed so the R code to install it needs to account for this. This can be achieved using a [regular expression](https://en.wikipedia.org/wiki/Regular_expression) pattern within the R code.
+
+```{r}
+install.packages(list.files(pattern = "bubbles.+\\.tar.gz"), repos = NULL)
+```
+
+Regular expressions are beyond the scope of this introduction but as long as there is only one version of the package tarball you want to install sitting in the directory, the code should run fine and install the package – the only thing you have to do is replace the appropriate text with the name of the package you want to install.
 
 ### Loading packages
 Before you can start to use a package you have installed, you need to load it in your R session. This means that if you close R and reopen it again you will have to go through this process again. You can use contextual menus to load packages into your sessions, but that is not good practice. Always code the loading of packages directly into your script, including this at the beginning of your code in a housekeeping section. To call packages you can use the function library(packagename).
@@ -133,11 +145,11 @@ Sometimes it can be difficult to know what package to use for what. These curate
 Probably the most popular set of packages for data manipulation is the [tidyverse](https://www.tidyverse.org/). They share a common style and logic and they have changed how people code in R. One of the main characteristics of “tidy” coding is the use of the [pipe operator (%>%)](http://magrittr.tidyverse.org/) which structures the sequences of data operations in a logical way. This creates a much more readable and simpler code than the style of base R (the default functions of R).
 
 ## Workspace
-The workspace is your current R working environment and includes any user-defined objects (vectors, matrices, data frames, lists), functions and packages (Fig.5).  Read more about it [here](https://www.statmethods.net/interface/workspace.html) and [here](https://support.rstudio.com/hc/en-us/articles/200711843-Working-Directories-and-Workspaces). [This site](http://stat545.com/block002_hello-r-workspace-wd-project.html) has a very good overview of this whole section.
+The workspace is your current R working environment and includes any user-defined objects (vectors, matrices, data frames, lists), functions and packages (Fig.6).  Read more about it [here](https://www.statmethods.net/interface/workspace.html) and [here](https://support.rstudio.com/hc/en-us/articles/200711843-Working-Directories-and-Workspaces). [This site](http://stat545.com/block002_hello-r-workspace-wd-project.html) has a very good overview of this whole section.
 
 ![](https://imgur.com/CTb9sOp.png)
 
-*Figure 5. Workspace including different types of objects and functions.*
+*Figure 6. Workspace including different types of objects and functions.*
 
 It is best practice to never save the working environment. This means that every time you open R no data or packages will be loaded. This way you will avoid issues with calls to the wrong dataset or object, not writing down all the packages you need, etc. You can make sure R does not remember a work space by going to “Tools/Global Options/General”, un-ticking the “Restore .RData into workspace at startup” box, and changing to “Never” the dropdown on “Save workspace to .RData on exit”.
 
@@ -148,11 +160,11 @@ It is recommended that you use RStudio projects. Projects organize your work int
 
 You can also define your working directory using the function setwd(“filepath”) You can retrieve your working directory using getwd(“filepath”).
 
-Another way of doing it is through saving your workspace in the location you want to be your working directory: open RStudio, click on “Save Workspace As” icon (the blue disc) under Environment (Fig.6). 
+Another way of doing it is through saving your workspace in the location you want to be your working directory: open RStudio, click on “Save Workspace As” icon (the blue disc) under Environment (Fig.7). 
 
 ![](https://imgur.com/Fc6Bgz1.png)
 
-*Figure 6. Environment panel where you can find the option to save the workspace.*
+*Figure 7. Environment panel where you can find the option to save the workspace.*
 
 It will open a “Save Workspace As” dialogue box, and you can choose a file path and give it a file name. Close RStudio. Go to the location where the file has been saved. The file you created has an extension “.RData”. Click on this file, and RStudio will open again with this location as the working directory. You can check it by using the function getwd().
 
