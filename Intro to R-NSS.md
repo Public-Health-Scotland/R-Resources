@@ -114,11 +114,15 @@ install.versions("ggplot2", "2.0.0")
 If you need information on version numbers for previous packages, find your package from the [CRAN package list](https://cran.r-project.org/web/packages/available_packages_by_name.html), then look for '**Old sources**' and click the link to get to the archives. For example, previous versions of the [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) package can be found [here](https://cran.r-project.org/src/contrib/Archive/dplyr) and the version numbers are displayed on the filenames.
 
 ### Install packages from Github Offline
-Many packages that are in development are hosted on Github, often with the intention of putting the package onto CRAN later when it is more *production-ready*. When using R within the NSS network, you will usually need to install packages hosted on Github offline. To do this, first navigate to the Github webpage hosting the package – here, the [bubbles package](https://github.com/jcheng5/bubbles) is used as an example.
+Many packages that are in development are hosted on Github, often with the intention of putting the package onto CRAN later when it is more *production-ready*. When using R within the NSS network, you will usually need to install packages hosted on Github offline. This requires [Rtools](https://cran.r-project.org/bin/windows/Rtools/) to be installed. With this in place, the first thing is to navigate to the Github webpage hosting the package you want to install – here, the [bubbles package](https://github.com/jcheng5/bubbles) is used as an example.
 
 ![](https://github.com/alan-y/img/blob/master/github_download.png)
 
+*Figure AY1. Downloading packages from Github as a zip file.*
+
 ![](https://github.com/alan-y/img/blob/master/open_cmd.png)
+
+*Figure AY2. Starting command prompt at a specific directory.*
 
 ### Loading packages
 Before you can start to use a package you have installed, you need to load it in your R session. This means that if you close R and reopen it again you will have to go through this process again. You can use contextual menus to load packages into your sessions, but that is not good practice. Always code the loading of packages directly into your script, including this at the beginning of your code in a housekeeping section. To call packages you can use the function library(packagename).
