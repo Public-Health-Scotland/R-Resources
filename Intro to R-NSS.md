@@ -134,7 +134,7 @@ This will create a tarball (or source) version of the package in the current dir
 install.packages(list.files(pattern = "bubbles.+\\.tar.gz"), repos = NULL)
 ```
 
-Regular expressions are beyond the scope of this introduction but as long as there is only one version of the package tarball you want to install sitting in the directory, the code should run fine and install the package – the only thing you have to do is replace the appropriate text with the name of the package you want to install.
+Regular expressions are beyond the scope of this introduction but as long as there is only one version of the package tarball you want to install sitting in the directory, the code should run fine and install the package (test this by [loading the package](#loading-packages)) – the only thing you have to do is replace the appropriate text with the name of the package you want to install.
 
 ### Loading packages
 Before you can start to use a package you have installed, you need to load it in your R session. This means that if you close R and reopen it again you will have to go through this process again. You can use contextual menus to load packages into your sessions, but that is not good practice. Always code the loading of packages directly into your script, including this at the beginning of your code in a housekeeping section. To call packages you can use the function library(packagename).
