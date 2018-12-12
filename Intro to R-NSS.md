@@ -120,7 +120,7 @@ Many packages that are in development are hosted on Github, often with the inten
 
 *Figure 5. Downloading packages from Github as a zip file.*
 
-By default, the zip file will be named according to the pattern "packagename-master" (for this example, "bubbles-master.zip"). The next step is to open RStudio and set the working directory to where the zip file is stored (See the [Working directory and projects](#working-directory-and-projects) section in this guide). Then type the following commands in R
+By default, the zip file will be named according to the pattern "packagename-master.zip" (for this example, "bubbles-master.zip"). The next step is to open RStudio and set the working directory to where the zip file is stored (See the [Working directory and projects](#working-directory-and-projects) section in this guide). Then type the following commands in R
 
 ```{r}
 unzip("bubbles-master.zip")
