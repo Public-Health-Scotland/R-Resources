@@ -1,5 +1,7 @@
 # RMarkdown: Inserting Page Breaks in MS Word
 
+**This requires Pandoc 2.0 which should come installed with RStudio 1.2**
+
 Download this [lua](https://pandoc.org/lua-filters.html) file: https://github.com/pandoc/lua-filters/blob/master/pagebreak/pagebreak.lua
 
 Put the lua file in the same folder as your Rmd file.
