@@ -18,4 +18,4 @@ output:
 ---
 ```
 
-Insert page breaks where you want by typing `\pagebreak`.
+Insert page breaks where you want by typing `\newpage`.
