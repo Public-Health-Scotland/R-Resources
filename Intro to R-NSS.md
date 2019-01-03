@@ -114,27 +114,19 @@ install.versions("ggplot2", "2.0.0")
 If you need information on version numbers for previous packages, find your package from the [CRAN package list](https://cran.r-project.org/web/packages/available_packages_by_name.html), then look for '**Old sources**' and click the link to get to the archives. For example, previous versions of the [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) package can be found [here](https://cran.r-project.org/src/contrib/Archive/dplyr) and the version numbers are displayed on the filenames.
 
 ### Install packages from Github Offline
-Many packages that are in development are hosted on Github, often with the intention of putting the package onto CRAN later when it is more *production-ready*. When using R within the NSS network, you will usually need to install packages hosted on Github offline as it is likely you will not be allowed to download packages directly from Github within R using `devtools::install_github()`. This requires [Rtools](https://cran.r-project.org/bin/windows/Rtools/) to be installed. With this in place, the first thing is to navigate to the Github webpage hosting the package you want to install – here, the [bubbles package](https://github.com/jcheng5/bubbles) is used as an example. On the package's Github page, click the "Clone or download" box, then click "Download ZIP" (Fig.5) and save the zip file somewhere convenient on your computer.
+Many packages that are in development are hosted on Github, often with the intention of putting the package onto CRAN later when it is more *production-ready*. When using R within the NSS network, you will usually need to install packages hosted on Github offline as it is likely you will not be allowed to download packages directly from Github within R using `devtools::install_github()`. This requires [Rtools](https://cran.r-project.org/bin/windows/Rtools/) to be installed as well as the [devtools](https://www.rstudio.com/products/rpackages/devtools/) package. With these in place, the first thing is to navigate to the Github webpage hosting the package you want to install – here, the [bubbles package](https://github.com/jcheng5/bubbles) is used as an example. On the package's Github page, click the "Clone or download" box, then click "Download ZIP" (Fig.5) and save the zip file somewhere convenient on your computer.
 
 ![](https://github.com/alan-y/img/blob/master/github_download.png)
 
 *Figure 5. Downloading packages from Github as a zip file.*
 
-By default, the zip file will be named according to the pattern "packagename-master.zip" (for this example, "bubbles-master.zip"). The next step is to open RStudio and set the working directory to where the zip file is stored (See the [Working directory and projects](#working-directory-and-projects) section in this guide). Then type the following commands in R
+By default, the zip file will be named according to the pattern "packagename-master.zip" (for this example, "bubbles-master.zip"). The next step is to open RStudio and set the working directory to where the zip file is stored (See the [Working directory and projects](#working-directory-and-projects) section in this guide). Then type the following command in R
 
 ```{r}
-unzip("bubbles-master.zip")
-file.rename("bubbles-master", "bubbles")
-shell("R CMD build bubbles")
+devtools::install_local("bubbles-master.zip")
 ```
 
-This will create a tarball (or source) version of the package in the current directory. At the time of writing, the bubbles package is version 0.2 so the file will be called "bubbles_0.2.tar.gz". The version number of the package will be changing over time as it is being developed so the R code to install it needs to account for this. This can be achieved using a [regular expression](https://en.wikipedia.org/wiki/Regular_expression) pattern within the R code.
-
-```{r}
-install.packages(list.files(pattern = "bubbles.+\\.tar.gz"), repos = NULL)
-```
-
-Regular expressions are beyond the scope of this introduction but as long as there is only one version of the package tarball you want to install sitting in the directory, the code should run fine and install the package (test this by [loading the package](#loading-packages)) – the only thing you have to do is replace the appropriate text with the name of the package you want to install.
+The code should run fine and install the package (test this by [loading the package](#loading-packages)) – the only thing you have to do is replace the filename as appropriate for other packages downloaded from Github.
 
 ### Loading packages
 Before you can start to use a package you have installed, you need to load it in your R session. This means that if you close R and reopen it again you will have to go through this process again. You can use contextual menus to load packages into your sessions, but that is not good practice. Always code the loading of packages directly into your script, including this at the beginning of your code in a housekeeping section. To call packages you can use the function library(packagename).
