@@ -1,6 +1,6 @@
 # RMarkdown: Inserting Page Breaks in MS Word
 
-**This requires Pandoc 2.0 which should come installed with RStudio 1.2 (currently only available as a preview version)**
+**This requires Pandoc 2.0 which should come installed with RStudio 1.2 (currently only available as a preview version and does not support 32-bit R)**
 
 Download this [lua](https://pandoc.org/lua-filters.html) file: https://github.com/pandoc/lua-filters/blob/master/pagebreak/pagebreak.lua
 
