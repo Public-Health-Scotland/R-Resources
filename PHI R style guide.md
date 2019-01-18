@@ -17,7 +17,7 @@ Every script should begin with the following basic information:
 * Name of file
 * Data release (if applicable)
 * Original author(s)\*
-* Orginal date\*
+* Original date\*
 
 * Written/run on (e.g. R Studio SERVER)
 * Version of R that the script was written for
