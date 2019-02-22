@@ -186,6 +186,7 @@ Git is a version control programme. If you don’t know what version control is 
 For more information on using Git with R read [this](http://happygitwithr.com/) and for a quick tutorial see [this](https://try.github.io/levels/1/challenges/1).
 
 ## Useful resources
+* [NHS R Resources](https://scotland.shinyapps.io/nhs-r-resources/) - compilation of useful resources.
 #### General sites 
 * [R project - R official page](https://www.r-project.org/)
 * [RStudio - RStudio official page](https://www.rstudio.com/)
