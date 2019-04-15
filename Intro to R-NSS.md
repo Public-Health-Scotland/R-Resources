@@ -19,6 +19,7 @@ Written/run on - GitHub
   * [Objects](#objects)
   * [Functions](#functions)
   * [Data types](#data-types)
+  * [Rounding](#rounding)
 * [Packages](#packages)
   * [Install packages](#install-packages)
   * [Install previous versions of packages](#install-previous-versions-of-packages)
