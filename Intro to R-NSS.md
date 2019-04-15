@@ -75,10 +75,14 @@ R can be used to analyse many different types of data, such as vectors, data fra
 [here](http://www.aliquote.org/articles/tech/RStudio.pdf)
 
 ### Rounding
-R rounds numbers slightly differently to SPSS. R uses the 'round half to even' method to prevent biasing numbers upwards or downwards. For example, 1.5 and 2.5 both become 2 when rounded, as this is the nearest even integer.
+R rounds numbers slightly differently to the common method used in SPSS. Instead, R uses the 'round half to even' method to prevent biasing numbers upwards or downwards. For example, 1.5 and 2.5 would both become 2 when using the round() function, as this is the nearest even integer. Similarly, 3.5 would become 4 when rounded.
 ```{r}
 round(1.5)
+[1] 2
 round(2.5)
+[1] 2
+round(3.5)
+[1] 4
 ```
 It is unlikely that this will affect your analysis but this is an important concept to be aware of. 
 
