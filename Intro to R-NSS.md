@@ -80,8 +80,10 @@ R rounds numbers slightly differently to the common method used in SPSS. Instead
 ```{r}
 round(1.5)
 [1] 2
+
 round(2.5)
 [1] 2
+
 round(3.5)
 [1] 4
 ```
