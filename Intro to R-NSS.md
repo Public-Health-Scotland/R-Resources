@@ -74,6 +74,14 @@ R commands are called functions and they allow you to perform almost any action.
 R can be used to analyse many different types of data, such as vectors, data frames, matrixes and lists. You can find a good introduction to them [here](https://www.statmethods.net/input/datatypes.html) and
 [here](http://www.aliquote.org/articles/tech/RStudio.pdf)
 
+### Rounding
+R rounds numbers slightly differently to SPSS. R uses the 'round half to even' method to prevent biasing numbers upwards or downwards. For example, 1.5 and 2.5 both become 2 when rounded, as this is the nearest even integer.
+```{r}
+round(1.5)
+round(2.5)
+```
+It is unlikely that this will affect your analysis but this is an important concept to be aware of. 
+
 ## Packages
 The base R program contains a large number of functions to carry out many different tasks. However, to carry out certain tasks or to be more efficient with your coding you may need to use additional packages. A package is a bundle of code, data and documentation (read more about them [here](http://r-pkgs.had.co.nz/intro.html)). An example is the popular package for visualizations, ggplot2, which you will need to install and load in order to use. 
 
