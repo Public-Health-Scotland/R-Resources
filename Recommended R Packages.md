@@ -57,6 +57,7 @@ Package | Description
 [shinydashboard](https://github.com/rstudio/shinydashboard) | For customising the layout of shiny applications.
 [shinyWidgets](https://github.com/dreamRs/shinyWidgets) | For extending the widgets available in shiny.
 [shinyjs](https://github.com/daattali/shinyjs) | For performing common JavaScript operations in shiny applications.
+[DT](https://github.com/rstudio/DT) | For creating interactive tables.
 
 
 ### Creating packages
