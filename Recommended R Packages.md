@@ -69,3 +69,21 @@ Package | Description
 [usethis](https://github.com/r-lib/usethis) | For automating repetitive tasks during package setup.
 
 
+### Statistical modelling
+
+Package | Description
+--- | ---
+[tidymodels](https://github.com/tidymodels) | A suite of tidyverse-inspired related R packages used for statistical modelling.
+[broom](https://github.com/tidymodels/broom) | For converting statistical analyses objects into 'tidy' format.
+[car](https://github.com/cran/car) | For conducting analysis of variance (ANOVA).
+[lme4](https://github.com/lme4/lme4) | For fitting mixed-effects models.
+[mgcv](https://github.com/cran/mgcv) | For fitting flexible, non-linear models such as Generalised Additive (Mixed) Models.
+[survival](https://github.com/therneau/survival) | For survival analysis.
+
+
+### Spatial analysis
+
+Package | Description
+--- | ---
+[sp](https://github.com/edzer/sp) | For loading and manipulating spatial data.
+[leaflet](https://github.com/rstudio/leaflet) | For creating interactive maps.
