@@ -1,6 +1,6 @@
 # Recommended R packages
 
-This non-exhaustive list of recommended R packages is aimed primarily at beginners. It introduces some commonly used R packages across PHI and groups them into relevant categories. The majority of packages listed cover routine tasks such as reading and writing data files and data manipulation, however there are also recommendations for more niche areas such as statistical modelling and spatial analysis.
+This non-exhaustive list of recommended R packages is aimed primarily at beginners. It introduces some commonly used R packages across PHI and groups them into relevant categories. The majority of packages listed cover routine tasks such as reading and writing data files and data manipulation, however there are also recommendations for more specialised areas such as statistical modelling and spatial analysis.
 
 Some packages are listed in multiple categories (such as the [DT](https://github.com/rstudio/DT) package which is relevant to data visualisation, RMarkdown and shiny). Where possible, a link to the relevant GitHub repository for each package is provided.
 
