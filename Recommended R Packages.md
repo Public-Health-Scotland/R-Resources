@@ -21,7 +21,7 @@ Package | Description
 
 Package | Description
 --- | ---
-[tidyverse](https://github.com/tidyverse) | A suite of related R packages used for data manipulation.
+[tidyverse](https://github.com/tidyverse) | A collection of related R packages used for data manipulation.
 [dplyr](https://github.com/tidyverse/dplyr) | For selecting, filtering, aggregating and other basic operations.
 [tidyr](https://github.com/tidyverse/tidyr) | For 'tidying' data, primarily by converting columns to rows and vice-versa.
 [stringr](https://github.com/tidyverse/stringr) | For manipulation of character strings.
@@ -74,7 +74,7 @@ Package | Description
 
 Package | Description
 --- | ---
-[tidymodels](https://github.com/tidymodels) | A suite of tidyverse-inspired related R packages used for statistical modelling.
+[tidymodels](https://github.com/tidymodels) | A collection of tidyverse-inspired related R packages used for statistical modelling.
 [broom](https://github.com/tidymodels/broom) | For converting statistical analyses objects into 'tidy' format.
 [car](https://github.com/cran/car) | For conducting analysis of variance (ANOVA).
 [lme4](https://github.com/lme4/lme4) | For fitting mixed-effects models.
