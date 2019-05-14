@@ -14,7 +14,7 @@ Package | Description
 [haven](https://github.com/tidyverse/haven) | For reading and writing SPSS, SAS and Stata files.
 [readxl](https://github.com/tidyverse/readxl) | For reading excel files.
 [writexl](https://github.com/ropensci/writexl) | For writing excel files.
-
+[here](https://github.com/r-lib/here) | For defining relative filepaths when using [RStudio Projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).
 
 ### Data manipulation
 
