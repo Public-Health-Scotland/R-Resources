@@ -2,7 +2,7 @@
 
 This non-exhaustive list of recommended R packages is aimed primarily at beginners. It introduces some commonly used R packages across PHI and groups them into relevant categories. The majority of packages listed cover routine tasks such as reading and writing data files and data manipulation, however there are also recommendations for more specialised areas such as statistical modelling and spatial analysis.
 
-Some packages are listed in multiple categories (such as the [DT](https://github.com/rstudio/DT) package which is relevant to data visualisation, RMarkdown and shiny). Where possible, a link to the relevant GitHub repository for each package is provided.
+Some packages are listed in multiple categories (such as the [DT](https://github.com/rstudio/DT) package which is relevant to data visualisation, RMarkdown and Shiny). Where possible, a link to the relevant GitHub repository for each package is provided.
 
 
 ### Reading and writing data
@@ -15,7 +15,6 @@ Package | Description
 [readxl](https://github.com/tidyverse/readxl) | For reading excel files.
 [writexl](https://github.com/ropensci/writexl) | For writing excel files.
 [here](https://github.com/r-lib/here) | For defining relative filepaths when using [RStudio Projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).
-
 
 ### Data manipulation
 
@@ -49,25 +48,15 @@ Package | Description
 [DT](https://github.com/rstudio/DT) | For creating interactive tables in HTML documents generated using RMarkdown.
 
 
-### shiny
+### Shiny
 
 Package | Description
 --- | ---
 [shiny](https://github.com/rstudio/shiny) | For creating interactive web applications using R.
-[shinydashboard](https://github.com/rstudio/shinydashboard) | For customising the layout of shiny applications.
-[shinyWidgets](https://github.com/dreamRs/shinyWidgets) | For extending the widgets available in shiny.
-[shinyjs](https://github.com/daattali/shinyjs) | For performing common JavaScript operations in shiny applications.
+[shinydashboard](https://github.com/rstudio/shinydashboard) | For customising the layout of Shiny applications.
+[shinyWidgets](https://github.com/dreamRs/shinyWidgets) | For extending the widgets available in Shiny.
+[shinyjs](https://github.com/daattali/shinyjs) | For performing common JavaScript operations in Shiny applications.
 [DT](https://github.com/rstudio/DT) | For creating interactive tables.
-
-
-### Creating packages
-
-Package | Description
---- | ---
-[devtools](https://github.com/r-lib/devtools) | For simplifying common tasks in package development.
-[testthat](https://github.com/r-lib/testthat) | For unit testing of functions.
-[roxygen2](https://github.com/klutometis/roxygen) | For generating `.Rd` files required to pass `R CMD Check`.
-[usethis](https://github.com/r-lib/usethis) | For automating repetitive tasks during package setup.
 
 
 ### Statistical modelling
@@ -87,4 +76,16 @@ Package | Description
 Package | Description
 --- | ---
 [sp](https://github.com/edzer/sp) | For loading and manipulating spatial data.
+[rmapshaper](https://github.com/ateucher/rmapshaper) | For manipulating spatial data.
 [leaflet](https://github.com/rstudio/leaflet) | For creating interactive maps.
+
+
+### Creating packages
+
+Package | Description
+--- | ---
+[devtools](https://github.com/r-lib/devtools) | For simplifying common tasks in package development.
+[testthat](https://github.com/r-lib/testthat) | For unit testing of functions.
+[roxygen2](https://github.com/klutometis/roxygen) | For generating `.Rd` files required to pass `R CMD Check`.
+[usethis](https://github.com/r-lib/usethis) | For automating repetitive tasks during package setup.
+
