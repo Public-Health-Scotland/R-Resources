@@ -193,7 +193,7 @@ To load SPSS .sav files use the package [haven](http://haven.tidyverse.org/). Ho
 R can work with Excel files as well, and for this purpose you can use the packages [readxl](http://readxl.tidyverse.org/) and [openxlsx](https://github.com/awalker89/openxlsx).
 
 ## Connect to ODBC databases
-Refer to the [document on how to connect to SMRA databases](http://www.isdscotland.org/About-ISD/Methodologies/_docs/Using-R-with-SMRA-V1-0-FINAL.pdf). If you want to connect to the ODBC databases using R desktop you will have to have the following installation of R: R Core 3.3.2 with SMRA ODBC collection. You will not require anything special if using the server version.
+Refer to the [document on how to connect to SMRA databases](https://www.isdscotland.org/About-ISD/Methodologies/_docs/Using-R-with-SMRA-V1-1.pdf). If you want to connect to the ODBC databases using R desktop you will have to have the following installation of R: R Core 3.3.2 with SMRA ODBC collection. You will not require anything special if using the server version.
 
 ## Git
 Git is a version control programme. If you don’t know what version control is or why you would want to use it, read [this](https://stackoverflow.com/questions/1408450/why-should-i-use-version-control). RStudio can be used together with Git (and Subversion). You don’t need IT support to install Git in your computer; you can download a portable version of it. You can use Git both from R server and R desktop. To configure Git in RStudio read [this](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN) and [this](http://www.datasurg.net/2015/07/13/rstudio-and-github/). Keep in mind that Git will only work inside a project.
@@ -208,7 +208,7 @@ For more information on using Git with R read [this](http://happygitwithr.com/) 
 #### Specific to NSS
 * [PHI github account](https://github.com/Health-SocialCare-Scotland) - code repository.
 * [PHI R style guide](https://github.com/Health-SocialCare-Scotland/R-Resources/blob/master/PHI%20R%20style%20guide.md)
-* [Guide on how to connect to SMRA using R and R server](http://www.isdscotland.org/About-ISD/Methodologies/_docs/Using-R-with-SMRA-V1-0-FINAL.pdf)
+* [Guide on how to connect to SMRA using R and R server](https://www.isdscotland.org/About-ISD/Methodologies/_docs/Using-R-with-SMRA-V1-1.pdf)
 * [Guide on how to connect to API’s using R](https://github.com/jsphdms/R_web_APIs)
 * [Blank R project structure](https://github.com/Health-SocialCare-Scotland/rshiny-project-structure) and [blank R Shiny app structure](https://github.com/Health-SocialCare-Scotland/rshiny-project-structure)
 #### Tutorials
