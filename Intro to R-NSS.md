@@ -50,7 +50,7 @@ There are two ways you can use R: through a programme installed in your local co
 
 To use R desktop you first need to ask CSD to install it for you. Request both R and RStudio as the latter makes writing programs/scripts a lot easier. RStudio is an interface to R. The latest version available for PHI is R 3.5.1 and RStudio 1.1.456 (October 2018). If you need to connect to SMRA databases using R desktop, you will need to specify that you need R Core 3.3.2 with SMRA ODBC collection. You need to install them from software center after IT has confirmed the availability.
 
-If you want to use R server, please refer to the [R server guidelines](http://www.isdscotland.org/About-ISD/Methodologies/_docs/Using-R-with-SMRA-V1-0-FINAL.pdf). You will have to request a login -from CSD. The current R version for the server is 3.2.3 and for RStudio 0.99.896 (October 2018).
+If you want to use R server, please refer to the [R server guidelines](https://www.isdscotland.org/About-ISD/Methodologies/_docs/Using-R-with-SMRA-V1-1.pdf). You will have to request a login -from CSD. The current R version for the server is 3.2.3 and for RStudio 0.99.896 (October 2018).
 
 ## RStudio
 RStudio is a visual interface that facilitates the task of programming in R. This [short video](https://www.youtube.com/watch?v=5p04znmmgQ8) will guide you through the different parts and panels of the layout of RStudio.
