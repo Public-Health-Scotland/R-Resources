@@ -143,8 +143,9 @@ Wrapping the dbConnect function inside the suppressWarnings function prevents yo
 
 ## Close the connection
 
-At the end of the session close the channel by removing the object:
+At the end of the session close the channel and remove the object:
 
+    dbDisconnect(channel)
     rm(channel)
 
 # Views and variables in SMRA
