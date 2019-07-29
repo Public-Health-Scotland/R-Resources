@@ -76,18 +76,7 @@ R can be used to analyse many different types of data, such as vectors, data fra
 [here](http://www.aliquote.org/articles/tech/RStudio.pdf)
 
 ### Rounding
-R rounds numbers slightly differently to the common method used in SPSS. Instead, R uses the 'round half to even' method to prevent biasing numbers upwards or downwards. For example, 1.5 and 2.5 would both become 2 when using the round() function, as this is the nearest even integer. Similarly, 3.5 would become 4 when rounded.
-```{r}
-round(1.5)
-[1] 2
-
-round(2.5)
-[1] 2
-
-round(3.5)
-[1] 4
-```
-It is unlikely that this will affect your analysis but this is an important concept to be aware of. 
+R's built-in rounding function works slightly differently to the common method used in SPSS. A guidance paper on rounding numbers in R has published on the [ISD website](https://www.isdscotland.org/About-ISD/Methodologies/_docs/Rounding-Methods-in-Different-Software_v1-0.pdf).
 
 ## Packages
 The base R program contains a large number of functions to carry out many different tasks. However, to carry out certain tasks or to be more efficient with your coding you may need to use additional packages. A package is a bundle of code, data and documentation (read more about them [here](http://r-pkgs.had.co.nz/intro.html)). An example is the popular package for visualizations, ggplot2, which you will need to install and load in order to use. 
