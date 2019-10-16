@@ -1,0 +1,1803 @@
+---
+title: "R Guidance for PHI"
+output:
+  html_document:
+    css: custom.css
+    number_sections: true
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+  word_document:
+    toc: yes
+    toc_depth: '4'
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "H:/R Training Data/")
+library(tidyverse)
+library(knitr)
+library(lubridate)
+```
+
+```{r, echo=FALSE}
+htmltools::img(src = knitr::image_uri("//freddy/dept/PHIBCS/Corp Gov/Stats Gov/User Groups/R/Training/R Guidance for PHI/images/R_Guidance1_logo.png"),
+               alt = 'logo',
+               style = 'position:absolute; top:0; right:0; padding:10px; height:125px; width:125px')
+```
+
+# Introduction to R
+## Using This Workbook
+
+This workbook assumes no prior knowledge of R or other similar software. If you are a complete beginner you will want to start at the beginning. Users who have previously used R and RStudio can skip forward to [Importing and Exporting Data].
+
+>**Note:** To use this document, you will need to copy the training files (found in "//freddy/dept/PHIBCS/Corp Gov/Stats Gov/User Groups/R/Training/Data/") over to your H drive. The examples below assume that the files are saved in the folder "H:/R Training Data" but you can call the folder whatever you like, just remember to change the file paths if you are copying and pasting examples from this document. Please note that the data used in this document is dummy data and no personally identifiable information is available.
+
+## What is R?
+
+R is a language and environment for statistical computing and graphics. It is widely used across a variety of sectors for data analysis and statistical inference. R is open source, free to use, and available for all major operating systems. More background information about R and its uses can be found [here](https://www.r-project.org/about.html).
+
+<br>
+
+## How to Install
+
+The most convenient and common way to run R is through RStudio. This is an environment for R that provides greater flexibility and allows you to use R more effectively through a user interface. Like R, RStudio is open source and free to use. You will need to install R first before you can install RStudio.
+
+Both R and RStudio are available via the software centre. The most recent version of R available in the software centre is version 3.5.1, while the most recent version of RStudio is 1.1.456.
+
+Your software centre should look something like this:
+
+![Example of software centre](images/R_Guidance2_software_centre.PNG)
+
+As you can see, there are two R options available; one called "R Core Team R for Windows (32-Bit) 3.5.1" and another called "R Core Team R for Windows (64-Bit) 3.5.1". There is also an option to install "R Studio (32-bit) 1.1.456". 
+If these versions do not appear in your software centre then please raise a request on ServiceNow and IT will advertise them to your software centre. Don't worry if you already have an older version of R on your machine, it's ok to install multiple versions. 
+
+# Introduction to RStudio
+## How to Use RStudio
+
+We will use RStudio throughout this training course. If you open RStudio your screen should look something like the image below. Note that colours may be different - you can change this preference in Tools > Global Options > Appearance > Editor Theme.
+
+![RStudio](images/R_Guidance3_RStudio.png)
+
+There are three main sections to consider on the screen shown above. The largest section on the left is the Console. You can run R code in here and all your output will also be shown within this window. 
+
+In the top right corner there is the Global Environment pane. This shows all the data you have loaded into RStudio. For example, if you input a data set this will show in the Global Environment under a given name. The "History" tab keeps a record of some of your most recent R code and allows you to re-enter this code into the Console.
+
+The window below the Global Environment is more flexible. There are five tabs at the top, each showing a different output/resource. The most useful tabs are Plots and Help. "Plots" is where any graphics you produce will be shown. "Help" is exactly as it sounds, you can type an R command or term into the search box and it will produce a guidance page about that command 
+
+## R Scripts
+
+As mentioned above, you can run R code in the Console window if you want to carry out some quick checks without saving the codes. However, doing this does not keep track of all the code that has been run after you exit RStudio. A common way to keep track of all your code is to use an R Script. An R Script can be created by using File > New File > R Script, or alternatively Ctrl + Shift + N. The screenshot below shows the RStudio interface after opening an R Script. 
+
+![Example of blank R script](images/R_Guidance4_R_script.png)
+
+You can run R code within your R Script by highlighting/clicking on the line you wish to run and then clicking the Run button, or using `Ctrl + Enter`. You can run multiple lines at the same time by highlighting your desired lines and then running the code in the same manner. 
+If you run the following code from your R Script, its output will appear in the console window.
+
+```{r}
+x <- 1
+y <- 2
+y + x
+```
+
+Additionally, you will now see your `x` and `y` values listed in your Global Environment
+
+![x and y variables in environment](images/R_Guidance5_environment.png)
+
+If you need to edit some code in your R Script then you can simply make any changes and run the code again. The Console will still show the output from the previous code as well as the output for the new, edited, code.
+
+<br>
+
+## Making Comments in an R Script
+
+It can be very useful to add comments to your R Script, especially when you are running large sections of code. It makes it much easier for users, particularly those looking at the code for the first time, if there are some comments to explain what the code is doing. An easy way of doing this in R is to use a `#` symbol before any comment. Alternatively, you can select the text that is meant to be comments, and press `Ctrl + Shift + C` to toggle them on or off being commented.
+
+```{r}
+ # set x and y values
+ x <- 1
+ y <- 2
+ 
+ # sum them together
+ y + x
+```
+
+As you can see, the comments help to explain exactly what your code is doing. Note that if they are run then these comments will also appear in your output in the Console window. However, they do not affect the code at all; you will still obtain the same value for `y + x` as you would if the comments were not included.
+
+<br>
+
+## Good Practice in Writing R Scripts
+
+An R script is a useful document for tracking a piece of work. It is good practice to start each script file with some reference information such as who created it and when, and the subject matter of the program. This is especially useful if someone else needs to pick up a piece of work carried out by another analyst, or if someone needs to revisit a piece of work carried out some time ago. There is a PHI R Style Guide available on [GitHub](https://github.com/Health-SocialCare-Scotland/R-Resources/blob/master/PHI%20R%20style%20guide.md) that contains information on what you should include in an R script to make it reusable and consistent across the organisation.
+
+Example:
+
+```{r}
+#Project: Intermediate R training syntax
+#Created by A. NAME.
+#Amended by B. NAME.
+#Date last edited: 01/02/2017
+#Description: R intermediate training examples.
+```
+
+More complex syntax might need more in the way of a description or explanation i.e. commenting R commands to summarise their purpose.
+
+<br>
+
+##Using R Projects
+
+RStudio also has Projects to help you organize your files and data. It is good practice to create a main folder for each piece of analysis. To then make this a Project go to File > New Project, select your preferred option and select the main folder you just made. RStudio will make an `.Rproj` file in this location. When you come back to this analysis, you should use this file to open your project.
+
+RStudio sets the working directory to this location. Within this folder, it's a good idea to have subfolders to contain associated files e.g.
+
+* analysis_folder
+    + data
+        - file1.csv
+        - file2.csv
+    + scripts
+        - script1.R
+        - script2.R
+    + outputs
+    
+Then within a project you can refer to files using these relative paths such as: `"data/file1.csv"` rather than give the full path each time. An advantage of this is that the folders are portable - everything is relative to the main folder (analysis_folder in the example above). So even if you move the folder to a new drive, new computer or email it to a collaborator the file paths in the script won't need to change.
+
+For more information on using projects see [this guidance from RStudio](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) or [this chapter](https://r4ds.had.co.nz/workflow-projects.html) in R for Data Science. There is also a PHI R Project Structure package which allows you to create a structured R project. More information on how to use and install this package is available on [GitHub](https://github.com/Health-SocialCare-Scotland/phiproject)
+
+<br>
+
+## Set Working Directory
+
+You can also manually set the folder you want to be your working directory. Once this is done, you don't have to specify the file path when getting or saving files as R already knows which folder it needs to look at. There are a couple of ways to set up the working directory:
+
+1. Save the R script into the folder where you want the working directory to be and then close RStudio. Navigate to that folder and find your desired R script. Drag the script into the RStudio icon on the desktop so that RStudio will open up. For example, if we intended on using the training folder for this course as the working directory, it would be set as "H:/R Training Data/". You can check it by typing `getwd()` into the console.
+
+2. Type `setwd("H:/R Training Data/")` either into the script or console. Please note that for file path you need to use forward slash `/` instead of back slash `\`. The specified file path will now become the working directory. You can check it by typing `getwd()` into the console. The working directory file path is now also shown alongside the Console name. 
+
+```{r}
+#set directory
+setwd("H:/R Training Data/")
+
+#display working directory
+getwd()
+
+#show files in this location
+list.files()
+```
+
+<br>
+
+## R Packages
+
+A very common way of using R is to use packages. R packages are created to allow for code, functions and data to be easily shared among other R users. More information on R packages can be found [in this guide](http://www.sthda.com/english/wiki/installing-and-using-r-packages). There are thousands of packages available but don't be overwhelmed, you will never need to know about the vast majority of these. 
+
+Packages allow you to use R much more efficiently. Rather than simply relying on some basic R techniques, they build on some widely used R methods and often make complex tasks very straight forward. R packages cover a wide range of needs. If you are struggling to do something in R, someone else has most likely also had the same problem, and a package will have been created to help solve the issue. Some packages that are routinely used across PHI will be introduced in this training. 
+
+A useful resource for R packages is [CRAN](https://cran.r-project.org/) (Comprehensive R Archive Network). CRAN stores all R packages, allowing you to download and access information on all available packages and keep up to date with any new R releases. CRAN also offers documentation, release history and manuals for use with both R and R packages.
+
+You only need to install packages the first time you use them. Then they need to be loaded every new R session.
+
+To install a package: `install.packages("package_name_here")`
+To load a package: `library(package_name_here)`
+
+**Example**: To install and load the `tidyverse` set of packages:
+
+```{r eval = FALSE}
+# only run this part once!
+install.packages("tidyverse")
+
+# run this part every new session
+library(tidyverse)
+```
+
+The `tidyverse` packages are very commonly used within PHI due to its easy implementation and intuitive functions. The `tidyverse` is comprised of multiple packages, with each package designed to do their respective task very efficiently. The main benefit of the `tidyverse` is that each function within them is designed to do one job very well, rather than having the ability to perform multiple tasks to a lesser degree of precision. `tidyverse` packages will be referenced throughout this guidance.
+
+You can also load packages (and check which ones have been loaded) using the `Packages` tab in RStudio (bottom right corner). Click on the box to load - the equivalent code should appear in the console.
+
+![Loaded packages](images/R_Guidance6_load_packages.png)
+
+#Importing and Exporting Data
+
+<br>
+
+R can be used very efficiently and effectively for data analysis. The first step in performing analysis is to access your data frame. This section will introduce you to inputting data (sometimes referred to as "reading in") and saving/exporting data in various formats to and from the RStudio environment.
+
+## Read and Save Files
+
+### Working with .csv Files
+
+Various commonly used file formats can be read in using R, such as `.csv` and `.xls` files. Reading in a `.csv` file can be done using the `read_csv` function (either click the `Run` button or use Ctrl + Enter). This function is part of the `dplyr` package.
+
+```{r eval = FALSE}
+library(dplyr)
+dataset <- read_csv("filepath/name")
+```
+
+The filepath and name are enclosed in quotes with the `.csv` extension. If you have set the working directory or are using a project (recommended!), then you don't need to include the full file path, only the sub-folder name and file name required.
+
+```{r eval = FALSE}
+#full path
+Borders <- read_csv("//freddy/dept/PHIBCS/Corp Gov/Stats Gov/User Groups/R/Training/Data/Borders.csv")
+```
+
+```{r}
+#if working directory has been set only provide subfolder and name
+#or if you are using a project
+#check with getwd()
+getwd()
+Borders <- read_csv("Borders.csv")
+```
+
+<br>
+
+>**Note:** Using an `<-` sign command assigns a value (i.e. the text on the right of the `<-` sign) to an object (i.e. the text on the left of the `<-` sign). In the above example, the data `Borders.csv` has been assigned to the object `Borders`. Remember that R is a case-sensitive language. Variables and their data types do not need to be explicitly declared, as R does this automatically when reading in the data.
+
+The `read_csv` function reads files in as a `tibble`, which is really similar to a dataframe, but does much less: it never changes the type of the inputs (e.g. it never converts strings to factors!) and never changes the names of variables. It also changes the way the data prints - it only shows 10 rows by default and shows the type of each columns (e.g. string, integer, factor). Note that blanks are properly encoded as `NA` here without having to specify as in [Data Structure and Missing Data].
+
+>More information on tibbles can be found in [R for Data Science](https://r4ds.had.co.nz/tibbles.html). The `tidyverse` is also covered in the [Data Manipulation] section in this guide.
+
+<br>
+
+### Exporting `.csv` Files Using `write_csv()`
+In most cases, once data has been imported to R you are likely to make changes, e.g. adding new variables or changing values in existing variables. If you wish to retain the changed data for later use, you have two choices:
+
+1.	Record all changes using an R script and then replay this script on the original file.
+2.	Save the data file as it exists after changes have been made.
+
+Option 1 is a good choice if the original file will not change in the intervening period and the changes made to the file using the script do not take a long time to execute. If either of these conditions does not apply, the second option is often quicker and easier.
+
+The simplest way to create a new `.csv` file is to use the `write_csv()` command from the`readr` package:
+
+```{r eval = FALSE}
+write_csv(Borders, path = "H:/R Training Data/Borders2.csv")
+```
+
+This will save a `.csv` copy of the `Borders` data to your R Training Data folder as `Borders2.csv`. You can edit this to any file path where you wish the `.csv` file to be saved. This will default to saving in your working directory (`getwd()`) if you just provide a file name, not a path.
+
+<br>
+
+### Working with Excel Files
+
+It is also possible to read in Microsoft Excel files such as .xls or .xlsx files. The most straight forward way of doing this is to use the `readxl` package. More information on the `readxl` package can be found [here](https://cran.r-project.org/web/packages/readxl/readxl.pdf).
+
+The `readxl` package provides some simple commands and functions that allow you to read in `.xls` and `.xlsx` files very easily. Reading in `.xls` and `.xlsx` files works in a very similar way to reading in `.csv` files. The code for these is shown below:
+
+```{r, warning = FALSE, eval=FALSE}
+library(readxl)
+dataset <- read_xls("filepath/name")
+dataset <- read_xlsx("filepath/name")
+```
+
+Alternatively, you can use the following code which will read in both .xls and.xlsx files:
+
+```{r, warning = FALSE, eval = FALSE}
+dataset <- read_excel("filepath/name")
+```
+
+### Writing Excel files
+
+Writing Excel files based on objects in your RStudio environment works in a very similar way. The easiest way to do this is to use the `writexl` package. The code for writing a dataframe as a `.xlsx` file is shown below:
+
+```{r eval = FALSE}
+write_xlsx(object_name, "filepath/name")
+```
+
+Here, the name is whatever you would like the file to be called when it is saved in its folder. More information on the `writexl` package can be found [here](https://cran.r-project.org/web/packages/writexl/writexl.pdf).
+
+<br>
+
+## Reading in .sav Files
+
+It is also possible to read SPSS files directly into your R environment. The best package for reading in .sav files is `haven`, which is also part of the `tidyverse`.
+
+Test this by reading in the `Borders.sav` file. 
+
+```{r}
+library(haven)
+
+Borders_spss <- read_sav(file = "Borders.sav")
+```
+
+<br>
+
+## Reading in Other Delimited Files
+
+Sometimes you might have a file that is not separated by commas, but by another separator. These can be read using the `read.table()` function and defining the separator:
+
+```{r eval = FALSE}
+#this will read a file separtor using the | character and assing to object df
+df <- read.table(file = "filepath/name.txt", sep = "|", stringsAsFactors = FALSE)
+```
+
+<br>
+
+<div class = "example">
+**Exercise:**
+
+3.1 Read in the `Borders (inc Age).csv` data using read_csv. 
+</div>
+
+# Data Exploration
+
+## Viewing Data in R
+
+You can view a whole dataset within R by using the Global Environment window. If you click on the `Borders` data listed there, then a view of the Borders data will open beside your R script. Your Console window should now say `View(Borders)`. Simply typing `View(Borders)` into your script or console and running it is another way to view the data.
+
+![Viewing data in R](images/R_Guidance7_view_data.PNG)
+
+This view consists of your whole data frame. The `Filter` function is particularly useful for some quick exploratory checks of the data. For example, if you knew you wanted to look at Specialty value AA, you could simply click the `Filter` button and choose AA from the Specialty column. This selects only records where Specialty is listed as AA. Note that this does not change the dataset; the Borders data will stay intact.
+
+![Filtering data in R](images/R_Guidance8_view_filter.png)
+
+You can also view data frames in the Console by typing `Borders` into your script or console directly and running it, however this is not advisable for large data frames as it is not easy to view all of the data. A useful method for quickly checking the data columns is to use the `head()` function. If you enter the code `head(Borders)`, this will output the first six rows of your data set. You can change the number of rows shown in this view. For example, if you only wanted to view the first four rows you would enter `head(Borders, n=4)`.
+
+```{r}
+head(Borders, n = 4)
+```
+
+Alternatively, `tail()` will show the bottom rows in the data set:
+
+```{r}
+tail(Borders)
+```
+
+<br>
+
+## Data Types in R
+
+The most commonly used data types in R are numeric, integers, characters and factors. Numeric and integer types are fairly straight forward; real numbers or decimal numbers can be stored as numeric data while integers will be stored as integer data. Characters are equivalent to string variables in SPSS and are used to store text and categorical variables. Factors store categorical variables in R with associated levels. For example, if we have a categorical variable `gender` with values `female` and `male`, it could be stored as a factor variable with two levels: female and male. As shown in the screenshot below, factors give an associated number for each level – here this is 1 for female and 2 for male.
+
+![Factor vs Character](images/R_Guidance9_factor_character.png)
+
+You can check the levels of the factor by running `levels(gender)`, and the number of levels is shown by running `nlevels(gender)`.
+
+```{r echo = FALSE}
+# define variables
+gender_factor <- as.factor(c("female","male","male","female","male"))
+gender_character <- c("female","male","male","female","male")
+```
+
+```{r}
+# check levels and number of levels
+levels(gender_factor)
+nlevels(gender_factor)
+```
+
+It is possible to change data types using the following code:
+
+```{r eval=FALSE}
+# to numeric
+dataset <- as.numeric(dataset$column)
+
+# to integer
+dataset <- as.integer(dataset$column)
+
+# to character
+dataset <- as.character(dataset$column)
+
+# to factor
+dataset <- as.factor(dataset$column)
+
+```
+
+More information on some other data types used in R can be found in this [guide](https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures/).
+
+<br>
+
+## Data Structure and Missing Data
+
+Once a dataframe has been imported, it is important to undertake simple exploration. By carrying out basic checks and getting to know the data, any problems or errors in the data can be discovered and dealt with before they become a problem in later analysis.
+
+As a first step in this process, it is important to know the size of the dataframe. This can be determined by using the `dim(df)` command, where df is a given dataframe. We can check the number of rows and columns for the `Borders` dataframe which was used in the previous section. The output shows that it has 25299 rows and 14 columns.
+
+```{r}
+dim(Borders)
+```
+
+<br>
+
+You may also have missing values in your dataframe. These will be displayed as NA. The `is.na(df)` command will print the dataframe in the console and indicate which cells have missing values:
+
+Sometimes R will read in missing cells as a blank cell rather than NA, depending on the column type (NA for an integer, blank for a character). To correct this, we can use the following code that will set all cells with missing values to NA:
+
+```{r eval = FALSE}
+df[df == ""] <- NA
+```
+
+```{r}
+#for the Borders df
+Borders[Borders == ""] <- NA
+```
+
+<br>
+
+**Example:** We can check the missing values for the `Borders` dataframe. Each cell will show `TRUE` (is a missing value) or `FALSE` (is not a missing value). A good way to do this is by giving your Borders dataset a new name for missing values. This will make viewing the missing values dataframe easier by opening it as a dataframe object, rather than viewing it in your console output. As mentioned in the previous section, using `View(df)` will open a viewing window for a given dataframe.
+
+```{r}
+Borders_missing <- is.na(Borders)
+head(Borders_missing)
+```
+
+<br>
+
+However, for large dataframes, it may be quicker to see which columns have missing values. You can determine this by using the command: `colSums(is.na(df)) > 0`
+
+This code will print the names of all columns and give a `TRUE` (contains a missing value) or `FALSE` (doesn’t contain a missing value) value. Here, `colSums(is.na(df))` calculates the sum of missing values within each column, i.e. it adds up each missing value for each column. By taking the columns where this is greater than zero, we can work out which columns contain any missing values.
+
+**Example:** If we want to check which columns in the `Borders` dataframe contain missing values, we can use the following command to give a `TRUE` or `FALSE` value for each column. Setting this output as a data frame makes it much easier to see what columns contain missing values.
+
+```{r}
+as.data.frame(colSums(is.na(Borders)) > 0)
+```
+
+To get rid of the rows with the missing values, we can use the command: `na.omit(df)`
+
+You can find more information about dealing with missing values [here](https://www.statmethods.net/input/missingdata.html). 
+
+<br>
+
+## Frequencies and Crosstabs
+
+Performing frequencies and cross tabulations on relevant variables once data has been imported are good first steps in data exploration.
+For example, you might want to check that:
+
+•	You have the right dataset (e.g. by checking it has the right number of records and covers the right time period). 
+
+•	Columns contain no unusual values and the values appear in the expected proportions (e.g. you may be expecting roughly 50/50 males and females). 
+
+•	Cross-tabulating reveals no unusual combinations of values (e.g. a 'Male' person who has had a 'Hysterectomy'!). Checks such as these usually require an understanding of background information regarding the data. 
+
+Performing such checks often avoids problems later on in your analysis. Sometimes problems in your data that were identifiable at this stage are not identified until data has been sent to the customer!
+
+<br>
+
+### Frequencies
+
+You can easily determine the frequencies of a specific column by using the `table(df$column)` command. The `$` operator allows you to extract elements by name from a named list, i.e. take only values from a specific column in a given dataframe.
+
+**Example:** Calculate the frequency for each Specialty type. Again, the `as.data.frame()` command makes reading the output in the console window considerably easier.
+
+```{r}
+as.data.frame(table(Borders$Specialty))
+```
+
+Please note that the table() command does not automatically include missing values in the output. However, these can be included by using `table(df$column, useNA = c("ifany"))`.
+
+In addition to basic frequencies, it is also possible to calculate the mean and median values:
+
+```
+mean(df$column)
+median(df$column)
+```
+
+This information can also be found using the `summary()` function. This function outputs the mean, median and quartiles for a given numeric variable. The code for this is: `summary(df$column)`.
+
+<div class = "example">
+**Exercise:**
+
+4.1 Read in the `Borders.csv` data and check the frequency on column `Sex`. 
+
+4.2 Using the same dataset, what are the mean and median values for `LengthOfStay` Using the `summary()` function calculate the maximum value `LengthOfStay`
+</div>
+
+<br>
+
+### Crosstabs
+
+The table() function can also be used to create crosstabs from your data. Using the following code will give a crosstab for column1 and column2: `table(df$column1, df$column2)`
+
+**Example:** We can create a crosstab for HospitalCode and Sex using the Borders dataframe.
+
+```{r}
+table(Borders$HospitalCode, Borders$Sex)
+```
+
+You can also easily add in the row and column totals by using the `addmargins()` function:
+
+```{r}
+addmargins(table(Borders$HospitalCode, Borders$Sex))
+```
+
+<div class = "example">
+
+<br>
+
+**Exercise:**
+
+4.3 Create a crosstab for columns MOP and Specialty. Look at your crosstabs table. The table is not very easy to view as they are too many specialties. When cross tabulating information it is best to use the least values as the ‘column’.
+
+4.4 Run the crosstabs again so that the MOP values appear as column headers.
+</div>
+
+# Data Manipulation
+
+<br>
+
+Most of the examples in this section use the Borders.csv file unless otherwise specified. Re-import Borders.csv.
+
+A very common way of manipulating data in R is by using the `dplyr` package. This package exists as part of a group of R packages known as the `tidyverse`. This section will introduce some of the key functions that can be used in the `dplyr` package.
+
+<br>
+
+## `select()`
+
+Sometimes you will only be interested in a few columns in your dataframe. The `select()` function allows you to specify certain columns from within your dataframe to select out. The basic code is: `select(df, column name)`.
+
+**Example:**
+If we want to select `HospitalCode` column from Borders:
+
+```{r}
+select(Borders, HospitalCode)
+```
+
+It is also possible to select more than one column. To do this, simply list the columns you would like to select.
+
+**Example:**
+```{r}
+# Select the URI, HospitalCode and Sex columns.
+select(Borders, URI, HospitalCode, Sex)
+```
+
+<br>
+
+### Deleting Columns
+
+`select()` can also be used to delete a specific column, you can simply run the following code: 
+
+```{r, eval=F}
+select(df, -column_name)
+```
+
+**Example:** Remove the postcode column from the Borders dataframe
+
+```{r}
+select(Borders, -Postcode)
+```
+
+<br>
+
+## `rename()` and `recode()`
+
+The `dplyr` package also makes it very straight forward to rename or recode specific columns by using the `rename()` and `recode()` functions respectively. The `rename()` function works as follows:
+
+```{r, eval=FALSE}
+rename(df, new_name = existing_name)
+```
+
+**Example:** Rename the `Dateofbirth` column to `DateOfBirth`.
+
+```{r}
+rename(Borders, DateOfBirth = Dateofbirth)
+```
+
+>Note: these changes are not permanent unless assigned to a new object (`<-`)
+
+<br>
+
+While `rename()` changes the column name, `recode()` changes the values within the column. It is important to note that recode uses the opposite expression for changing values. The `rename()` function uses new = existing whereas `recode()` uses existing = new, so be careful not to get them mixed up! The `recode()` function is: `recode(df$column name, existing_code = new_code)`
+
+**Example:** Read in the DOCTORS.csv file. Recode the HospitalCode “B120V” as “B120H”.
+
+```{r}
+docs <- read_csv("DOCTORS.csv")
+recode(docs$location, "B120V" = "B120H")
+```
+
+The results will show in Console. To view this change within the docs dataframe, we need to combine with the [`mutate()`] function. This won't save your changes, so you would need to assign (`<-`) to `docs` to overwrite.
+
+```{r}
+mutate(docs, location = recode(docs$location, "B120V" = "B120H"))
+```
+
+<br>
+
+## `filter()`
+
+In addition to selecting specific columns, you may also be interested in selecting a subset of rows from your data frame. The `dplyr` package contains a function called `filter()` which is designed for performing data partitioning in this manner. This is a very useful function, particularly when working with large datasets. The basic code is: `filter(df, conditional statement)`
+
+For example, to select only cases from hospital B120H in the Borders dataframe, we would use the following code:
+
+`filter(Borders, HospitalCode == "B120H")`
+
+Note that there is a difference between using `=` and `==`. The `=` sign is used for assignment in a similar way to the `<-` sign mentioned in [working with .csv files], whereas the `==` sign means exactly equal to. In the code listed above, we are looking to select all cases where the HospitalCode is exactly B120H, thus we use `==` to obtain this information.
+
+**Example:** Select cases which have a value of 4 for MOP. Note the use of `as_tibble()` to display only a small part of the data.
+
+```{r}
+filter(Borders, MOP == 4)
+```
+
+<br>
+
+### Using Multiple Conditions
+
+It is possible to select rows in a dataframe using multiple conditional statements. The table below shows a selection of comparison operators that can be used in conditional statements.
+
+```{r echo = FALSE, results= "asis"}
+library(knitr)
+kable(tibble(Operator = c("==","!=","<","<=",">",">="), 
+       Function = c("exactly equal to","not equal to","less than","less than or equal to","greater than","greater than or equal to"))
+)
+```
+
+In addition to comparison operators, sometimes it is necessary to use logical operators when selecting rows using conditional statements. The table below presents some of the most common logical operators.
+
+```{r echo = FALSE, results= "asis"}
+kable(tibble(Operator = c("& (and)","| (or)","! (not)"), 
+       Function = c("both relations must be true","either relation can be true","logical negation operator - reverses outcome of an expression"))
+)
+```
+
+<br>
+
+**Example:** Select all `Borders` hospital (B120H) cases with the specialty C8. Try setting this example as a new dataframe to make viewing all columns easier.
+```{r}
+Borders_filtered <- filter(Borders, HospitalCode == "B120H" & Specialty == "C8")
+Borders_filtered
+```
+
+<br>
+
+<div class = "example">
+**Exercise:**
+
+5.1 How many patients had a length of stay between 2 and 6 days?
+
+5.2 How many patients had a length of stay of longer than 7 days in hospitals B120H or S116H?
+
+5.3 How many patients were admitted from 01/01/2015 up to and including 30/04/2015?
+</div>
+
+<br>
+
+## `mutate()`
+
+Often there is a need to create a new column in a dataframe or modify an existing column. The simplest way to do this is to use the `mutate()` function. The basic code is: `mutate(df, new_column = expression)`
+
+For numeric variables the expression may include combinations of numbers, variables, numeric operators, parentheses (brackets) and functions. 
+
+For example, to create a new column by dividing an existing column the code would be: `mutate(df, new_column = existing_column/2)`
+
+If we want to create a new column `LOS2` by dividing `LengthOfStay` and store it in `Borders`, we can use:
+
+```{r}
+Borders <- mutate(Borders, LOS2 = LengthOfStay/2)
+Borders
+```
+
+Your Borders dataframe should now have an additional column for LOS2.
+
+A table of arithmetic operators commonly used in R is listed below. More details about other built-in functions available for use in expressions can be found [here](https://www.statmethods.net/management/functions.html).
+
+```{r echo = FALSE, results= "asis"}
+kable(
+  tibble(
+    "arithmetic operator" = c("+","-","*","/","%/%","^"), 
+    operation = c("addition","subtraction","multiplication", "division", "integer division - returns integer value for the division calculation", "exponential"))
+)
+```
+
+## `arrange()`
+
+Data can also be sorted with `dplyr` using the `arrange()` function. Multiple columns can be selected and `arrange()` will sort the dataframe in the order the columns are selected. Columns can also be sorted in ascending or descending order. For example, using the following code will first sort your dataframe by column1, then by column2 in ascending order and finally column3 in descending order: `arrange(df, column1, column2, desc(column3))`
+
+**Example:**
+Sort the `HospitalCode` column in ascending order.
+
+```{r}
+arrange(Borders, HospitalCode)
+```
+
+## Pipe (`%>%`) Operator
+
+![Magritte](images/R_Guidance10_pipe.jpg)
+
+While all of the `dplyr` functions shown in the previous sections are useful on their own, there are times when we need to use more than one of them to achieve our desired output. For this, `dplyr` contains the pipe operator, `%>%`. This operator works by linking the `dplyr` functions together. The operator takes a value or dataframe and feeds this into a series of functions. Think of the pipe operator as meaning “and then”. By linking the functions together in this way, the code becomes much easier to read as each line consists of its own command. As a result, understanding the code is much more intuitive. The `%>%` makes the focus of the code on verbs (functions), not nouns (objects). 
+
+The pipe operator works in the following manner. This code takes the `Borders` dataframe, then `filters` by hospital “B102H” and then sorts the data by date of birth.
+
+```{r}
+
+Borders %>%
+  filter(HospitalCode == "B102H") %>%
+  arrange(Dateofbirth)
+```
+
+<br>
+
+As you can see, the `Borders` dataframe no longer needs to be included in the functions as the first argument. This is because the `%>%` passes on the result from each line of the function, so there is no need to refer to the dataframe after the first line. This helps make the code easier to follow. The `%>%` operator helps to make the code flow better, as it is clear to see this code takes the Borders dataframe, filters it to select rows where the hospital code is "B102H"" and then arranges the dataset by date of birth. 
+
+Note that a useful shortcut for typing the pipe operator is Ctrl + Shift + M.
+
+<br>
+
+## `group_by()`, `summarise()` and `count()`
+
+The `group_by()` function allows you to easily aggregate your data into groups. This function works in a very similar way to the other `dplyr` functions, simply list the desired columns you wish to group by within your dataframe. The basic code is: `group_by(df, column name)`
+
+**Example:** Use the `group_by()` function on the HospitalCode column.
+
+```{r}
+group_by(Borders, HospitalCode)
+```
+
+As you can see, using the `group_by` function on its own doesn’t affect the appearance of the data. Other than the comment detailing how many groups are in HospitalCode, we haven’t observed much from running this function. However you can imagine the dataframe has been split into 48 dataframes behind the scenes, with each dataframe for one hospital code. Note that the output lists how many groups there are above the dataframe.
+Now, if we run `group_by()` in conjunction with `summarise()`, we can begin to see the effects of both functions.
+
+The `summarise()` function allows you to calculate counts and summary statistics for each desired group. It is possible to use `summarise()` on the full, ungrouped dataframe, but it is more commonly used when combined with `group_by()`. For example, the following code will group your dataframe by `column1` and then calculate number of cases within these groups:
+
+```{r eval=FALSE}
+df %>%
+  group_by(column1) %>%
+  summarise(total = n())%>%
+  ungroup()
+```
+
+Note the use of `ungroup()` in the last line of code. It is always recommended that `ungroup()` is used to ensure the grouping is removed after the calculation has taken place. The totals shown in the output will still be for each group within column1, but by adding in `ungroup()` we can ensure that the object will not remain grouped for any future analysis. For example, if you store the object within your R environment and wish to use it again, the object will remain grouped unless you use `ungroup()`, which may not be what you want for your analysis. 
+
+Let’s look at a dataframe in R called `Titanic`. You can view the Titanic data by setting it as a data frame (`tibble`) using the following code:
+
+```{r}
+titanic <- as_tibble(Titanic)
+```
+
+Now let’s run the following code:
+
+```{r eval = FALSE}
+titanic <- titanic %>%
+  group_by(Class, Age) %>%
+  summarise(n = sum(n)) %>%
+  mutate(Class = reorder(Class, n))
+```
+
+```
+Error: Column `Class` can't be modified because it's a grouping variable
+```
+
+An error occurred when we try to reorder the level of “Class” based on “n”. It is because the dataframe is still grouped and class is one of the grouping variables. So we have to ungroup the dataframe before carrying out `mutate`:
+
+```{r}
+titanic <- titanic %>%
+  group_by(Class, Age) %>%
+  summarise(n = sum(n))%>%
+  ungroup() %>%
+  mutate(Class = reorder(Class, n))
+
+titanic
+```
+
+<br>
+
+**Example:** Calculate the mean LengthOfStay for each HospitalCode.
+
+```{r}
+ Borders %>%
+  group_by(HospitalCode) %>%
+  summarise(mean_LOS = mean(LengthOfStay)) %>%
+  ungroup()
+```
+
+The easiest way to see all rows is to set this output as a new object. If this is your desired final output you can simply call this output Borders, however this will overwrite the Borders dataframe. A sensible option is to give the output a different name, such as Borders_mean_LOS, which you can then view (`View(Borders_mean_LOS)`) or print to console (`data.frame(Borders_mean_LOS)`).
+
+```{r}
+Borders_mean_LOS <- Borders %>%
+  group_by(HospitalCode) %>%
+  summarise(mean_LOS = mean(LengthOfStay)) %>%
+  ungroup()
+```
+
+<br>
+
+<div class = "example">
+**Exercise:**
+
+5.4 Group the data by HospitalCode and Sex and calculate the totals for each combination.
+
+5.5 Filter the dataset for patients with a LengthOfStay value of at least 4 days. Group by Specialty and calculate the mean LengthOfStay for each. Sort the data by mean LengthOfStay in descending order.
+</div>
+
+<br>
+
+Another very useful function for summarising data is `count()`. This function works by applying `group_by()` to some specified variables and outputting summary counts. For example, using the Titanic data set, we could calculate the counts for each combination of Age and Sex from the following code:
+
+```{r}
+titanic <- as_tibble(Titanic)
+
+titanic %>% count(Age, Sex)
+```
+
+Note that `count()` automatically applies `group_by()` and `ungroup()` to the Age and Sex variables.
+
+<br>
+
+<div class = "example">
+**Exercise:**
+
+5.6 Calculate the number of people within each HBRes value based on their Sex.
+
+</div>
+
+<br>
+
+## Merging Data
+
+The `dplyr` package also makes it very easy to merge data by matching files together using common variables. There are several `join` functions within `dplyr` that are designed to merge dataframes together to create one dataframe containing the relevant variables.
+
+The general structure of a `join` function is to specify the two dataframes used for merging, x and y, and a common variable to match by. For example, for an `inner_join` you would have: `inner_join(x = dataframe1, y = dataframe2, by = common variable)`
+
+A full list of all of join functions can be found [here](https://dplyr.tidyverse.org/reference/join.html), but some of the most commonly used functions are outlined below, where x and y refer to the two dataframes being merged:
+
+*	`left_join(x, y)` – join x and y, by keeping all rows in x and all columns in both x and y, and merging based on common variables  
+*	`right_join(x, y)` – join x and y, by keeping all rows in y and all columns in both x and y, and merging based on common variables  
+*	`inner_join(x, y)` – join x and y, by keeping all rows that exist in both x and y and all columns from both x and y  
+*	`full_join(x, y)` – join x and y, by keeping all rows and columns from both x and y, and merging based on common variables  
+*	`anti_join(x, y)` – select all rows in x that do not exist in y, keeping all columns from x  
+
+However, if we are using the pipe operator then we can use the following code to merge dataframes: 
+
+`merged_data <- dataframe1 %>% left_join(dataframe2, by = common_variable)`
+
+<br>
+
+**Example:** Read in the `Baby5.csv` and `Baby6.csv` files. Both files contain `FAMILYID` and `DOB` columns so arrange both files by these columns. Note that sorting common variables before matching is not always necessary in R but it can make viewing the final output easier. Match `baby5` to `baby6` using the `left_join()` function:
+
+```{r}
+baby5 <- read_csv("Baby5.csv")
+baby6 <- read_csv("Baby6.csv")
+
+baby5 <- baby5 %>%
+   arrange(FAMILYID, DOB)
+
+baby6 <- baby6 %>%
+   arrange(FAMILYID, DOB)
+
+baby_joined <- baby5 %>%
+   left_join(baby6)
+```
+
+`baby_joined` contains four variables: `FAMILYID`, `DOB` and `BABYNAME` from `baby5` and `SURNAME` which has been joined on from `baby6` due to the common variables `FAMILYID` and `DOB`.
+
+```{r}
+baby_joined
+```
+
+<br>
+
+## Add a New Row
+
+The easiest way to add a new row to a data frame is to use some of the built-in functions in the `tidyverse`. There are a couple of ways of doing this. Firstly, `dplyr` has it's own function `bind_rows()`:
+
+```{r}
+#bind two data frames
+bind_rows(baby5, baby5)
+
+#it can handle different number of columns and adds NAs as required
+bind_rows(baby5, baby6)
+```
+
+<br>
+
+We can also use `tibble` to add single rows using `add_row()`:
+
+```{r}
+#add single row to the end of dataframe
+add_row(baby5, FAMILYID = 5, BABYNAME = "NHS_Scotland", DOB = "05/07/1948")
+
+#add single row to the middle of dataframe - note use of "." in .before argument
+add_row(baby5, FAMILYID = 5, BABYNAME = "NHS_Scotland", DOB = "05/07/1948", .before = 5)
+
+#can also handle missing columns adding NAs as required
+add_row(baby5, FAMILYID = 5, DOB = "05/07/1948")
+```
+
+<br>
+
+## Conditional Statements
+
+It is possible to create an if statement in R using just one line of code. The `dplyr` package contains the `if_else()` function which makes using conditional statements in R very straight forward. This function has the following code:
+
+```{r eval=FALSE}
+if_else(condition, true, false)
+```
+
+Condition is the condition you want to test on, while true and false are the values to use if the condition is true or false. For example, we can test what records in the docs dataset have age greater than 40, with "Yes" for true and "No" for false:
+
+```{r}
+if_else(docs$age > 40, "Yes", "No")
+```
+
+This will provide a series of true or false values in the console. It is also possible to store this data as a new column in the data frame using `mutate()`.
+
+```{r}
+docs %>% 
+  mutate(age_over_40 = if_else(age > 40, "Yes", "No"))
+```
+
+<br>
+
+Another very useful function is `case_when()`. This function allows you to set or replace values based on a specific condition. For example, we can create a new character column based on the sex values for each doctor in the docs dataset:
+
+```{r}
+docs <- docs %>% 
+  mutate(sex_name = case_when(sex == 1 ~ "Male", 
+                              sex == 2 ~ "Female"))
+```
+
+Note that `case_when()` uses a ~ to assign a new value. If you look at the docs dataframe then you will see a new column sex_name, with Male for rows with sex = 1 and Female for rows with sex = 2.
+
+<br>
+
+## Manipulating Strings - `stringr`
+
+Another useful package in R is the `stringr` package. This package is also part of the `tidyverse` and is designed to allow for efficient and effective string manipulation. This package can be installed using the same method as illustrated in [R packages], this time using “stringr”. An introductory guide to `stringr` can be found [here](https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html).
+
+<br>
+
+### Checking for Specific Characters
+
+A simple way to check if a string has a given character in it or not is to use the `str_detect()` function, part of the `stringr` package mentioned above.
+
+For example, to check what doctors have an “S” in their name, you could run the code listed below. The output will show in your console window and will list a TRUE or FALSE value depending on whether a doctor has an “S” in their name or not.
+
+```{r}
+str_detect(docs$name, "S")
+```
+
+<br>
+
+### Filter Cases Based on Strings - `filter()` / `str_detect()`
+
+For string columns, we can select cases based on certain key words in that string. The `stringr` package contains several functions that allow you to manipulate string columns within your dataframe. These functions can be used alongside `filter()` to obtain subsets of your dataframe. Further examples about using `stringr` with `filter` can be found [here](https://sebastiansauer.github.io/dplyr_filter/)
+
+**Example:** To select the cases with specialty containing “E”, we run the following code:
+
+```{r}
+bor_specialty <- Borders %>% 
+  filter(str_detect(Specialty, "E"))
+bor_specialty
+```
+
+This code creates a new dataframe called `bor_specialty`. The `str_detect()` function calculates what rows have Specialty containing the letter E and gives them a `TRUE` or `FALSE` value, while `filter()` then selects all rows where this is `TRUE`. This new dataframe should now be listed in your Global Environment.
+
+If we wanted to select all records that do not have Specialty containing the letter E, the code would simply be:
+
+```{r}
+#the ! reverses the evaluation
+bor_specialty <- filter(Borders, !str_detect(Specialty, "E"))
+bor_specialty
+```
+
+<br>
+
+### Using `str_split()` to Separate Strings
+
+This function separates data into pieces around a delimiter character. The code for this function is: `str_split(df$column name, "split symbol")`.
+
+The split symbol can be an underscore (“_”), a comma (“,”), a space (“ “) etc. The output for this function will appear as a list in your console window. To split the `name` column in the `docs` dataframe:
+
+```{r}
+str_split(docs$name, " ")
+```
+
+<br>
+
+### Replacing Characters Within Strings
+
+A useful function for replacing specific characters within strings is `gsub()`. This allows you to specify a certain part of a string you wish to remove or replace.
+
+If we wanted to replace the space in the name field with an underscore, we could simply run this code:
+
+```{r}
+#replace space with underscore
+#note that docs$name is used to access this particular column
+docs$name <- gsub(" ", "_", docs$name)
+docs
+```
+
+You can do the same thing with `stringr`:
+
+```{r}
+#replace Dr with Doctor
+docs$name <- str_replace(docs$name, pattern = "Dr",replacement = "Doctor")
+docs
+```
+
+<br>
+
+# Formatting Data in R
+
+When reading data into R you might want to reformat certain columns such as dates or decimals. This can be achieved through some basic R functions which are illustrated below. Generally data in R will only need to be formatted if you are merging files (to ensure data contained in both files is all of the same type and format) or outputting data (such as exporting your data to a final Excel output).
+
+<br>
+
+## Formatting Numbers and Characters
+
+A common method of formatting data is changing data from numeric to text and vice versa. This can be done easily within R using the `as.character()` and `as.numeric()` functions. The `as.character()` function converts data to character values, while `as.integer()` and `as.numeric()` convert data to integers and numbers respectively.
+
+You can find the data type for each column within the Global Environment window. The drop down menu for a dataset lists each column and their data type. An easy way to check for specific columns is the `class()` function. This function outputs the data type for a given column.
+
+```{r}
+#read data
+Borders_age <- read_csv("BORDERS (inc Age).csv")
+class(Borders_age$Dateofbirth)
+```
+
+<br>
+
+**Example:** Using the `Borders (inc Age).csv file`, convert the Dateofbirth column from integers to character values. The Dateofbirth column should now show as a character column. 
+
+```{r}
+Borders_age$Dateofbirth <- as.character(Borders_age$Dateofbirth)
+class(Borders_age$Dateofbirth)
+
+```
+
+The data itself should not look different within the Borders_age dataframe but as shown in the Global Environment pane, the values in this column are now stored as character values. 
+
+Now try setting the Specialty column as an integer.
+
+```{r eval=FALSE}
+Borders_age$Specialty <- as.integer(Borders_age$Specialty)
+```
+
+An error message should appear in the Console output:
+
+```
+Borders_age$Specialty <- as.integer(Borders_age$Specialty)
+Warning message:
+NAs introduced by coercion 
+```
+
+This is because the values within the Specialty column are not integers. As a result, R simply lists each row that does not contain an integer as a missing value. This is shown in the Borders_age dataframe:
+
+```{r}
+head(Borders_age$Specialty)
+```
+
+<br>
+
+## Formatting Dates
+
+### Using Base R
+
+Formatting dates is a common method of data manipulation within R. There are two common ways to store dates within R; as `dates` and as `characters`. The default format for dates in R is `YYYY-MM-DD` and R will generally set your dates to be this format when a file is read in.
+
+R contains some very useful functions for editing and changing the appearance of dates. The `as.Date()` takes a given character value and converts this into R's standard date format.  For example, the following code will take this character value, specify its format and then output this as a standard date:
+
+```{r}
+date <- "23/06/2017"
+as.Date(date, format = "%d/%m/%Y")
+```
+
+Running this code takes the character value and outputs it in a `YYYY-MM-DD` format. The code format = "`%d/%m/%Y`" specifies the format of the character value you wish to transform into a date value. The `%d` denotes the day of the month as a number (01-31), `%m` denotes the month as a number (01-12) and `%Y` denotes the full year including the century. A full list of all format specifications (i.e. %d, %m etc) that can be used in R can be found [here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/strptime.html).
+
+If you want to peform the reverse action, then the simplest way of doing this is to use the `format()` function. An easy way to test this function is by using the `Sys.Date()` function within R. This function outputs today’s date in YYYY-MM-DD format. Then we can use `format()` to change its format.
+
+```{r}
+#display date
+Sys.Date()
+
+#change this date to a different format
+format(Sys.Date(), "%d/%m/%Y")
+```
+
+<br>
+
+**Example:** Read in the `BORDERS (inc Age).csv` file and name it `Borders_age`. The `birthdate` column shows dates in an American format: `MM/DD/YYYY`. Transform this into a standard `DD/MM/YYYY` format.
+
+```{r}
+#read data
+Borders_age <- read_csv("BORDERS (inc Age).csv")
+#show first rows of birthdate
+head(Borders_age$Dateofbirth)
+
+# we first need to convert the numeric date value to a character
+Borders_age <- Borders_age %>% 
+  mutate(Dateofbirth = as.character(Dateofbirth)) %>% 
+  mutate(Dateofbirth = as.Date(Dateofbirth, format="%Y%m%d"))
+
+#check format has changed
+head(Borders_age$Dateofbirth)
+
+```
+
+The Dateofbirth column is now listed in a standard R date format. Here the code takes the Dateofbirth column within Borders_age, specifies that it’s format is YYYYMMDD and then uses the mutate() function to change the date into a YYYY-MM-DD format. Note that if the date column is in numeric format, it must first be converted to a character column before it can be formatted as a date.
+
+<br>
+
+### Format Dates using `lubridate` in `tidyverse`
+
+You can also format dates using the `lubridate` - information on this can be found [here](https://lubridate.tidyverse.org/). Remember to install (`install.packages("lubridate")`) and load the package (`library(lubridate)`) as required before using [R packages].
+
+It's helpful to store dates in a `date` format, rather than `character`. The `lubridate` package has funcitons to parse to date format - common ones are:
+
+*	`dmy` - format of input = day/month/year (UK way)
+*	`mdy` - format of input = month/day/year (American way)
+*	`ymd` - format of input = year/month/day (R way)
+
+We can use the following code to change columns to a date format using `lubridate`:
+
+```{r}
+# Make a dummy tibble
+test_dates <- 
+  tibble(DOB = c("29/05/1917", "12/02/1809", "19/11/1831", "29/01/1843"),
+         DOD = c("11/22/1963", "04/15/1865", "09/19/1881", "09/14/1901"))
+
+# Show table - note format = <chr> (character)
+test_dates
+
+# Change to date - format refers to the input date!
+# Note that the DOD has different format to DOB
+test_dates$DOB <- dmy(test_dates$DOB)
+test_dates$DOD <- mdy(test_dates$DOD)
+
+# Show table - note format now = <date>
+test_dates
+
+# You can extract month from date into new column
+# day() and year() will do similar
+test_dates %>%
+mutate(mnth = month(test_dates$DOB))
+
+# You can extract month as abbreviated text instead of numbers
+test_dates %>%
+mutate(mnth = month(test_dates$DOB, label = TRUE))
+
+# Or extract month as full name
+test_dates %>%
+mutate(mnth = month(test_dates$DOB, label = TRUE, abbr = FALSE))
+
+# Calculate age at death
+# Create interval() using DOB and DOD
+# Then time_length() gives the exact length in "year"
+# Note that floor() rounds down to nearest integer to prevent 46.5 years giving age as 47
+test_dates %>% 
+mutate(age_at_death = interval(start = DOB,end = DOD)) %>% 
+mutate(age_at_death = floor(time_length(age_at_death,unit = "year")))
+```
+
+Note the use of the `floor()` function to round the age calculation - more info on rounding can be found in the [Formatting Decimals] section below.
+
+<br>
+
+## Formatting Decimals
+
+A simple way to format decimal places in R is the `round_half_up()` function which is available in the `janitor` package. This function takes a value or series of values and rounds them to a specified number of decimal places. Please note that PHI recommend using the `round_half_up()` rather than R's built-in rounding function. This is because R's built-in rounding method works slightly differently to the traditonal method used in SPSS, so `round_half_up()` is recommended for consistency. More information on the difference between both methods can be found in [this](https://www.isdscotland.org/About-ISD/Methodologies/_docs/Rounding-Methods-in-Different-Software_v1-0.pdf) paper on the ISD website.
+
+The `round_half_up()` function works as `round_half_up(x, digits = digits)`, where x is the data to be rounded and digits is the specified number of decimal places.
+
+**Example:** Read in the `NumberFormats.csv file`. Use the `round_half_up()` function to round column A to 3 decimal places.
+
+```{r, warning=FALSE, message=FALSE}
+library(janitor)
+
+#read data
+num_format <- read_csv("NumberFormat.csv")
+
+#display data
+num_format
+
+#round column A
+round_half_up(num_format$A, digits = 3)
+```
+
+This doesn't change the original. To set these values within the dataframe we would simply assign:
+
+```{r}
+num_format$A <- round_half_up(num_format$A, digits = 2)
+num_format
+```
+ 
+
+A similar function is `signif()`. While `round_half_up()` specifies the number of decimal places, `signif()` specifies the total number of significant figures, i.e. the total length you want before and after the decimal point.
+
+```{r}
+signif(123.456789, digits = 6)
+```
+
+<br>
+
+## Adding in Leading Zeros
+
+You might have to add leading zeros to some of your data to ensure it is in the required format. The most straight forward way of doing this within R is the `str_pad()` function, which is available from the `stringr`. This function allows you to format columns such that all values within them will be the same width. 
+
+The code for this function is: `str_pad(df$column, width = width, pad = "0")`
+
+The width option specifies the width you require the data to be, and all cells that are less than this width will have leading zeros added to fill out the required width. The pad option specifies what will be used to fill out the data, here a 0 will be used. 
+
+**Example:** Using the `DOCTORS.csv` file, add leading zeros to the `dobmm` column such that each row consists of two numbers. 
+
+```{r}
+# Add leading zeros
+docs$dobmm <- str_pad(docs$dobmm, width = 2, pad = "0")
+
+# View data
+docs
+```
+
+The `dobmm` column has now been filled out to add leading zeros where required. This is because numbers do not have leading zeros in R, thus they have to be converted to a character value if a leading zero is required.
+
+<div class = "example">
+**Exercise:**
+
+6.1 Use `lubridate` to reformat the admissiondate and dischargedate columns from the Borders (inc Age).csv file to a standard R date format.
+
+6.2 Add leading zeros to the dobdd column in the DOCTORS.csv file.
+</div>
+
+# Data Visualisation
+
+<br>
+
+Data Visualisation can be done relatively easily using R. A variety of different chart types such as bar plots, scatter plots and histograms can be created using R and RStudio.
+
+<br>
+
+## Basic Plots
+Plots can be created using simple frequencies like the ones calculated in [Frequencies and crosstabs]. The plot will appear in your `Plots` window in the bottom right corner.
+
+A basic line graph can be created using the following code:
+
+```{r}
+# Create your data
+x <- c(1, 3, 2, 4)
+
+# Plot the data
+# Note that type = "l" simply means to plot a line
+plot(x, type="l")
+``` 
+
+More information about the `plot()` function can be found [here](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/plot.html).
+
+An example of a simple bar plot is shown below. It uses the function `barplot()`.
+
+**Example:**
+
+```{r}
+# Read in the Borders (inc Age) data
+Borders_age <- read_csv("BORDERS (inc Age).csv")
+
+# Calculate frequencies of admissionday
+counts <- table(Borders_age$admissionday)
+
+# Simple Bar Plot
+barplot(counts)
+```
+
+## Adding Titles and Axis Labels
+
+While the bar plot we created above has labels for each bar, it doesn’t have a title or axis labels. As a result, this plot would be unusable to anyone without access to the dataset. R allows for labels to easily be inserted into charts. The most straight forward way of doing this is to create them within the `barplot()` function.
+
+**Example:**
+
+```{r}
+# Calculate frequencies of admissionday
+counts <- table(Borders_age$admissionday)
+
+# Bar plot with labels - xlab gives the x axis label, ylab gives the y axis label and main gives the main title for the plot
+barplot(counts, xlab = "Admission Day", ylab = "Frequency", main = "Frequency of Admission Day")
+```
+
+Our bar plot is now much more detailed and is much easier to understand, particularly for individuals from a non-technical background.
+
+<br>
+
+
+## Customising Plots
+
+It is possible to customise plots created in R. An easy way to make your plot look more appealing is to change the colour. This can be done within the plot function. 
+
+We can easily change the colour of the bar plot created on the previous page, as well as adjust the width of the bars. The `col` command allows you to specify a colour, while `space` sets the gaps between bars.
+
+```{r}
+# Change the colour and width of the bars
+barplot(counts, xlab = "Admission Day", ylab = "Number of Admissions", main = "Frequency of Admissions", col = "blue", space = 1)
+```
+
+More information about customising plots in R can be found [here](http://publish.illinois.edu/johnrgallagher/files/2015/10/BaseGraphicsCheatsheet.pdf).
+ 
+## Saving Output
+
+The easiest way to save a plot on RStudio is through the `Export` tab on the Plots window. This will give you the option of saving the plot as an Image or as a PDF file. If you choose to save as an image, then there is a choice of the following image types; PNG, JPEG, TIFF, BMP, Metafile, SVG or EPS. You are also able to choose a directory to save the file to, this should automatically direct to your working directory but you can change this to any other preferred location. The dimensions of the plot can also be adjusted upon saving.
+
+<div class = "example">
+**Exercise:**
+
+7.1 Read in the Borders (inc Age) data set. Create a bar plot for discharge day. Add a title and axis labels and save the plot to your H:/ drive as a PNG.
+
+7.2 Create a histogram for patient’s length of stay. Add a title and axis labels. Hint: Use hist() to create the histogram
+</div>
+
+# Data Visualisation with `ggplot2()`
+
+<br>
+
+`ggplot2` is a `tidyverse` package for visualising data - more information can be found in the [ggplot2 pages](https://ggplot2.tidyverse.org/) and in the data visualisation chapter in [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html). This package is very widely used as it allows you to easily create more detailed and intricate plots.
+
+`ggplot2` build plots based on layers - you give it the data, tell it which variables to map and then customize the appearance using scales, labels, titles and more. The general function for a plot is: `ggplot(data  = data_to_use, aes(x = x_var, y = y_var)) + geom`. You can use `geom` to determine how the data is displayed - see examples below.
+
+<br>
+
+## Basic `ggplot` Plot
+
+First, you call the `ggplot()` function and supply it with the data to use and the x and y variables. This example uses an inbuilt dataset called `iris`, which contains measurements from three species of iris.
+
+```{r}
+# Get data
+df <- as_tibble(datasets::iris)
+
+# Show data - note that Species is a `factor`
+df
+
+# First, call ggplot() and define data and x/y variables
+ggplot(data = df, aes(x = Sepal.Length, y = Petal.Length))
+
+```
+
+Note that this just makes a blank plot! You need to provide a `geom` layer to tell it how to display the data. Layers are linked by using the `+` operator. Here, we use a `geom_point()` to add an xy scatter layer. Other options include:
+
+* `geom_bar()` - makes the height of the bar proportional to the number of cases in each group
+* `geom_col()` - makes the height of the bar represent values in the data
+* `geom_hist()` - histogram
+* `geom_boxplot()` - boxplot
+
+To plot Sepal.Length vs Petal.Length
+
+```{r}
+# First, call ggplot() and define data and x/y variables
+ggplot(data = df, aes(x = Sepal.Length, y = Petal.Length)) + 
+geom_point() #Add a layer
+```
+
+Changing the `geom` will change the plot type - to show Species vs Petal.Length as a boxplot:
+
+```{r}
+# First, call ggplot() and define data and x/y variables
+ggplot(data = df, aes(x = Species, y = Petal.Length)) + 
+geom_boxplot() #Add a boxplot layer
+```
+
+## Customising `ggplot`
+
+### Colour
+
+To change the colour of a point, you can supply arguments to the `geom_point()`:
+
+```{r}
+#first, call ggplot() and define data and x/y variables
+ggplot(data = df, aes(x = Sepal.Length, y = Petal.Length)) +
+geom_point(color = "blue") #Add a layer and make all points blue
+```
+
+It looks like there is more than one population here. To explore, try changing the colour to match the species. `ggplot` can accept `factors` as input for aesthetics - note that these have to be wrapped in `aes()`:
+
+```{r}
+ggplot(data = df, aes(x = Sepal.Length, y = Petal.Length)) +
+geom_point(aes(color = Species)) #Add a layer and change colour by Species
+```
+
+`ggplot` can also change other parameters including:
+
+* shape of point
+* size of point
+* transparency (alpha)
+
+To change the shape as well as colour:
+
+```{r}
+ggplot(data = df, aes(x = Sepal.Length, y = Petal.Length)) +
+geom_point(aes(shape = Species, color = Species)) #Add a layer and change colour by Species
+```
+
+You can supply your own colours to use by adding a `scale` layer - in this case `scale_color_manual()`. Run `colors()` to see full list of colour names that R accepts. R can also accept a list of RGB or HEX codes.
+
+```{r}
+ggplot(data = df, aes(x = Sepal.Length, y = Petal.Length)) +
+geom_point(aes(color = Species)) + #add a layer and change colour by Species
+scale_color_manual(values = c("deeppink", "dodgerblue", "orange")) #choose colours
+```
+
+You can also use pre-defined palettes. [colourBrewer](http://colourbrewer2.org/) is very good for picking palettes and `ggplot` has these built in. They are accessed using `scale_color_brewer` layers:
+
+```{r}
+ggplot(data = df, aes(x = Sepal.Length, y = Petal.Length)) +
+geom_point(aes(color = Species)) + #Add a layer and change colour by Species
+scale_color_brewer(palette = "Dark2") #Change colour palette
+```
+
+<br>
+
+### Axis Scales
+
+You can change the limits of the axis by adding `xlim()` or `ylim()`
+
+```{r}
+# First, call ggplot() and define data and x/y variables
+ggplot(data = df, aes(x = Sepal.Length, y = Petal.Length)) +
+geom_point(aes(color = Species)) + #Add a layer and change colour by Species
+scale_color_brewer(palette = "Dark2") + #Change colour palette
+xlim(0,10) + ylim(0,10) #Change axis limits
+```
+
+You can also change the limits/breaks of the axis by adding `scale_x_continuous()` or `scale_y_continuous()`. Note that here the `y` break points are added using the `seq()` function to save typing `c(0,2,4,6,8,10)`:
+
+```{r}
+# First, call ggplot() and define data and x/y variables
+ggplot(data = df, aes(x = Sepal.Length, y = Petal.Length)) +
+geom_point(aes(color = Species)) + #Add a layer and change colour by Species
+scale_color_brewer(palette = "Dark2") + #Change colour palette
+scale_x_continuous(limits = c(0,10), breaks = c(0,5,10)) + #Change x limits and where breaks are
+scale_y_continuous(limits = c(0,10), breaks = seq(from = 0, to = 10, by = 2)) #Change y limits and set breaks using seq()
+```
+
+### Titles and Labels
+
+`ggplot` uses the x and y variables to name the axes, but this can be changed by adding `xlab("your label")` and `ylab("your label")` layers:
+
+```{r}
+# First, call ggplot() and define data and x/y variables
+ggplot(data = df, aes(x = Sepal.Length, y = Petal.Length)) +
+geom_point(aes(color = Species)) + #Add a layer and change colour by Species
+scale_color_brewer(palette = "Dark2") + #Change colour palette
+xlab("Sepal Length") + ylab("Petal Length") #Add axis labels
+```
+
+You can also add a title using `ggtitle("your title here")`. This can accept functions (e.g `paste()` and `Sys.Date()`) to dynamically change the title - in this case to use today's date:
+
+```{r}
+# First, call ggplot() and define data and x/y variables
+ggplot(data = df, aes(x = Sepal.Length, y = Petal.Length)) +
+geom_point(aes(color = Species)) + #Add a layer and change colour by Species
+scale_color_brewer(palette = "Dark2") + 
+xlab("Sepal Length") + ylab("Petal Length") + 
+ggtitle(paste(Sys.Date(), "Iris Plot")) #Add title
+```
+
+## Combining with `%>%`
+
+You can also combine `ggplot` with `dplyr` and the `%>%` operator. This means you can make changes to the plots without changing the underlying data.
+
+>Note: when you pipe (`%>%`) to ggplot you no longer need to provide a data argument - but you still need to provide the aes(x,y)
+
+**Example:** Only include a subset of the data by using filter:
+
+```{r}
+# Filter data and plot
+df %>% #Pipe df
+filter(Species == "versicolor") %>% #Filter to include one species only
+ggplot(aes(x = Sepal.Length, y = Petal.Length)) + #Make plot
+  geom_point(aes(color = Species)) + #Add points and map colour to species
+  scale_color_brewer(palette = "Dark2") + #Change palette
+  xlab("Sepal Length") + ylab("Petal Length") + #Change labels
+  ggtitle(paste(Sys.Date(),"Iris Plot")) #Add title
+```
+
+You can also make new columns (e.g. `summarise`) and access these immediately.
+
+**Example:** Calculate the mean Petal.Length per species and show standard deviation around this mean. 
+
+First, `group_by(Species)` so that a value is calculated for each. Then `summarise` the average (`mean(Petal.Length)`) and the standard deviation (`sd(Petal.Length)`) for each `Species`. The output for this is:
+
+```{r}
+# Show function alone
+df %>% #Pipe df
+group_by(Species) %>%
+summarise(avg_pet_length = mean(Petal.Length), stdev = sd(Petal.Length))
+```
+
+You can pipe this directly to `ggplot()` as in the `filter` example above.
+
+This plot uses `geom_col` to display as a bar chart and instead of setting the `color`, we set `scale_fill_brewer()` to control the fill of the bars.
+
+To get errorbars, you need to supply another geom: `geom_errorbar()`. This is slightly different from `geom_col`, in that it accepts two `y` arguments, `ymin` and `ymax`. These define the upper and lower limits of the error bars and are calculated by adding/subtracting the standard deviation from the mean (`ymin = avg_pet_length - stdev`).
+
+```{r}
+# Combine this directly into a plot
+df %>% #Pipe df
+group_by(Species) %>% #Calculate values for each species
+summarise(avg_pet_length = mean(Petal.Length), stdev = sd(Petal.Length)) %>%
+ggplot(aes(x = Species, y = avg_pet_length)) + 
+  geom_col(aes(fill = Species)) +
+  geom_errorbar(aes(ymin = avg_pet_length - stdev, ymax = avg_pet_length + stdev), width = 0.2) +
+  scale_fill_brewer(palette = "Dark2") +
+  xlab("Species") + ylab("Mean Petal Length") + 
+  ggtitle(paste(Sys.Date(),"Iris Plot")) #Add title
+```
+
+<br>
+
+**Example from Borders_age:** This recreates the example above ([Data Visualisation]) using the `Borders_age` data without creating intermediate objects or changing underlying data:
+
+```{r}
+Borders_age %>% count(admissionday) %>% #Calculate counts
+mutate(admissionday = as_factor(admissionday)) %>%  #Change admissionday to a factor
+ggplot(aes(admissionday,n)) + #Create plot
+geom_col(aes(fill = admissionday), color = "black") + #Map fill to day
+scale_fill_brewer(palette = "Dark2") + #Change palette
+scale_y_continuous(limits = c(0, 5000), breaks = seq(0, 5000, by = 1000)) + #Change scale
+xlab("Admission Day") + ylab("Number of Admissions") + #Change labels
+ggtitle(paste(Sys.Date(),"Freq of Admissions")) #Add title
+```
+
+<br>
+
+## Arranging Multiple Plots
+
+If you need to make multiple plots it's easier to assign the plots to objects - these are assigned in the same way as everything else using `<-`:
+
+```{r}
+# Assign as p1 - nothing is displayed, but object is saved in environment
+# First, call ggplot() and define data and x/y variables
+p1 <- ggplot(data = df, aes(x = Sepal.Length, y = Petal.Length)) + 
+geom_point(aes(color = Species)) + #Add a layer and change colour by Species
+scale_color_brewer(palette = "Dark2") + 
+xlab("Sepal Length") + ylab("Petal Length") + 
+ggtitle(paste(Sys.Date(),"Iris Plot - Length")) #Add title
+```
+`p1` will appear in the global environment and can be accessed by entering it's name into console:
+
+```{r}
+#Calling p1 will display plot
+p1
+```
+
+```{r}
+# Assign as p2 - nothing is displayed, but object is saved in environment
+# First, call ggplot() and define data and x/y variables
+p2 <- ggplot(data = df, aes(x = Sepal.Width, y = Petal.Width)) + 
+geom_point(aes(color = Species)) + #Add a layer and change colour by Species
+scale_color_brewer(palette = "Dark2") + 
+xlab("Sepal Width") + ylab("Petal Width") + 
+ggtitle(paste(Sys.Date(),"Iris Plot - Width")) #Add title
+```
+
+A useful package for combining plots is `cowplot` (`install.packages("cowplot")`). Plots can then be combined with `plot_grid()`. Note that `cowplot` has default appearance that is different to `ggplot` - the grey background and grid lines are removed.
+
+```{r, message=FALSE, warning=FALSE}
+# Load the package - remember to install first
+library(cowplot)
+
+# Arrange plots in grid
+plot_grid(p1, p2)
+```
+
+You can state the number of rows and columns using `nrow` and `ncol`:
+
+```{r}
+# Arrange plots in one column
+plot_grid(p1, p2, ncol = 1)
+```
+
+Note that here the plots are slightly misaligned - the different scales on the y axis mess this up. You can align properly - use `align()` and `axis()` to control:
+
+```{r}
+# Arrange plots in one column and align both horizontally and vertically along all axis ("tblr" = top, bottom, left and right)
+plot_grid(p1, p2, ncol = 1, align = "hv")
+```
+
+## Saving Output
+
+You can export these plots the same way as outlined in [Saving the output], but you can also do this using the function `save_plot()` from `cowplot` or `ggsave` from `ggplot`.
+
+```{r eval = FALSE}
+# Arrange plots in grid and save as an object
+p1_p2_grid <- plot_grid(p1, p2, ncol = 1, align = "hv")
+
+save_plot(filename = "path/filename.pdf", #Change to where you want to save
+          plot = p1_p2_grid, #Object to save
+          base_height = 6, #Height in inches
+          base_width = 6) #Width in inches
+```
+
+# Solutions to Exercises
+
+## Solutions to [Importing and Exporting Data]
+
+### Exercise 3.1
+```{r eval = FALSE}
+# Reading in the BORDERS (inc Age) data
+Borders_age <- read_csv("H:/R Training Data/BORDERS (inc Age).csv")
+```
+
+<br>
+
+## Solutions to [Frequencies]
+
+### Exercise 4.1
+
+```{r eval = FALSE}
+# Read in the Borders data
+Borders <- read_csv("H:/R Training Data/Borders.csv")
+```
+
+```{r eval = FALSE}
+# Get the frequencies for sex
+table(Borders$Sex)
+```
+
+<br>
+
+### Exercise 4.2
+
+```{r eval = FALSE}
+# Calculate the mean length of stay
+mean(Borders$LengthOfStay)
+```
+```{r eval = FALSE}
+# Calculate the median length of stay
+median(Borders$LengthOfStay)
+```
+```{r eval = FALSE}
+# Calculate the maximum length of stay 
+summary(Borders$LengthOfStay)
+```
+
+## Solutions to [Crosstabs]
+
+### Exercise 4.3
+```{r eval = FALSE}
+# Create a crosstab for MOP and Specialty
+addmargins(table(Borders$MOP, Borders$Specialty))
+```
+
+<br>
+
+### Exercise 4.4
+```{r eval = FALSE}
+# Create a crosstab for MOP and Specialty
+addmargins(table(Borders$Specialty, Borders$MOP))
+```
+
+<br>
+
+## Solutions to Data Manipulation - [Using Multiple Conditions]
+### Exercise 5.1
+```{r eval = FALSE}
+# Calculate how many patients had a length of stay of between 2 and 6 days
+# Use the filter() function on Borders for patients who had a LengthOfStay of at least 2 days and at most 6 days
+Borders_6.1a <- filter(Borders, LengthOfStay >= 2 & LengthOfStay <= 6)
+```
+
+<br>
+
+### Exercise 5.2
+```{r eval = FALSE}
+# Calculate how many men had a length of stay of over 7 days at hospital B120H or hospital S116H
+# Use the filter() function on Borders for patients who had a LengthOfStay of more than 7 days and attended either hospital B120H or S116H
+# The use of brackets is important here
+# If brackets are not included then this will filter for patients with LengthOfStay > 7 at hospital B120H and also for all patients at hospital S116H
+Borders_6.2 <- filter(Borders, LengthOfStay > 7 & (HospitalCode == "B120H" | HospitalCode == "S116H"))
+```
+
+<br>
+
+### Exercise 5.3
+```{r eval = FALSE}
+# Calculate how many records had an admission date from 01/01/2015 up to and including 30/04/2015
+# Use the filter() function on Borders for patients who were admitted on at least 20150101 and at most 20150430
+Borders_6.3 <- filter(Borders, DateofAdmission >= 20150101 & DateofAdmission <= 20150430)
+```
+
+## Solutions to Data Manipulation - [`group_by()`, `summarise()` and `count()`]
+### Exercise 5.4
+```{r eval = FALSE}
+# Group the data by HospitalCode and Sex and calculate the counts for each combination
+# Take the Borders data and use the group_by() function on HospitalCode and Sex
+# Calculate the counts for each HospitalCode and Sex with the summarise() function
+# Remember to ungroup the data
+Borders_6.4 <- Borders %>%
+  group_by(HospitalCode, Sex) %>%
+  summarise(count = n()) %>%
+  ungroup()
+```
+
+<br>
+
+### Exercise 5.5
+```{r eval = FALSE}
+# Filter the dataset for patients with a LengthOfStay value of at least 4 days. Group by Specialty and calculate the mean LengthOfStay for each. Sort the data by mean LengthOfStay in descending order
+# Take the Borders data and filter for patients with LengthOfStay of at least 4 days
+# Use the group_by() function to group the dataset by Specialty and then calculate the mean LengthOfStay using summarise()
+# Ungroup the dataset and use arrange() to order the data by mean LengthOfStay in descending order
+Borders_6.5 <- Borders %>%
+  filter(LengthOfStay >= 4) %>%
+  group_by(Specialty) %>%
+  summarise(mean_LOS = mean(LengthOfStay)) %>%
+  ungroup() %>%
+  arrange(desc(mean_LOS))
+```
+
+<br>
+
+### Exercise 5.6
+```{r}
+#Use count() to group Borders by HBRes and Sex and then calculate the summary counts for each grouping
+Borders %>% count(HBRes, Sex)
+```
+
+## Solutions to Formatting Data in R - [Adding in Leading Zeros]
+
+### Exercise 6.1
+```{r eval = FALSE}
+# Reformat the admissiondate and dischargedate columns from the Borders (inc Age).csv file to a DD/MM/YYYY format.
+# Use the mdy() function from lubridate as the dates are listed in an American format. Use mutate() to change the columns to dates.
+Borders_age <- Borders_age %>% 
+  mutate(admissiondate = mdy(admissiondate), 
+         dischargedate = mdy(dischargedate))
+```
+### Exercise 6.2
+```{r eval = FALSE}
+# Add leading zeros to the dobdd column in the DOCTORS.csv file.
+# Use the str_pad() function with width = 2, format set as integers and add a 0 to fill space
+docs$dobdd <- str_pad(docs$dobdd, width = 2, pad = "0")
+```
+
+<br>
+
+## Solutions to [Data Visualisation]
+
+### Exercise 7.1
+```{r eval = FALSE}
+# Read in Borders (inc Age) data
+Borders_age <- read_csv("H:/R Training Data/BORDERS (inc Age).csv")
+```
+```{r eval = FALSE}
+# Calculate the frequencies for discharge day
+counts <- table(Borders_age$dischargeday)
+```
+```{r eval = FALSE}
+# Create a barplot for discharge day and add a title and labels
+barplot(counts, xlab="Discharge Day", ylab="Frequency", main="Frequency of Discharge Days")
+```
+
+<br>
+
+### Exercise 7.2
+```{r eval = FALSE}
+# Create a histogram for length of stay and add a title and labels
+hist(Borders_age$LengthOfStay, main="Histogram of Length of Stay", xlab="Length of Stay", ylab="Number of Admissions")
+```
+
+# Resources
+
+<br>
+
+[dplyr](https://dplyr.tidyverse.org/)
+
+<br>
+
+[PHI Intro to R in NSS](https://github.com/Health-SocialCare-Scotland/R-Resources/blob/master/Intro to R-NSS.md)
+
+<br>
+
+[NSS R Resources Dashboard](https://scotland.shinyapps.io/nhs-r-resources/)
+
+<br>
+
+[PHI Project](https://github.com/Health-SocialCare-Scotland/phiproject)
+
+<br>
+
+[R for Data Science](http://r4ds.had.co.nz/)
+
+<br>
+
+[Rounding Methods in Different Software](https://www.isdscotland.org/About-ISD/Methodologies/_docs/Rounding-Methods-in-Different-Software_v1-0.pdf)
+
+<br>
+
+[SPSS Syntax to R](https://www.isdscotland.org/About-ISD/Methodologies/_docs/SPSS-syntax-to-R_v1-1.pdf)
+
+<br>
+
+[Using R with SMRA](http://genss.nss.scot.nhs.uk/pls/portal/docs/PAGE/GENSS_DIVISION/DIVISIONS/PHISSBU/PHIANALYSIS/PHIANMETHODOLOGIES/USING-R-WITH-SMRA-V1-1.PDF)
+
+# Help
+
+If you have questions or need help, you can contact:
+
+PHI R User Group Inbox: nss.Rusergroupinbox@nhs.net
+<br>
+PHI R User Group Distribution List: nss.rusergp@nhs.net (you can find it by searching “rusergp” in Address Book).
