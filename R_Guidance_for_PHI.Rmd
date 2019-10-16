@@ -25,7 +25,7 @@ library(lubridate)
 ```
 
 ```{r, echo=FALSE}
-htmltools::img(src = knitr::image_uri("\\\\freddy/dept/PHIBCS/Corp Gov/Stats Gov/User Groups/R/Training/R guidance for analysts/images/NSS_logo.png"),
+htmltools::img(src = knitr::image_uri("\\\\freddy/dept/PHIBCS/Corp Gov/Stats Gov/User Groups/R/Training/R Guidance for PHI/images/NSS_logo.png"),
                alt = 'logo',
                style = 'position:absolute; top:0; right:0; padding:10px; height:125px; width:125px')
 ```
