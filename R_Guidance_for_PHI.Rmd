@@ -25,7 +25,7 @@ library(lubridate)
 ```
 
 ```{r, echo=FALSE}
-htmltools::img(src = knitr::image_uri("\\\\freddy/dept/PHIBCS/Corp Gov/Stats Gov/User Groups/R/Training/R Guidance for PHI/images/NSS_logo.png"),
+htmltools::img(src = knitr::image_uri("//freddy/dept/PHIBCS/Corp Gov/Stats Gov/User Groups/R/Training/R Guidance for PHI/images/R_Guidance1_logo.png"),
                alt = 'logo',
                style = 'position:absolute; top:0; right:0; padding:10px; height:125px; width:125px')
 ```
@@ -51,7 +51,7 @@ Both R and RStudio are available via the software centre. The most recent versio
 
 Your software centre should look something like this:
 
-![Example of software centre](images/software_centre_example.PNG)
+![Example of software centre](images/R_Guidance2_software_centre.PNG)
 
 As you can see, there are two R options available; one called "R Core Team R for Windows (32-Bit) 3.5.1" and another called "R Core Team R for Windows (64-Bit) 3.5.1". There is also an option to install "R Studio (32-bit) 1.1.456". 
 If these versions do not appear in your software centre then please raise a request on ServiceNow and IT will advertise them to your software centre. Don't worry if you already have an older version of R on your machine, it's ok to install multiple versions. 
@@ -61,7 +61,7 @@ If these versions do not appear in your software centre then please raise a requ
 
 We will use RStudio throughout this training course. If you open RStudio your screen should look something like the image below. Note that colours may be different - you can change this preference in Tools > Global Options > Appearance > Editor Theme.
 
-![RStudio](images/RStudio_example.png)
+![RStudio](images/R_Guidance3_RStudio.png)
 
 There are three main sections to consider on the screen shown above. The largest section on the left is the Console. You can run R code in here and all your output will also be shown within this window. 
 
@@ -73,7 +73,7 @@ The window below the Global Environment is more flexible. There are five tabs at
 
 As mentioned above, you can run R code in the Console window if you want to carry out some quick checks without saving the codes. However, doing this does not keep track of all the code that has been run after you exit RStudio. A common way to keep track of all your code is to use an R Script. An R Script can be created by using File > New File > R Script, or alternatively Ctrl + Shift + N. The screenshot below shows the RStudio interface after opening an R Script. 
 
-![Example of blank R script](images/r_script_example.png)
+![Example of blank R script](images/R_Guidance4_R_script.png)
 
 You can run R code within your R Script by highlighting/clicking on the line you wish to run and then clicking the Run button, or using `Ctrl + Enter`. You can run multiple lines at the same time by highlighting your desired lines and then running the code in the same manner. 
 If you run the following code from your R Script, its output will appear in the console window.
@@ -86,7 +86,7 @@ y + x
 
 Additionally, you will now see your `x` and `y` values listed in your Global Environment
 
-![x and y variables in environment](images/xy_environment_example.png)
+![x and y variables in environment](images/R_Guidance5_environment.png)
 
 If you need to edit some code in your R Script then you can simply make any changes and run the code again. The Console will still show the output from the previous code as well as the output for the new, edited, code.
 
@@ -196,7 +196,7 @@ The `tidyverse` packages are very commonly used within PHI due to its easy imple
 
 You can also load packages (and check which ones have been loaded) using the `Packages` tab in RStudio (bottom right corner). Click on the box to load - the equivalent code should appear in the console.
 
-![Loaded packages](images/load_packages.png)
+![Loaded packages](images/R_Guidance6_load_packages.png)
 
 #Importing and Exporting Data
 
@@ -325,11 +325,11 @@ df <- read.table(file = "filepath/name.txt", sep = "|", stringsAsFactors = FALSE
 
 You can view a whole dataset within R by using the Global Environment window. If you click on the `Borders` data listed there, then a view of the Borders data will open beside your R script. Your Console window should now say `View(Borders)`. Simply typing `View(Borders)` into your script or console and running it is another way to view the data.
 
-![Viewing data in R](images/view_data_example.PNG)
+![Viewing data in R](images/R_Guidance7_view_data.PNG)
 
 This view consists of your whole data frame. The `Filter` function is particularly useful for some quick exploratory checks of the data. For example, if you knew you wanted to look at Specialty value AA, you could simply click the `Filter` button and choose AA from the Specialty column. This selects only records where Specialty is listed as AA. Note that this does not change the dataset; the Borders data will stay intact.
 
-![Filtering data in R](images/view_then_filter.png)
+![Filtering data in R](images/R_Guidance8_view_filter.png)
 
 You can also view data frames in the Console by typing `Borders` into your script or console directly and running it, however this is not advisable for large data frames as it is not easy to view all of the data. A useful method for quickly checking the data columns is to use the `head()` function. If you enter the code `head(Borders)`, this will output the first six rows of your data set. You can change the number of rows shown in this view. For example, if you only wanted to view the first four rows you would enter `head(Borders, n=4)`.
 
@@ -349,7 +349,7 @@ tail(Borders)
 
 The most commonly used data types in R are numeric, integers, characters and factors. Numeric and integer types are fairly straight forward; real numbers or decimal numbers can be stored as numeric data while integers will be stored as integer data. Characters are equivalent to string variables in SPSS and are used to store text and categorical variables. Factors store categorical variables in R with associated levels. For example, if we have a categorical variable `gender` with values `female` and `male`, it could be stored as a factor variable with two levels: female and male. As shown in the screenshot below, factors give an associated number for each level – here this is 1 for female and 2 for male.
 
-![Factor vs Character](images/factor_vs_character.png)
+![Factor vs Character](images/R_Guidance9_factor_character.png)
 
 You can check the levels of the factor by running `levels(gender)`, and the number of levels is shown by running `nlevels(gender)`.
 
@@ -692,7 +692,7 @@ arrange(Borders, HospitalCode)
 
 ## Pipe (`%>%`) Operator
 
-![Magritte](images/MagrittePipe.jpg)
+![Magritte](images/R_Guidance10_pipe.jpg)
 
 While all of the `dplyr` functions shown in the previous sections are useful on their own, there are times when we need to use more than one of them to achieve our desired output. For this, `dplyr` contains the pipe operator, `%>%`. This operator works by linking the `dplyr` functions together. The operator takes a value or dataframe and feeds this into a series of functions. Think of the pipe operator as meaning “and then”. By linking the functions together in this way, the code becomes much easier to read as each line consists of its own command. As a result, understanding the code is much more intuitive. The `%>%` makes the focus of the code on verbs (functions), not nouns (objects). 
 
