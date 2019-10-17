@@ -23,5 +23,5 @@ The R markdown code is also available on this repository under R_Guidance_for_PH
 To upload the new html file, you need to perform the following steps:
 
 - Knit the .Rmd file to html output
-- Upload the new html file with the name R_Guidance_for_PHI.html to your branch, this will overwrite the original file
-- Once this has been merged into the master branch the url above will automatically update with any changes
+- Upload the new R_Guidance_for_PHI.html and R_Guidance_for_PHI.Rmd files to your branch - uploading these files will overwrite the current files listed in the branch
+- Once these files have been merged into the master branch the url above will automatically update with any changes
