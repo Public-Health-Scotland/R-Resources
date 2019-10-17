@@ -7,6 +7,7 @@ output:
     toc: yes
     toc_depth: 3
     toc_float: yes
+    self_contained: no
   word_document:
     toc: yes
     toc_depth: '4'
@@ -24,10 +25,11 @@ library(knitr)
 library(lubridate)
 ```
 
+
 ```{r, echo=FALSE}
-htmltools::img(src = knitr::image_uri("//freddy/dept/PHIBCS/Corp Gov/Stats Gov/User Groups/R/Training/R Guidance for PHI/images/R_Guidance1_logo.png"),
-               alt = 'logo',
-               style = 'position:absolute; top:0; right:0; padding:10px; height:125px; width:125px')
+htmltools::img(src = knitr::image_uri(file.path("//freddy/dept/PHIBCS/Corp Gov/Stats Gov/User Groups/R/Training/R Guidance for PHI/images/R_Guidance1_logo.png")),
+               alt = "NSS logo",
+               style = "position:absolute; top:0; right:0; padding:10px; height:90px; width:90px;")
 ```
 
 # Introduction to R
@@ -890,6 +892,44 @@ add_row(baby5, FAMILYID = 5, BABYNAME = "NHS_Scotland", DOB = "05/07/1948", .bef
 
 #can also handle missing columns adding NAs as required
 add_row(baby5, FAMILYID = 5, DOB = "05/07/1948")
+```
+
+<br>
+
+## `tidylog`
+
+A very useful package that can be used with `dplyr` functions is `tidylog`. This package provides feedback when performing standard `dplyr` operations such as the ones in the previous sections. For example, load the `tidylog` package and run the code below:
+
+```{r, warning=FALSE, message=FALSE}
+library(tidylog)
+```
+
+
+```{r}
+Borders %>%
+  filter(HospitalCode == "B102H") %>%
+  arrange(Dateofbirth)
+```
+
+The Console output now tells us how many rows have been filtered as a number and a percentage.
+
+Similarly, try running the following code that was used earlier on the titanic dataset with tidylog loaded:
+
+```{r}
+titanic <- as_tibble(Titanic)
+
+titanic %>%
+  group_by(Class, Age) %>%
+  summarise(n = sum(n))%>%
+  ungroup() %>%
+  mutate(Class = reorder(Class, n))
+```
+
+This package can be very useful for people new to dplyr and for providing additional understanding into exactly what your code is doing.
+
+```{r, include=FALSE}
+# detach to stop tidylog output appearing in further sections.
+detach("package:tidylog", unload=TRUE)
 ```
 
 <br>
