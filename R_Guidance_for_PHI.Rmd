@@ -7,7 +7,6 @@ output:
     toc: yes
     toc_depth: 3
     toc_float: yes
-    self_contained: no
   word_document:
     toc: yes
     toc_depth: '4'
@@ -198,7 +197,7 @@ The `tidyverse` packages are very commonly used within PHI due to its easy imple
 
 You can also load packages (and check which ones have been loaded) using the `Packages` tab in RStudio (bottom right corner). Click on the box to load - the equivalent code should appear in the console.
 
-![Loaded packages](images/R_Guidance6_load_packages.png)
+![Loaded packages](images/R_Guidance6_packages.png)
 
 #Importing and Exporting Data
 
@@ -899,7 +898,7 @@ add_row(baby5, FAMILYID = 5, DOB = "05/07/1948")
 ## `tidylog`
 
 A very useful package that can be used with `dplyr` functions is `tidylog`. This package provides feedback when performing standard `dplyr` operations such as the ones in the previous sections. For example, load the `tidylog` package and run the code below:
-
+  
 ```{r, warning=FALSE, message=FALSE}
 library(tidylog)
 ```
@@ -914,7 +913,7 @@ Borders %>%
 The Console output now tells us how many rows have been filtered as a number and a percentage.
 
 Similarly, try running the following code that was used earlier on the titanic dataset with tidylog loaded:
-
+  
 ```{r}
 titanic <- as_tibble(Titanic)
 
