@@ -928,6 +928,7 @@ titanic %>%
 This package can be very useful for people new to dplyr and for providing additional understanding into exactly what your code is doing.
 
 ```{r, include=FALSE}
+# detach to stop tidylog output appearing in further sections.
 detach("package:tidylog", unload=TRUE)
 ```
 
