@@ -36,7 +36,7 @@ htmltools::img(src = knitr::image_uri(file.path("//freddy/dept/PHIBCS/Corp Gov/S
 
 This workbook assumes no prior knowledge of R or other similar software. If you are a complete beginner you will want to start at the beginning. Users who have previously used R and RStudio can skip forward to [Importing and Exporting Data].
 
->**Note:** To use this document, you will need to copy the training files (found in "//freddy/dept/PHIBCS/Corp Gov/Stats Gov/User Groups/R/Training/Data/") over to your H drive. The examples below assume that the files are saved in the folder "H:/R Training Data" but you can call the folder whatever you like, just remember to change the file paths if you are copying and pasting examples from this document. Please note that the data used in this document is dummy data and no personally identifiable information is available.
+>**Note:** To use this document, you will need to copy the training files (found in "//freddy/dept/PHIBCS/Corp Gov/Stats Gov/User Groups/R/Training/R Training Data/") over to your H drive. The examples below assume that the files are saved in the folder "H:/R Training Data" but you can call the folder whatever you like, just remember to change the file paths if you are copying and pasting examples from this document. Please note that the data used in this document is dummy data and no personally identifiable information is available.
 
 ## What is R?
 
