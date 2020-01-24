@@ -1,0 +1,27 @@
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 14px;
+    border-left: 5px solid #eee;
+}
+
+h1 {
+color: rgb(0,71,133);
+}
+
+h2 {
+color: rgb(0,125,179);
+}
+
+h3 {
+color: rgb(79,129,189);
+}
+
+h4 {
+color: rgb(64,177,204);
+}
+
+div.example { 
+background-color : rgb(222,235,247); border-radius: 10px; padding: 10px; border-style: solid;
+border-color: rgb(31,72,124);
+}
