@@ -10,7 +10,7 @@ To create this link, please follow these steps:
 
 1. Log into RStudio Server Pro
 
-Open [RStudio Server Pro](http://spsssrv02.csa.scot.nhs.uk:8787) in your web browser of choice and log in.
+Open [RStudio Server Pro](https://rstudio.nhsnss.scot.nhs.uk) in your web browser of choice and log in.
 
 2. Open a Terminal connection
 
