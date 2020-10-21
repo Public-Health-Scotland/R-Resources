@@ -1,4 +1,4 @@
-# R style guide for PHI analysts
+# R style guide for PHS analysts
 ## Anna Price and David Caldwell
 ## September 2017
 
@@ -88,7 +88,7 @@ if (x <= 10) {
 
 It is recommended that you use RStudio projects, which organize your work into different contexts each one with a different working directory. Projects eliminate the need to set up your working directory each time, allow you to use Git for version control and allow you to have multiple R sessions open at the same time (each one with a different project), as well other perks to help you manage your work. 
 
-A blank R project structure can be downloaded from [this repository](https://github.com/Health-SocialCare-Scotland/r-project-structure). A similar blank structure for R Shiny apps can be found [here](https://github.com/Health-SocialCare-Scotland/rshiny-project-structure).
+A blank R project structure can be downloaded from [this repository](https://github.com/Public-Health-Scotland/r-project-structure). A similar blank structure for R Shiny apps can be found [here](https://github.com/Public-Health-Scotland/rshiny-project-structure).
 
 ### 8 - Recommended packages and tidyverse
 
@@ -120,4 +120,4 @@ To help clean up your code, the `lintr` package provides an automated check for 
 
 ### 10 - R User Group
 
-The PHI R User Group shares good practice amoungst the user community and is a useful support system for users requiring assistance. For more information and to sign up to the mailing list contact: NSS.Rusergroup@nhs.net.
+The PHI R User Group shares good practice amoungst the user community and is a useful support system for users requiring assistance. For more information and to sign up to the mailing list contact: phs.rusergp@phs.scot
