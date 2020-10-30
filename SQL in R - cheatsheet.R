@@ -18,7 +18,7 @@
 # With SQL, Internet is your friend, search for an answer and you shall find it.
 # This is an useful web to learn SQL: http://www.w3schools.com/sql/default.asp
 # And this a good summary of using SQL in SMRA (from where some of this info comes from):
-# https://github.com/Health-SocialCare-Scotland/R-Resources/blob/master/using%20SMRA%20with%20R.md
+# https://github.com/Public-Health-Scotland/R-Resources/blob/master/using%20SMRA%20with%20R.md
 # 
 # Common problems/errors while writing SQL code in R:
 #   Problems with simple and double quotation marks. 
