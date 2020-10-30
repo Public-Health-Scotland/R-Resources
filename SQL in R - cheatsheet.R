@@ -217,7 +217,7 @@ View(sql_example7)
 # The command GROUP By needs to be used together with these functions. 
 # More than one field can be included in the group by command.
 # In this example we calculate the count of episodes
-# and the mean, sum, max and min lenght of stay by hospital.
+# and the mean, sum, max and min length of stay by hospital.
 sql_example8_1 <- tbl_df(dbGetQuery(channel, statement=
     "SELECT location, count(link_no) count, avg(length_of_stay) mean, 
           sum(length_of_stay) sum, max(length_of_stay) max, min(length_of_stay) min
