@@ -363,7 +363,7 @@ View(sql_example14)
 # The table we are extracting data from receives an alias (z in this case), 
 # and the linking variable (UAI in this case) needs to have that alias in front.
 # In this example we extract all episode for a patient from the inpatient 
-# table if that individual have had a previous admission due to COPD .
+# table if that individual has had a previous admission due to COPD.
 # *Another case when this function could be useful is to look into inpatient
 # information of individuals that have gone through an appointment
 # in an specific clinic.
