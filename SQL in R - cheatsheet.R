@@ -608,7 +608,7 @@ dbListTables(channel, schema="USERNAME")
 # This syntax works:
 sql_example23_1 <- dbGetQuery(channel, statement='SELECT * FROM USERNAME."test" ') 
 # This syntax, with the double and single quote positions inverted, will result in an error.
-sql_example23_1 <- dbGetQuery(channel, statement="select * from 'USERNAME.test'")
+sql_example23_1 <- dbGetQuery(channel, statement="SELECT * FROM 'USERNAME.test'")
 
 # You can now use the uploaded table in another query . We will use the table to 
 # retrieve information from SMRA using a JOIN command.
