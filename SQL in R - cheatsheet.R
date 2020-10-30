@@ -338,7 +338,7 @@ View(sql_example13)
 ## 14 - Create categories of cases ----
 ###############################################.
 # Using the case function we can aggregate data based on categories.
-# In this case we count episoder, split in different categories based on their type.
+# In this case we count episodes, split in different categories based on their type.
 sql_example14 <- tbl_df(dbGetQuery(channel, statement=
     "SELECT hbtreat_currentdate,
             count(*) ip_dc,  
