@@ -84,7 +84,7 @@ View(sql_example1)
 ## 2 - Select data for a field ----
 ###############################################.
 # In this example data is retrieved for the Monkland hospital patients over 65.
-# Logic operators are used to indicate the conditions of the query: and, or,=, >,<, >=,=<, <>.
+# Logic operators are used to indicate the conditions of the query: and, or, =, >, <, >=, =<, <>.
 sql_example2 <- tbl_df(dbGetQuery(channel, statement=
   "SELECT location, age_in_years
    FROM ANALYSIS.SMR01_PI 
