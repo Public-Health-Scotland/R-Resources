@@ -524,7 +524,7 @@ sql_example21_1 <- tbl_df(dbGetQuery(channel, statement=
         AND link_no IN
           (SELECT link_no FROM ANALYSIS.SMR01_PI
           WHERE admission_date between '1 April 2016' and '5 June 2016'
-                AND location='L106H'
+                AND location = 'L106H'
           GROUP BY link_no HAVING COUNT(link_no)>1 )
     GROUP BY link_no")) 
 
