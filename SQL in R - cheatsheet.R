@@ -500,7 +500,7 @@ sql_example20 <- tbl_df(dbGetQuery(channel, statement=
     WHERE inpatient_daycase_identifier = 'I'
         AND CASE WHEN(admission_date between '1 April 2016' and '5 April 2016'
             OR discharge_date between '1 April 2016' and '5 April 2016')
-            AND location='G405H' THEN 1
+            AND location = 'G405H' THEN 1
         WHEN location='L106H'
               AND admission_date between '1 April 2016' and '5 April 2016'
               THEN 1 ELSE 0 END = 1
