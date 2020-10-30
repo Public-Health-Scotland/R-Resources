@@ -520,7 +520,7 @@ sql_example21_1 <- tbl_df(dbGetQuery(channel, statement=
     "SELECT count(*) count_episode, link_no 
     FROM ANALYSIS.SMR01_PI  
     WHERE admission_date between '1 April 2016' and '5 June 2016'
-        AND location='L106H' 
+        AND location = 'L106H' 
         AND link_no IN
           (SELECT link_no FROM ANALYSIS.SMR01_PI
           WHERE admission_date between '1 April 2016' and '5 June 2016'
