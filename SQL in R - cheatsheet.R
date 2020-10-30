@@ -214,7 +214,7 @@ View(sql_example7)
 # There are several ways of doing it, with different functions for it: count, average, sum, max, min. 
 # Median is not calculated in a straightforward way 
 # (sort by the field you are interested and calculate the mid value) - probably better through R
-# The command GROUP By needs to be used together with these functions. 
+# The command GROUP BY needs to be used together with these functions. 
 # More than one field can be included in the group by command.
 # In this example we calculate the count of episodes
 # and the mean, sum, max and min length of stay by hospital.
