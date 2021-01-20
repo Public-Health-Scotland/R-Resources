@@ -1,6 +1,6 @@
-# Public Health & Intelligence <img align="right" src="https://www.aspenpeople.co.uk/immunology/images/logo.png" height="90px">
+# Public Health Scotland <img align="right" src="https://publichealthscotland.scot/images/phs-logo.png" height="90px">
 
-# Introduction to R in NSS
+# Introduction to R in PHS
 
 ***
 
@@ -46,11 +46,11 @@ The purpose of this document is to help new R users to set up the program and un
 
 ## Installation
 
-There are two ways you can use R: through a programme installed in your local computer (desktop) or through a version installed in an [NSS Server](http://nssrstudio.csa.scot.nhs.uk/). (server). 
+There are two ways you can use R: through a programme installed in your local computer (desktop) or through a version installed in an [R Server](https://rstudio.nhsnss.scot.nhs.uk/). 
 
-To use R desktop you first need to ask CSD to install it for you. Request both R and RStudio as the latter makes writing programs/scripts a lot easier. RStudio is an interface to R. The latest version available for PHI is R 3.5.1 and RStudio 1.1.456 (October 2018). If you need to connect to SMRA databases using R desktop, you will need to specify that you need R Core 3.3.2 with SMRA ODBC collection. You need to install them from software center after IT has confirmed the availability.
+To use R desktop you first need to ask CSD to install it for you. Request both R and RStudio as the latter makes writing programs/scripts a lot easier. RStudio is an interface to R. The latest version available for PHS is R 3.6.1 and RStudio 1.1.456 (January 2021). If you need to connect to SMRA databases using R desktop, you will need to specify that you need R Core 3.3.2 with SMRA ODBC collection. You need to install them from software center after IT has confirmed the availability.
 
-If you want to use R server, please refer to the [R server guidelines](https://www.isdscotland.org/About-ISD/Methodologies/_docs/Using-R-with-SMRA-V1-1.pdf). You will have to request a login -from CSD. The current R version for the server is 3.2.3 and for RStudio 0.99.896 (October 2018).
+If you want to use R server, please refer to the [R server guidelines](https://www.isdscotland.org/About-ISD/Methodologies/_docs/Using-R-with-SMRA-V1-1.pdf). You will have to request a login -from CSD. The current R version for the server is 3.6,1 and for RStudio 1.1.456 (January 2021).
 
 ## RStudio
 RStudio is a visual interface that facilitates the task of programming in R. This [short video](https://www.youtube.com/watch?v=5p04znmmgQ8) will guide you through the different parts and panels of the layout of RStudio.
@@ -76,7 +76,7 @@ R can be used to analyse many different types of data, such as vectors, data fra
 [here](http://www.aliquote.org/articles/tech/RStudio.pdf)
 
 ### Rounding
-R's built-in rounding function works slightly differently to the common method used in SPSS. A guidance paper on rounding numbers in R has published on the [ISD website](https://www.isdscotland.org/About-ISD/Methodologies/_docs/Rounding-Methods-in-Different-Software_v1-0.pdf).
+R's built-in rounding function works slightly differently to the common method used in SPSS. A guidance paper on rounding numbers in R has published on the [PHS website](https://www.isdscotland.org/About-ISD/Methodologies/_docs/Rounding-Methods-in-Different-Software_v1-0.pdf).
 
 ## Packages
 The base R program contains a large number of functions to carry out many different tasks. However, to carry out certain tasks or to be more efficient with your coding you may need to use additional packages. A package is a bundle of code, data and documentation (read more about them [here](http://r-pkgs.had.co.nz/intro.html)). An example is the popular package for visualizations, ggplot2, which you will need to install and load in order to use. 
@@ -118,13 +118,13 @@ install.versions("ggplot2", "2.0.0")
 If you need information on version numbers for previous packages, find your package from the [CRAN package list](https://cran.r-project.org/web/packages/available_packages_by_name.html), then look for '**Old sources**' and click the link to get to the archives. For example, previous versions of the [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) package can be found [here](https://cran.r-project.org/src/contrib/Archive/dplyr) and the version numbers are displayed on the filenames.
 
 ### Install packages from Github Offline
-Many packages that are in development are hosted on Github, often with the intention of putting the package onto CRAN later when it is more *production-ready*. When using R within the NSS network, you will usually need to install packages hosted on Github offline as it is likely you will not be allowed to download packages directly from Github within R using `devtools::install_github()`. This requires [Rtools](https://cran.r-project.org/bin/windows/Rtools/) to be installed as well as the [devtools](https://www.rstudio.com/products/rpackages/devtools/) package. With these in place, the first thing is to navigate to the Github webpage hosting the package you want to install – here, the [bubbles package](https://github.com/jcheng5/bubbles) is used as an example. On the package's Github page, click the "Clone or download" box, then click "Download ZIP" (Fig.5) and save the zip file somewhere convenient on your computer.
+Many packages that are in development are hosted on Github, often with the intention of putting the package onto CRAN later when it is more *production-ready*. When using R within the PHS network, you will usually need to install packages hosted on Github offline as it is likely you will not be allowed to download packages directly from Github within R using `devtools::install_github()`. This requires [Rtools](https://cran.r-project.org/bin/windows/Rtools/) to be installed as well as the [devtools](https://www.rstudio.com/products/rpackages/devtools/) package. With these in place, the first thing is to navigate to the Github webpage hosting the package you want to install – here, the [bubbles package](https://github.com/jcheng5/bubbles) is used as an example. On the package's Github page, click the "Clone or download" box, then click "Download ZIP" (Fig.5) and save the zip file somewhere convenient on your computer.
 
 ![](https://github.com/alan-y/img/blob/master/github_download.png)
 
 *Figure 5. Downloading packages from Github as a zip file.*
 
-By default, the zip file will be named according to the pattern "packagename-master.zip" (for this example, "bubbles-master.zip"). The next step is to open RStudio and set the working directory to where the zip file is stored (See the [Working directory and projects](#working-directory-and-projects) section in this guide). Then type the following command in R
+By default, the zip file will be named according to the pattern "packagename-master.zip" (for this example, "bubbles-master.zip"). The next step is to open RStudio and set the working directory to where the zip file is stored (See the [Working directory and projects](#working-directory-and-projects) section in this guide). Then type the following command in R.
 
 ```{r}
 devtools::install_local("bubbles-master.zip")
@@ -136,7 +136,7 @@ The code should run fine and install the package (test this by [loading the pack
 Before you can start to use a package you have installed, you need to load it in your R session. This means that if you close R and reopen it again you will have to go through this process again. You can use contextual menus to load packages into your sessions, but that is not good practice. Always code the loading of packages directly into your script, including this at the beginning of your code in a housekeeping section. To call packages you can use the function library(packagename).
 
 ### Most common packages
-Sometimes it can be difficult to know what package to use for what. These curated lists, [one by RStudio](https://github.com/rstudio/RStartHere), [one by rOpenSci](https://ropensci.org/packages/) and [one by PHI](https://github.com/Health-SocialCare-Scotland/R-Resources/blob/master/PHI%20R%20style%20guide.md) summarize some of the most popular and useful packages used for different purposes.
+Sometimes it can be difficult to know what package to use for what. These curated lists, [one by RStudio](https://github.com/rstudio/RStartHere), [one by rOpenSci](https://ropensci.org/packages/) and [one by PHS](https://github.com/Public-Health-Scotland/R-Resources/blob/master/PHS%20R%20style%20guide.md) summarize some of the most popular and useful packages used for different purposes.
 
 Probably the most popular set of packages for data manipulation is the [tidyverse](https://www.tidyverse.org/). They share a common style and logic and they have changed how people code in R. One of the main characteristics of “tidy” coding is the use of the [pipe operator (%>%)](http://magrittr.tidyverse.org/) which structures the sequences of data operations in a logical way. This creates a much more readable and simpler code than the style of base R (the default functions of R).
 
@@ -152,7 +152,7 @@ It is best practice to never save the working environment. This means that every
 ### Working directory and projects
 There are several ways of setting up your working directory, which helps to organize your work in directories and avoid you having to type over and over filepaths. 
 
-It is recommended that you use RStudio projects. Projects organize your work into different contexts each one with a different working directory. Projects eliminate the need to set up your working directory each time, allow you to use Git for version control and allow you to have multiple R sessions open at the same time (each one with a different project), as well having other perks to help you manage your work. Read [this page](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) to know how to create and use projects. You can use a similar structure to the one outlined in this [blank R project structure](https://github.com/Health-SocialCare-Scotland/rshiny-project-structure). The simplest way to set up this project structure is to use the [phiproject](https://github.com/Health-SocialCare-Scotland/phiproject) package. Once phiproject has been installed, the project structure can be created using the menus within RStudio (File -> New Project).
+It is recommended that you use RStudio projects. Projects organize your work into different contexts each one with a different working directory. Projects eliminate the need to set up your working directory each time, allow you to use Git for version control and allow you to have multiple R sessions open at the same time (each one with a different project), as well having other perks to help you manage your work. Read [this page](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) to know how to create and use projects. You can use a similar structure to the one outlined in this [blank R project structure](https://github.com/Health-SocialCare-Scotland/rshiny-project-structure). The simplest way to set up this project structure is to use the [phstemplates](https://github.com/Public-Health-Scotland/phstemplates) package. Once phstemplates has been installed, the project structure can be created using the menus within RStudio (File -> New Project).
 
 You can also define your working directory using the function setwd(“filepath”) You can retrieve your working directory using getwd(“filepath”).
 
@@ -165,12 +165,12 @@ Another way of doing it is through saving your workspace in the location you wan
 It will open a “Save Workspace As” dialogue box, and you can choose a file path and give it a file name. Close RStudio. Go to the location where the file has been saved. The file you created has an extension “.RData”. Click on this file, and RStudio will open again with this location as the working directory. You can check it by using the function getwd().
 
 ## Coding
-To make your code more readable and shareable please read and follow the [PHI R style guide](https://github.com/Health-SocialCare-Scotland/R-Resources/blob/master/PHI%20R%20style%20guide.md) and this [general R coding guide](http://adv-r.had.co.nz/Style.html0). Using these guides will help anyone that has to use your code in the future, including yourself! They also include some useful tips that will make your life easier. One important thing to note is that R is case sensitive. This can cause many headaches. Try to keep all object, variable and file names in lower case.
+To make your code more readable and shareable please read and follow the [PHS R style guide](https://github.com/Public-Health-Scotland/R-Resources/blob/master/PHS%20R%20style%20guide.md) and this [general R coding guide](http://adv-r.had.co.nz/Style.html). Using these guides will help anyone that has to use your code in the future, including yourself! They also include some useful tips that will make your life easier. One important thing to note is that R is case sensitive. This can cause many headaches. Try to keep all object, variable and file names in lower case.
 
 There are two R packages that can help you to keep your coding style consistent and do part of the work for you: [formatR](https://yihui.name/formatr/) and [lintR](https://cran.r-project.org/web/packages/lintr/README.html). You can find some useful tips about coding [here](https://support.rstudio.com/hc/en-us/articles/200710523-Navigating-Code), [here](https://support.rstudio.com/hc/en-us/articles/200484568-Code-Folding-and-Sections) and [here](https://code.tutsplus.com/tutorials/3-key-software-principles-you-must-understand--net-25161).
 
 ## Getting help
-There is loads of information to help you using R. The best way is usually to Google what you are trying to do. There are also ways of getting the help and understanding how a specific function works using R. Read this to get to know how to do it. There is also a PHI R user group (Nss.rusergroup@nhs.net) which you can email to see if anyone can help you.
+There is loads of information to help you using R. The best way is usually to Google what you are trying to do. There are also ways of getting the help and understanding how a specific function works using R. Read this to get to know how to do it. There is also a PHS R user group with a Microsoft Teams space where you can ask to see if anyone can help you.
 
 ## Load and save data
 As a general rule you should save data objects in RDS format (the native R format). R can deal with them better and faster. They are also compressed, taking less space than a csv. For this file format use the functions saveRDS/readRDS. 
@@ -195,8 +195,8 @@ For more information on using Git with R read [this](http://happygitwithr.com/) 
 * [R project - R official page](https://www.r-project.org/)
 * [RStudio - RStudio official page](https://www.rstudio.com/)
 #### Specific to NSS
-* [PHI github account](https://github.com/Health-SocialCare-Scotland) - code repository.
-* [PHI R style guide](https://github.com/Health-SocialCare-Scotland/R-Resources/blob/master/PHI%20R%20style%20guide.md)
+* [PHS GitHub account](https://github.com/Public-Health-Scotland) - code repository.
+* [PHS R style guide](https://github.com/Public-Health-Scotland/R-Resources/blob/master/PHS%20R%20style%20guide.md)
 * [Guide on how to connect to SMRA using R and R server](https://www.isdscotland.org/About-ISD/Methodologies/_docs/Using-R-with-SMRA-V1-1.pdf)
 * [Guide on how to connect to API’s using R](https://github.com/jsphdms/R_web_APIs)
 * [Blank R project structure](https://github.com/Health-SocialCare-Scotland/rshiny-project-structure) and [blank R Shiny app structure](https://github.com/Health-SocialCare-Scotland/rshiny-project-structure)
