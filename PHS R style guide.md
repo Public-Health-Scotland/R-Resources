@@ -123,4 +123,4 @@ To help clean up your code, the `lintr` package provides an automated check for 
 
 ### 10 - R User Group
 
-The PHS R User Group shares good practice amoungst the user community and is a useful support system for users requiring assistance. For more information and to sign up to the mailing list contact: phs.rusergp@phs.scot
+The PHS R User Group shares good practice amoungst the user community and is a useful support system for users requiring assistance. You can join the [PHS R User Group on Teams](https://teams.microsoft.com/l/team/19%3ae9f55a12b7d94ef49877ff455a07f035%40thread.tacv2/conversations?groupId=ec4250f9-b70a-4f32-9372-a232ccb4f713&tenantId=10efe0bd-a030-4bca-809c-b5e6745e499a) for news, events, and technical queries. For more information and to sign up to the mailing list contact: phs.rusergp@phs.scot
