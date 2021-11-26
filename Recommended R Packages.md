@@ -1,8 +1,8 @@
 # Recommended R packages
 
-This non-exhaustive list of recommended R packages is aimed primarily at beginners. It introduces some commonly used R packages across PHI and groups them into relevant categories. The majority of packages listed cover routine tasks such as reading and writing data files and data manipulation, however there are also recommendations for more specialised areas such as statistical modelling and spatial analysis.
+This non-exhaustive list of recommended R packages is aimed primarily at beginners. It introduces some commonly used R packages across PHS and groups them into relevant categories. The majority of packages listed cover routine tasks such as reading and writing data files and data manipulation, however there are also recommendations for more specialised areas such as statistical modelling and spatial analysis. If you or your team use a package that isn't mentioned, feel free to recommend it through an [Issue](https://github.com/Public-Health-Scotland/R-Resources/issues) or Pull Request here.
 
-Some packages are listed in multiple categories (such as the [DT](https://github.com/rstudio/DT) package which is relevant to data visualisation, RMarkdown and Shiny). Where possible, a link to the relevant GitHub repository for each package is provided.
+Some packages are listed in multiple categories (such as the [DT](https://github.com/rstudio/DT) package which is relevant to data visualisation, RMarkdown and Shiny). Where possible, a link to the relevant GitHub repository for each package is provided. Additionally, Tidyverse is mentioned but is a suite of packages which some other packages are a part.
 
 
 ### Reading and writing data
@@ -12,8 +12,9 @@ Package | Description
 [odbc](https://github.com/r-dbi/odbc) | For connecting to database management systems, such as the SMRA datasets.
 [readr](https://github.com/tidyverse/readr) | For reading and writing flat files, such as CSV files.
 [haven](https://github.com/tidyverse/haven) | For reading and writing SPSS, SAS and Stata files.
-[readxl](https://github.com/tidyverse/readxl) | For reading excel files.
-[writexl](https://github.com/ropensci/writexl) | For writing excel files.
+[openxlsx](https://github.com/ycphs/openxlsx) | For reading and writing excel files.
+[officer](https://github.com/davidgohel/officer) | For manipulation of Microsoft Word and PowerPoint documents.
+[dbplyr](https://github.com/tidyverse/dbplyr) | A `dplyr` back-end for database interaction.
 [here](https://github.com/r-lib/here) | For defining relative filepaths when using [RStudio Projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).
 
 ### Data manipulation
@@ -37,6 +38,7 @@ Package | Description
 [gganimate](https://github.com/thomasp85/gganimate) | For 'animating' ggplot2 charts.
 [leaflet](https://github.com/rstudio/leaflet) | For creating interactive maps.
 [DT](https://github.com/rstudio/DT) | For creating interactive tables.
+[scales](https://github.com/r-lib/scales) | Scale functions for visualisation.
 
 
 ### RMarkdown
@@ -80,7 +82,7 @@ Package | Description
 [leaflet](https://github.com/rstudio/leaflet) | For creating interactive maps.
 
 
-### Creating packages
+### Packages Creation and Management
 
 Package | Description
 --- | ---
@@ -88,4 +90,6 @@ Package | Description
 [testthat](https://github.com/r-lib/testthat) | For unit testing of functions.
 [roxygen2](https://github.com/klutometis/roxygen) | For generating `.Rd` files required to pass `R CMD Check`.
 [usethis](https://github.com/r-lib/usethis) | For automating repetitive tasks during package setup.
+[remotes](https://github.com/r-lib/remotes) | Installing packages from distributed version control (e.g. GitHub or Gitea).
+[pacman](https://github.com/trinker/pacman) | Package management tools for use in R.
 
