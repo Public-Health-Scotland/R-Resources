@@ -9,6 +9,7 @@ Some packages are listed in multiple categories (such as the [DT](https://github
 
 Package | Description
 --- | ---
+[phsopendata](https://github.com/Public-Health-Scotland/phsopendata) | PHS package for interacting with the Open Data platform.
 [odbc](https://github.com/r-dbi/odbc) | For connecting to database management systems, such as the SMRA datasets.
 [readr](https://github.com/tidyverse/readr) | For reading and writing flat files, such as CSV files.
 [haven](https://github.com/tidyverse/haven) | For reading and writing SPSS, SAS and Stata files.
@@ -21,6 +22,7 @@ Package | Description
 
 Package | Description
 --- | ---
+[phsmethods](https://github.com/Public-Health-Scotland/phsmethods_ | PHS package for common data manipulation methods.
 [tidyverse](https://github.com/tidyverse) | A collection of related R packages used for data manipulation.
 [dplyr](https://github.com/tidyverse/dplyr) | For selecting, filtering, aggregating and other basic operations.
 [tidyr](https://github.com/tidyverse/tidyr) | For 'tidying' data, primarily by converting columns to rows and vice-versa.
@@ -33,6 +35,7 @@ Package | Description
 
 Package | Description
 --- | ---
+[phsstyles](https://github.com/Public-Health-Scotland/phsstyles) | PHS package for data visualisation styles.
 [ggplot2](https://github.com/tidyverse/ggplot2) | For creating static charts for reports.
 [plotly](https://github.com/ropensci/plotly) | For creating interactive charts.
 [gganimate](https://github.com/thomasp85/gganimate) | For 'animating' ggplot2 charts.
@@ -45,6 +48,7 @@ Package | Description
 
 Package | Description
 --- | ---
+[phstemplates](https://github.com/Public-Health-Scotland/phstemplates/tree/main/R) | PHS package for file templates, including R Markdown templates.
 [rmarkdown](https://github.com/rstudio/rmarkdown) | For creating dynamic Word, HTML, PDF and PowerPoint documents using R.
 [knitr](https://github.com/yihui/knitr) | For rendering RMarkdown documents.
 [DT](https://github.com/rstudio/DT) | For creating interactive tables in HTML documents generated using RMarkdown.
@@ -82,7 +86,7 @@ Package | Description
 [leaflet](https://github.com/rstudio/leaflet) | For creating interactive maps.
 
 
-### Packages Creation and Management
+### Package Creation and Management
 
 Package | Description
 --- | ---
