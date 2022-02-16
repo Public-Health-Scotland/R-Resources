@@ -197,8 +197,9 @@ View(sql_example6_2)
 ###############################################.
 ## 7 - Combine two fields into one ----
 ###############################################.
-# This is done with the ORDER BY command that is placed at the end of the SQL code. 
-# More than one variable can be used to sort.
+# The || command concatenates two variables together.
+# In the example below it joins first name and surname, also
+# including a space betwen the two.
 sql_example7 <- tbl_df(dbGetQuery(channel, statement=
     "SELECT first_forename || ' ' || surname as full_name
     FROM ANALYSIS.SMR01_PI 
