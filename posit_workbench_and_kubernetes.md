@@ -1,6 +1,7 @@
 # Posit Workbench and Kubernetes
 
 Original author(s): Terry McLaughlin
+
 Last updated: December 2022
 
 ## Background
@@ -9,10 +10,15 @@ Last updated: December 2022
 
 ## Purpose
 
-This document aims to provide users of Posit Workbench with
+This document aims to provide users of Posit Workbench with high-level information on
 
-- a high-level overview of what Kubernetes is,
-- an explanation of how Posit Workbench works with Kubernetes,
-- information on why efficient use of Kubernetes resources in the Microsoft Azure platform is important for PHS,
-- best practice guidance on the use of Posit Workbench (with respect to it being implemented using Kubernetes)
+- what Kubernetes is,
+- why Posit Workbench has been deployed using Kubernetes and how it works,
+- the importance of efficient use of cloud resources in respect of financial cost to PHS, and
+- best practice for using Posit Workbench deployed using Kubernetes.
+
+## What is Kubernetes?
+
+<img src="https://user-images.githubusercontent.com/45657289/205086608-d563dde1-7cc2-416a-9c99-10d57a252940.png" width="100">
+
 
