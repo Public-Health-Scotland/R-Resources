@@ -107,11 +107,11 @@ In both R and Python, reading a CSV file or the results from a database SQL quer
 
 Estimating how much memory is required is not a simple task, but suggested starting points are as follows:
 
-| Rows | Cols.  | Col. Types  | Memory Usage  | Session Memory Recommendation  |
+| Rows | Cols.  | Col. Types  | Memory Usage (no R packages loaded)  | Session Memory Recommendation  |
 |---|---|---|---|---|
-| 1000  | 5  | 3 x Numeric, 1 x Character, 1 x Factor  |   |   |
-| 1000  | 10  | 6 x Numeric, 2 x Character, 2 x Factor  |   |   |
-| 1000 | 100  | 60 x Numeric, 20 x Character, 20 x Factor  |   |   |
+| 1000  | 5  | 3 x Numeric, 1 x Character, 1 x Factor  | 134 MB  | 2048 MB |
+| 1000  | 10  | 6 x Numeric, 2 x Character, 2 x Factor  |  134 MB | 2048 MB |
+| 1000 | 100  | 60 x Numeric, 20 x Character, 20 x Factor  | 135 MB  | 2048 MB |
 
 Small dataset
 
