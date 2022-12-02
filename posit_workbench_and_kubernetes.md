@@ -109,14 +109,24 @@ Estimating how much memory is required is not a simple task, but suggested start
 
 | Rows | Cols.  | Col. Types  | Memory Usage (no R packages loaded)  | Session Memory Recommendation  |
 |---|---|---|---|---|
-| 1000  | 5  | 3 x Numeric, 1 x Character, 1 x Factor  | 134 MB  | 2048 MB |
-| 1000  | 10  | 6 x Numeric, 2 x Character, 2 x Factor  |  134 MB | 2048 MB |
-| 1000 | 100  | 60 x Numeric, 20 x Character, 20 x Factor  | 135 MB  | 2048 MB |
+| 1k  | 5  | 3 x Numeric, 2 x Character  | 135 MB  | 2 GB (2048 MB) |
+| 1k  | 10  | 6 x Numeric, 4 x Character  | 135  MB | 2 GB (2048 MB) |
+| 1k | 100  | 60 x Numeric, 40 x Character  | 137 MB  | 2 GB (2048 MB) |
+| 100k  | 5  | 3 x Numeric, 2 x Character  | 164 MB  | 2 GB (2048 MB) |
+| 100k  | 10  | 6 x Numeric, 4 x Character  | 176 MB | 2 GB (2048 MB) |
+| 100k | 100  | 60 x Numeric, 40 x Character  | 453 MB  | 4 GB (4096 MB) |
+| 1m  | 5  | 3 x Numeric, 2 x Character  | 1 GB | 4 GB (4096 MB) |
+| 1m  | 10  | 6 x Numeric, 4 x Character  | 2 GB | 8 GB (8192 MB) |
+| 1m | 100  | 60 x Numeric, 40 x Character  | 23 GB  | 64 GB (65536 MB) |
+| 10m  | 5  | 3 x Numeric, 2 x Character  | ~ 12 GB | 32 GB (32768 MB) |
+| 10m  | 10  | 6 x Numeric, 4 x Character  | ~ 24 GB | 64 GB (65536 MB |
+| 10m | 100  | 60 x Numeric, 40 x Character  | ~ 48 GB  | 128 GB (131072 MB) |
 
-Small dataset
+How much memory your dataset requires is not just affected by the number of rows, but by the combination of rows and columns, where the more character (string) columns there are, the greater the memory requirement.
 
-- 4 GB (4096 MB) is sufficient for working with a small dataset
-- 8 GB (8192 MB) is sufficient for working
+The recommendations above account for loading the `tidyverse` suite of R packages into memory, and allow some headroom for performing basic operations on the dataset.  Anything more complex than computing new columns or aggregating will require more memory than the recommendations above.
+
+There are ways to reduce memory consumption, by performing aggregation within the database or using technologies such as Apache Arrow, for working with larger-than-memory datasets stored on disk. *Guidance to be written on this*
 
 #### Profiles ####
 
