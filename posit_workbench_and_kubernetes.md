@@ -75,3 +75,22 @@ The best practice described here focusses solely on the aspects of Posit Workben
 
 ### Requesting a session of a certain size
 
+When you request a new session in Posit Workbench, you are prompted to set a few parameters for that session in the following dialog:
+
+![image](https://user-images.githubusercontent.com/45657289/205252509-c73587ae-f9a8-410b-aef5-f53e5a2f011d.png)
+
+- Highlighted in yellow is the cluster that the session will run on.  For now, we have one cluster called "Kubernetes", so there's nothing to change here.
+- Highlighted in green are the CPU and memory parameters for your session.
+- Highlighted in blue are the maximum values for CPU and memory that you are permitted to request for your session.
+
+#### CPUs ####
+
+The Central Processing Unit (CPU) is the primary component of a computer that executes instructions.  On cloud computing platforms, CPUs are virtualised (vCPUs) and represent a portion or share of the underlying physical CPU that is assigned to a particular virtual machine (VM).
+
+What this means in respect of selecting a number of CPUs for a Posit Workbench session is as follows:
+
+- Think of 1 CPU representing 100% of the time
+
+#### Memory ####
+
+
