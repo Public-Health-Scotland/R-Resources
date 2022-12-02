@@ -89,33 +89,15 @@ The Central Processing Unit (CPU) is the primary component of a computer that ex
 
 Modern CPUs can have multiple *cores*, and on those cores, multiple *threads* can be executed simultaneously.
 
-On cloud computing platforms, we refer to virtual CPUs (vCPUs) where 1 vCPU equates to 1 thread of execution on a physical core.  Kubernetes adds a layer of abstraction such that 1 vCPU executes in multiple threads.
+On cloud computing platforms, we refer to virtual CPUs (vCPUs) where 1 vCPU equates to 1 thread of execution on a physical core.  Kubernetes adds a layer of abstraction such that a pod can execute in multiple threads.
 
 In Posit Workbench you can request a number of CPUs that your session will be able to use:
 
 - The recommendation is that for writing and running chunks of code in an interactive session, 1 CPU is more than sufficient.  This roughly corresponds to 1 vCPU, or half of a physical core.
-- For anything more substantial, 2 CPUs are recommended as the minimum.
+- For running anything more substantial, 2 CPUs are recommended as the minimum.
 - If you are running code that relies on parallel processing, please request 4 or more CPUs.
 
-
-
-
-
-
-
-
-
-Therefore, when we request 1 CPU in Posit Workbench, we are actually requesting 1 vCPU, which is the equivalent of 1 thread of execution on the physical CPU.
-
-Perhaps a simpler way to think about this is consider CPU requests in Posit Workbench as requesting a slice of processing time i.e.
-
-- 0.1 CPU = a 10% slice of processing time
-- 0.5 CPU = a 50% slice of processing time
-- 1.0 CPU = a whole slice of processing time
-
-But what happens when you request more than 1 CPU?  Well, it's important to only do this when you are knowlingly and explicity going to be running code that *executes in parallel*.  Parallel processing is a method of splitting up a large complex task, into lots of smaller simpler tasks, and running them simultaneously on multiple CPUs, thereby reducing the amount of time for processing.
-
-The less CPUs you request, the greater number of pods running Posit Workbench sessions can be squeezed onto a single node, thus minimising cost to PHS.  If your analysis is simple or non-urgent, please consider requesting less than 1 CPU.
+The less CPUs you request, the greater number of pods running Posit Workbench sessions can be squeezed onto a single node, thus minimising cost to PHS.
 
 #### Memory ####
 
