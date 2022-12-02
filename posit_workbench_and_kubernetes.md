@@ -87,17 +87,23 @@ When you request a new session in Posit Workbench, you are prompted to set a few
 
 The Central Processing Unit (CPU) is the primary component of a computer that executes instructions.
 
-In Posit Workbench you can request a number of CPUs that your session will be able to use, however as the deployment is on a cloud computing platform, we aren't requesting physical CPUs, but *virtual* CPUs (vCPUs).
-
 Modern CPUs can have multiple *cores*, and on those cores, multiple *threads* can be executed simultaneously.
 
-A physical CPU, made up of 8 cores, each of which can execute up to 16 threads would give us vCPUs.  We can calculate how many vCPUs this gives us as follows:
+On cloud computing platforms, we refer to virtual CPUs (vCPUs) where 1 vCPU equates to 1 thread of execution on a physical core.  Kubernetes adds a layer of abstraction such that 1 vCPU executes in multiple threads.
 
-*(16 threads x 8 cores) x 1 CPU = 128 vCPUs*
+In Posit Workbench you can request a number of CPUs that your session will be able to use:
+
+- The recommendation is that for writing and running chunks of code in an interactive session, 1 CPU is more than sufficient.  This roughly corresponds to 1 vCPU, or half of a physical core.
+- For anything more substantial, 2 CPUs are recommended as the minimum.
+- If you are running code that relies on parallel processing, please request 4 or more CPUs.
 
 
 
-Kubernetes adds a further layer of abstraction on top of this which means that, unfortuntaely, we cannot say that 1 CPU in Posit Workbench directly corresponds to 1 vCPU.
+
+
+
+
+
 
 Therefore, when we request 1 CPU in Posit Workbench, we are actually requesting 1 vCPU, which is the equivalent of 1 thread of execution on the physical CPU.
 
