@@ -101,7 +101,22 @@ The less CPUs you request, the greater number of pods running Posit Workbench se
 
 #### Memory ####
 
-Memory (or RAM) is what holds data temporarily between operations being executed on it.
+Computer random access memory (RAM) gives applications a place to store and access data that are being actively used, and to do so quickly.
+
+In both R and Python, reading a CSV file or the results from a database SQL query will result in that data being read into your session's memory in it's entirety, and all subsequent operations on that data are performed *in-memory*. You therefore need to ensure that your session has access to sufficient free memory to hold the size of data you intend to work with in your analysis.
+
+Estimating how much memory is required is not a simple task, but suggested starting points are as follows:
+
+| Rows | Cols.  | Col. Types  | Memory Usage  | Session Memory Recommendation  |
+|---|---|---|---|---|
+| 1000  | 5  |   |   |   |
+| 1000  | 10  |   |   |   |
+| 1000 | 100  |   |   |   |
+
+Small dataset
+
+- 4 GB (4096 MB) is sufficient for working with a small dataset
+- 8 GB (8192 MB) is sufficient for working
 
 #### Profiles ####
 
