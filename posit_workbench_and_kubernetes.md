@@ -120,13 +120,18 @@ Estimating how much memory is required is not a simple task, but suggested start
 | 1m | 100  | 60 x Numeric, 40 x Character  | 23 GB  | 64 GB (65536 MB) |
 | 10m  | 5  | 3 x Numeric, 2 x Character  | ~ 12 GB | 32 GB (32768 MB) |
 | 10m  | 10  | 6 x Numeric, 4 x Character  | ~ 24 GB | 64 GB (65536 MB |
-| 10m | 100  | 60 x Numeric, 40 x Character  | ~ 48 GB  | 128 GB (131072 MB) |
+| 10m | 100  | 60 x Numeric, 40 x Character  | ~ 276 GB  | 768 GB (786432 MB) |
 
 How much memory your dataset requires is not just affected by the number of rows, but by the combination of rows and columns, where the more character (string) columns there are, the greater the memory requirement.
 
 The recommendations above account for loading the `tidyverse` suite of R packages into memory, and allow some headroom for performing basic operations on the dataset.  Anything more complex than computing new columns or aggregating will require more memory than the recommendations above.
 
-There are ways to reduce memory consumption, by performing aggregation within the database or using technologies such as Apache Arrow, for working with larger-than-memory datasets stored on disk. *Guidance to be written on this*
+There are ways to reduce memory consumption, by performing aggregation within the database, performing operations on chunks of data, or using technologies such as Apache Arrow, for working with larger-than-memory datasets stored on disk. *Guidance to be written on this*
+
+Again, the less memory you request, the greater number of pods running Posit Workbench sessions can be squeezed onto a single node, thus minimising cost to PHS.
 
 #### Profiles ####
 
+Your user account is, by default, assigned to a generic profile which grants you permission to request up to x CPU and x MB of memory for your session.
+
+If the work that you do requires a greater number of CPUs or amount of memory than the defaults, you can request that your user account is assigned to an enhanced profile.  This request should be submitted in writing to ... explaining the reasons you require greater resources and for how long. *TBC*
