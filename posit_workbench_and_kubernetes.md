@@ -69,5 +69,9 @@ Microsoft Azure is a pay-as-you-go service.  There is a minimum cost to making P
 
 In addition to the cost implications, we must be mindful at all times that the Posit Workbench environment is a shared resource with finite capacity, and as such, we each have a responsibility to ensure our code is as optimsed and efficient as possible, using the environment correctly and appropriately, and thus ensuring that we all benefit from this resource equally.
 
+## Best practice
 
+The best practice described here focusses solely on the aspects of Posit Workbench functionality that are made available by or are impacted by the deployment on Kubernetes.
+
+### Requesting a session of a certain size
 
