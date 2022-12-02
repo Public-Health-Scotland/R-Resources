@@ -14,7 +14,7 @@ This document aims to provide users of Posit Workbench with high-level informati
 
 - what Kubernetes is,
 - why Posit Workbench has been deployed using Kubernetes and how it works,
-- the importance of efficient use of cloud resources in respect of financial cost to PHS, and
+- the importance of optimal use of cloud computing resources in respect of financial cost to PHS, and
 - best practice for using Posit Workbench deployed using Kubernetes.
 
 ## What is Kubernetes?
@@ -37,7 +37,13 @@ Now that's out of the way, Kubernetes is simply a technology to automatically ma
 
 Using Kubernetes results in another layer of abstraction from the physical hardware that the application is running on.  This makes a whole lot of sense on a cloud computing platform, where everything already running on many virtual machines (VMs), and configuring each of those manually would not be feasible.
 
-The principle reason that Posit Workbench has been deployed using Kubernetes, and AKS specifically, is to enable autoscaling.  We need to introduce some Kubernetes concepts at this point to explain how this works.
+The reasons that Posit Workbench has been deployed using Kubernetes, and AKS specifically, are to
+ 
+- isolate sessions from one another,
+- enable autoscaling, and thus
+- facilitate optimal usage of cloud computing resources.
+
+We need to introduce some Kubernetes concepts at this point to explain how Kubernetes delivers this.
 
 ### Pods, Nodes and Clusters, oh my!
 
@@ -47,7 +53,7 @@ The principle reason that Posit Workbench has been deployed using Kubernetes, an
 
 ### Autoscaling
 
-The Posit Workbench cluster takes advantage of autoscaling in AKS, such that the number of nodes running automatically scales up (and back down) depending on demand.  By default, the cluster always has one node running and ready to have one or more pods started on it.  Once that node nears capacity with many pods running on it, when another user comes along and requests a new Posit Workbench session, the cluster will automatically start up a new node and add it to the cluster, before then starting the user's session in a pod on that new node.  At the time of writing, the cluster will scale up to a maximum of 10 running nodes.
+The Posit Workbench cluster takes advantage of autoscaling in AKS, such that the number of nodes running automatically scales up (and back down) depending on demand.  By default, the cluster always has one node running and ready to have one or more pods started on it.  Once that node nears capacity with many pods running on it, if another user comes along and requests a new Posit Workbench session, the cluster will automatically start up a new node and add it to the cluster, before then starting the user's session in a pod on that new node.  At the time of writing, the cluster will scale up to a maximum of 10 running nodes.
 
 When a node no longer contains any running pods, after a defined period of time, the node shuts down and is removed from the cluster.  A minimum of one node will always be left running.
 
@@ -55,4 +61,8 @@ From a user experience perspective, it will take longer for a Posit Workbench se
 
 ### Isolated sessions
 
-Finally, containerising (yes, that's a word!) Posit Workbench has the added advantage of isolating users' sessions from one another.  A session is only permitted to consume CPU time and memory up to the limits set by Kubernetes, or requested by the user (if they are less than those imposed by Kubernetes).  Therefore, a user running a CPU and/or memory intensive R script will not result in a poor experience for other users.
+Containerising (yes, that's a word!) Posit Workbench has the added advantage of isolating users' sessions from one another.  A session is only permitted to consume CPU time and memory up to the limits set by Kubernetes, or requested by the user (if they are less than those imposed by Kubernetes).  Therefore, a user running a CPU and/or memory intensive R script will not result in a poor experience for other users.
+
+### Optimal usage of cloud computing resources
+
+Microsoft Azure is a pay-as-you-go service.
