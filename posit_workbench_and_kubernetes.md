@@ -109,9 +109,9 @@ Estimating how much memory is required is not a simple task, but suggested start
 
 | Rows | Cols.  | Col. Types  | Memory Usage  | Session Memory Recommendation  |
 |---|---|---|---|---|
-| 1000  | 5  |   |   |   |
-| 1000  | 10  |   |   |   |
-| 1000 | 100  |   |   |   |
+| 1000  | 5  | 3 x Numeric, 1 x Character, 1 x Factor  |   |   |
+| 1000  | 10  | 6 x Numeric, 2 x Character, 2 x Factor  |   |   |
+| 1000 | 100  | 60 x Numeric, 20 x Character, 20 x Factor  |   |   |
 
 Small dataset
 
