@@ -79,23 +79,36 @@ When you request a new session in Posit Workbench, you are prompted to set a few
 
 ![image](https://user-images.githubusercontent.com/45657289/205252509-c73587ae-f9a8-410b-aef5-f53e5a2f011d.png)
 
-- Highlighted in yellow is the cluster that the session will run on.  For now, we have one cluster called "Kubernetes", so there's nothing to change here.
-- Highlighted in green are the CPU and memory parameters for your session.
-- Highlighted in blue are the maximum values for CPU and memory that you are permitted to request for your session.
+- Highlighted in yellow is the cluster that the session will run on. The Posit Workbench environment consists of one cluster called "Kubernetes".
+- Highlighted in green are the CPU and memory parameters for your session. These can be configured to suit the compute demands of your script.
+- Highlighted in blue are the maximum values for CPU and memory that you are permitted to request for your session.  These values are dependent on the profile that you have been assigned to (described in more detail below).
 
 #### CPUs ####
 
-The Central Processing Unit (CPU) is the primary component of a computer that executes instructions.  On cloud computing platforms, CPUs are virtualised (vCPUs) and represent a portion or share of the underlying physical CPU that is assigned to a particular virtual machine (VM).
+The Central Processing Unit (CPU) is the primary component of a computer that executes instructions.
 
-The best way to think about how this works in practice for Post Workbench sessions is this:
+In Posit Workbench you can request a number of CPUs that your session will be able to use, however as the deployment is on a cloud computing platform, we aren't requesting physical CPUs, but *virtual* CPUs (vCPUs).
 
-- 1 CPU represents 100% of the time on 1 vCPU - in other words, your session will, *if possible*, run at full speed.
-- 0.5 CPU represents 50% of the time on 1 vCPU - in other words, your session will, *if possible*, run at half speed.
+Physical CPUs can have multiple *cores*, and on those cores, multiple *threads* can be executed simultaneously.
 
-You can request any value up to 1 CPU to, in effect, select a speed at which your session should run.
+Take the Intel XEON E-2288G for example which has 1 physical CPU, made up of 8 cores, each of which can execute up to 16 threads.  We can calculate how many vCPUs this gives us as follows:
 
+<div align="center">(16 threads x 8 cores) x 1 CPU = 128 vCPUs</div>
 
+Therefore, when we request 1 CPU in Posit Workbench, we are actually requesting 1 vCPU, which is the equivalent of 1 thread of execution on the physical CPU.
+
+Perhaps a simpler way to think about this is consider CPU requests in Posit Workbench as requesting a slice of processing time i.e.
+
+- 0.1 CPU = a 10% slice of processing time
+- 0.5 CPU = a 50% slice of processing time
+- 1.0 CPU = a whole slice of processing time
+
+But what happens when you request more than 1 CPU?  Well, it's important to only do this when you are knowlingly and explicity going to be running code that *executes in parallel*.  Parallel processing is a method of splitting up a large complex task, into lots of smaller simpler tasks, and running them simulatenously on multiple CPUs, thereby reducing the amount of time for processing.
+
+The less CPUs you request, the greater number of pods running Posit Workbench sessions can be squeezed onto a single node, thus minimising cost to PHS.  If your analysis is simple or non-urgent, please consider requesting less than 1 CPU.
 
 #### Memory ####
 
+
+#### Profiles ####
 
