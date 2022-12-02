@@ -87,9 +87,14 @@ When you request a new session in Posit Workbench, you are prompted to set a few
 
 The Central Processing Unit (CPU) is the primary component of a computer that executes instructions.  On cloud computing platforms, CPUs are virtualised (vCPUs) and represent a portion or share of the underlying physical CPU that is assigned to a particular virtual machine (VM).
 
-What this means in respect of selecting a number of CPUs for a Posit Workbench session is as follows:
+The best way to think about how this works in practice for Post Workbench sessions is this:
 
-- Think of 1 CPU representing 100% of the time
+- 1 CPU represents 100% of the time on 1 vCPU - in other words, your session will, *if possible*, run at full speed.
+- 0.5 CPU represents 50% of the time on 1 vCPU - in other words, your session will, *if possible*, run at half speed.
+
+You can request any value up to 1 CPU to, in effect, select a speed at which your session should run.
+
+
 
 #### Memory ####
 
