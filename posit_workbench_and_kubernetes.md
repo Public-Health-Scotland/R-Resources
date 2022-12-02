@@ -89,11 +89,15 @@ The Central Processing Unit (CPU) is the primary component of a computer that ex
 
 In Posit Workbench you can request a number of CPUs that your session will be able to use, however as the deployment is on a cloud computing platform, we aren't requesting physical CPUs, but *virtual* CPUs (vCPUs).
 
-Physical CPUs can have multiple *cores*, and on those cores, multiple *threads* can be executed simultaneously.
+Modern CPUs can have multiple *cores*, and on those cores, multiple *threads* can be executed simultaneously.
 
-Take the Intel XEON E-2288G for example which has 1 physical CPU, made up of 8 cores, each of which can execute up to 16 threads.  We can calculate how many vCPUs this gives us as follows:
+A physical CPU, made up of 8 cores, each of which can execute up to 16 threads would give us vCPUs.  We can calculate how many vCPUs this gives us as follows:
 
-<div align="center">(16 threads x 8 cores) x 1 CPU = 128 vCPUs</div>
+*(16 threads x 8 cores) x 1 CPU = 128 vCPUs*
+
+
+
+Kubernetes adds a further layer of abstraction on top of this which means that, unfortuntaely, we cannot say that 1 CPU in Posit Workbench directly corresponds to 1 vCPU.
 
 Therefore, when we request 1 CPU in Posit Workbench, we are actually requesting 1 vCPU, which is the equivalent of 1 thread of execution on the physical CPU.
 
@@ -103,12 +107,13 @@ Perhaps a simpler way to think about this is consider CPU requests in Posit Work
 - 0.5 CPU = a 50% slice of processing time
 - 1.0 CPU = a whole slice of processing time
 
-But what happens when you request more than 1 CPU?  Well, it's important to only do this when you are knowlingly and explicity going to be running code that *executes in parallel*.  Parallel processing is a method of splitting up a large complex task, into lots of smaller simpler tasks, and running them simulatenously on multiple CPUs, thereby reducing the amount of time for processing.
+But what happens when you request more than 1 CPU?  Well, it's important to only do this when you are knowlingly and explicity going to be running code that *executes in parallel*.  Parallel processing is a method of splitting up a large complex task, into lots of smaller simpler tasks, and running them simultaneously on multiple CPUs, thereby reducing the amount of time for processing.
 
 The less CPUs you request, the greater number of pods running Posit Workbench sessions can be squeezed onto a single node, thus minimising cost to PHS.  If your analysis is simple or non-urgent, please consider requesting less than 1 CPU.
 
 #### Memory ####
 
+Memory (or RAM) is what holds data temporarily between operations being executed on it.
 
 #### Profiles ####
 
