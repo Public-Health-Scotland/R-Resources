@@ -65,4 +65,9 @@ Containerising (yes, that's a word!) Posit Workbench has the added advantage of 
 
 ### Optimal usage of cloud computing resources
 
-Microsoft Azure is a pay-as-you-go service.
+Microsoft Azure is a pay-as-you-go service.  There is a minimum cost to making Post Workbench available, which includes running the sessions in pods on the first node in the cluster, but anything beyond this is extra cost.  Each new node added to the cluster increases the costs for the period of time that the node is running for, so the more concurrent Posit Workbench sessions running concurrently, the greater the cost.  Storage in Azure is chargeable (e.g. installing R packages), as is outbound network traffic from Azure back to our on-premise servers (e.g. writing a CSV file to an area on the Stats server).
+
+In addition to the cost implications, we must be mindful at all times that the Posit Workbench environment is a shared resource with finite capacity, and as such, we each have a responsibility to ensure our code is as optimsed and efficient as possible, using the environment correctly and appropriately, and thus ensuring that we all benefit from this resource equally.
+
+
+
