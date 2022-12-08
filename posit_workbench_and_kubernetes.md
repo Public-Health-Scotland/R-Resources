@@ -128,7 +128,7 @@ How much memory your dataset requires is not just affected by the number of rows
 
 The recommendations above account for loading the `tidyverse` suite of R packages into memory, and allow some headroom for performing basic operations on the dataset.  Anything more complex than computing new columns or aggregating will require more memory than the recommendations above.
 
-There are ways to reduce memory consumption, by performing aggregation within the database, performing operations on chunks of data, or using technologies such as Apache Arrow, for working with larger-than-memory datasets stored on disk. *Guidance to be written on this*
+There are ways to reduce memory consumption, by performing aggregation within the database, performing operations on chunks of data, or using technologies such as [Apache Arrow](https://arrow.apache.org/), for working with larger-than-memory datasets stored on disk. 
 
 Again, the less memory you request, the greater number of pods running Posit Workbench sessions can be squeezed onto a single node, thus minimising cost to PHS.
 
