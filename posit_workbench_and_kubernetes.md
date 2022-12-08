@@ -96,7 +96,7 @@ On cloud computing platforms, we refer to virtual CPUs (vCPUs) where 1 vCPU equa
 In Posit Workbench you can request a number of CPUs that your session will be able to use:
 
 - The recommendation is that for writing and running chunks of code in an interactive session, 1 CPU is more than sufficient.  This roughly corresponds to 1 vCPU, or half of a physical core.
-- For running anything more substantial, 2 CPUs are recommended as the minimum.
+- For running substantial codebases, 2 CPUs are recommended with per-project consideration for increasing that further.
 - If you are running code that relies on parallel processing, please request 4 or more CPUs.
 
 The less CPUs you request, the greater number of pods running Posit Workbench sessions can be squeezed onto a single node, thus minimising cost to PHS.
