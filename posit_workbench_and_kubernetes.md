@@ -77,11 +77,11 @@ The best practice described here focusses solely on the aspects of Posit Workben
 
 When you request a new session in Posit Workbench, you are prompted to set a few parameters for that session in the following dialog:
 
-![image](https://user-images.githubusercontent.com/45657289/205252509-c73587ae-f9a8-410b-aef5-f53e5a2f011d.png)
+<img width="883" alt="Screenshot of 'New Session' modal from Posit Workbench" src="https://user-images.githubusercontent.com/33964310/206027877-68e29b84-7842-4c53-871c-03d868186b80.png">
 
-- Highlighted in yellow is the cluster that the session will run on. The Posit Workbench environment consists of one cluster called "Kubernetes".
-- Highlighted in green are the CPU and memory parameters for your session. These can be configured to suit the compute demands of your script.
-- Highlighted in blue are the maximum values for CPU and memory that you are permitted to request for your session.  These values are dependent on the profile that you have been assigned to (described in more detail below).
+- The orange box is the cluster that the session will run on. The Posit Workbench environment consists of one cluster called "Kubernetes".
+- The green boxes are the CPU and memory parameters for your session. These can be configured to suit the compute demands of your script.
+- The blue boxes are the maximum values for CPU and memory that you are permitted to request for your session.  These values are dependent on the profile that you have been assigned to (described in more detail below).
 
 #### CPUs ####
 
