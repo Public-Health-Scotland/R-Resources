@@ -12,10 +12,10 @@ Last updated: December 2022
 
 This document aims to provide users of Posit Workbench with high-level information on
 
-- what Kubernetes is,
-- why Posit Workbench has been deployed using Kubernetes and how it works,
-- the importance of optimal use of cloud computing resources in respect of financial cost to PHS, and
-- best practice for using Posit Workbench deployed using Kubernetes.
+- [what Kubernetes is](#what-is-kubernetes),
+- [why Posit Workbench has been deployed using Kubernetes and how it works](#why-kubernetes-and-how-does-it-work),
+- [the importance of optimal use of cloud computing resources in respect of financial cost to PHS](#optimal-usage-of-cloud-computing-resources), and
+- [best practice for using Posit Workbench deployed using Kubernetes](#best-practice).
 
 ## What is Kubernetes?
 
