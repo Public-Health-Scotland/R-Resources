@@ -29,7 +29,7 @@ A Docker *container* is a running instance of that image, in our case a running 
                                         
 ### Kubernetes
 
-Now that's out of the way, Kubernetes is simply a technology to automatically manage Docker containers based on a set of rules, so it doesn't need to be done manually.  The name is deirved from the Greek word κυβερνήτης (kubernḗtēs) which means pilot or helmsman, hence the Kubernetes logo being a ship's steering wheel:
+Now that's out of the way, Kubernetes is simply a technology to automatically manage Docker containers based on a set of rules, so it doesn't need to be done manually.  The name is derived from the Greek word κυβερνήτης (kubernḗtēs) which means pilot or helmsman, hence the Kubernetes logo being a ship's steering wheel:
 
 <img src="https://user-images.githubusercontent.com/45657289/205086608-d563dde1-7cc2-416a-9c99-10d57a252940.png" width="100">
 
