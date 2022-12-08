@@ -47,9 +47,11 @@ We need to introduce some Kubernetes concepts at this point to explain how Kuber
 
 ### Pods, Nodes and Clusters, oh my!
 
-**Pods** are groups of one or more containers and have shared storage and network resources.  Pods in the Posit Workbench deploymment have only one container, and therefore correspond to one Posit Workbench session.
+**Pods** are groups of one or more containers and have shared storage and network resources. Pods in the Posit Workbench deployment have only one container, and therefore correspond to one Posit Workbench session.
 
-**Nodes** are virtual machines that pods run on.  One node can run multiple pods, and generally several nodes are brought together in a **cluster**.  This is true of the Posit Workbench deployment.
+**Nodes** are virtual machines that pods run on. One node can run multiple pods, and generally several nodes are brought together in...
+
+**Clusters**, a pool of nodes that run containerised applications. This is true of the Posit Workbench deployment.
 
 ### Autoscaling
 
