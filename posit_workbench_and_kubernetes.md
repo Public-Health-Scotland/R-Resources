@@ -131,9 +131,3 @@ The recommendations above account for loading the `tidyverse` suite of R package
 There are ways to reduce memory consumption, by performing aggregation within the database, performing operations on chunks of data, or using technologies such as [Apache Arrow](https://arrow.apache.org/), for working with larger-than-memory datasets stored on disk. 
 
 Again, the less memory you request, the greater number of pods running Posit Workbench sessions can be squeezed onto a single node, thus minimising cost to PHS.
-
-#### Profiles ####
-
-Your user account is, by default, assigned to a generic profile which grants you permission to request up to x CPU and x MB of memory for your session.
-
-If the work that you do requires a greater number of CPUs or amount of memory than the defaults, you can request that your user account is assigned to an enhanced profile.  This request should be submitted in writing to ... explaining the reasons you require greater resources and for how long. *TBC*
