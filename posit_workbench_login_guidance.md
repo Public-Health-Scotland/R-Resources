@@ -35,5 +35,5 @@ https://github.com/Public-Health-Scotland/R-Resources/blob/terrymclaughlin_posit
 
 <img src = "https://user-images.githubusercontent.com/45657289/199208971-bf977d57-b042-4e43-9e15-b9b107dc89bc.png" width = "600">.
 
-12. One the session has opened, read the prompt in the console pane and follow the instructions. Please note that the usage message is still being finalised, along with an Acceptable Usage Policy.
+12. Once the session has opened, read the prompt in the console pane and follow the instructions. Please note that the usage message is still being finalised, along with an Acceptable Usage Policy.
 
