@@ -27,7 +27,7 @@ Last Updated: December 2022
 
 9. Follow the guidance linked below to select a suitable session size:
 
-https://github.com/Public-Health-Scotland/R-Resources/blob/terrymclaughlin_posit_workbench_and_kubernetes/posit_workbench_and_kubernetes.md#best-practice
+https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_and_kubernetes.md#best-practice
 
 10. Once you have selected a session size click the "Start Session" button.
 
