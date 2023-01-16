@@ -42,7 +42,8 @@ For example, imagine you are working on a project that uses a specific dataset a
 
 The Global Options window can be accessed from a Posit Workbench session through the Tools menu:
 
-_insert screenshot_
+![Tools_-_Global_Options PNG](https://user-images.githubusercontent.com/45657289/212679908-5cb53c40-de93-4010-8fae-6420d6bc4a64.png)
+
 
 
 
