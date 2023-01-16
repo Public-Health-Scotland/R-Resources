@@ -16,7 +16,9 @@ This document aims to provide users of Posit Workbench with guidance and best pr
 
 ### Workspace
 
-The Workspace is
+The workspace contains all the objects (vectors, matrices, data frames, etc.) and their values that have been defined in the current R session.  There are two options that can be set in the Global Options window that affect the behaviour of sessions and their workspaces:
+
+![Global_Options_-_Workspace](https://user-images.githubusercontent.com/45657289/212689097-9c1d3aed-0373-4d9f-9095-884d1651e0fc.png)
 
 #### Saving workspace to .RData file on exit
 
