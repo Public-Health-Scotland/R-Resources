@@ -16,6 +16,8 @@ This document aims to provide users of Posit Workbench with guidance and best pr
 
 ### Workspace
 
+The Workspace is
+
 #### Saving workspace to .RData file on exit
 
 A ‘.RData’ file is used by R to save the current workspace, which includes all the objects (vectors, matrices, data frames, etc.) and their values that have been defined in the current R session. When you quit R or close the R session, you have the option to save the current workspace to an .RData file so that you can later restore it and continue working with the same objects and their values.  Posit Workbench enables saving .RData files by default when the session closes.
