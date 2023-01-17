@@ -9,7 +9,7 @@ Last Updated: December 2022
 
 2. Open a web browser (preferably Microsoft Edge).
 
-3. Navigate to Posit Workbench at: https://pwb.publichealthscotland.org/auth-sign-in?appUri=%2F
+3. Navigate to Posit Workbench at: https://pwb.publichealthscotland.org/
 
 4. You will be presented with the following login page:
 
