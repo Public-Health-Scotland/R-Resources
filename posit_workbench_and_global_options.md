@@ -10,7 +10,7 @@ Last updated: January 2023
 
 ## Purpose
 
-This document aims to provide users of Posit Workbench with guidance and best practice on setting Global Options in Posit Workbench
+This document aims to provide users of Posit Workbench with guidance and best practice on setting Global Options in Posit Workbench.
 
 ## Global Options in Posit Workbench
 
