@@ -409,3 +409,77 @@ DBI::dbDisconnect(con)
 ```
 
 ### Pick good file formats for storing data
+
+If you want to store lots of data in a file, picking the right file format is an important decision that affects software compatibility, file size and how efficiently the file can be imported into R.
+
+#### I'll only use my data in R
+
+If you know your data will only be used in R, then the obvious choice is the **.rds** format. This stores and compresses data as R would internally store it in system memory. Use the `readRDS()` and `saveRDS()` functions to work with RDS files, for example:
+
+```r
+data("mtcars")
+saveRDS(mtcars, "my_cars_data.rds")
+rm(mtcars)
+mtcars <- readRDS("my_cars_data.rds")
+```
+
+**Pros:**
+
+* Fastest import/export, since very little processing needs to be performed to R objects.
+* Smallest file sizes, thanks to compression of the file.
+* All R objects can be stored (e.g. dates, shapefiles, lists, factors) and will be the same class when re-imported.
+
+**Cons:**
+
+* _Only_ compatible with R.
+
+#### I'll use my data with cloud services or other programming languages
+
+Consider using a column-oriented data storage format, such as [Apache Parquet](https://parquet.apache.org/) . This is optimised for fast import/export and compressing the data to small sizes. You can read more about it on the [Jumping Rivers blog](https://www.jumpingrivers.com/blog/parquet-file-format-big-data-r/).
+
+**Pros:**
+
+* Fast import/export.
+* Small file sizes thanks to intelligent ways of compressing each column of data.
+* Open-source means there is good support for this file type in other programming languages, such as Python, Java, C++.
+* Encodes basic data types correctly (e.g. character, integer, double).
+
+**Cons:**
+
+* Requires finding packages or add-ins for use with different languages/software.
+* Slower to import and export from R compared to .rds files due to the additional processing required.
+
+#### I'll use my data in Excel / SAS / SPSS / Stata
+
+To get data in and out of these formats, you’ll want to look at:
+
+* [{readxl}](https://readxl.tidyverse.org/) for reading data from Excel files.
+* [{openxlsx}](https://cran.r-project.org/web/packages/openxlsx/index.html) for reading and writing .xlsx Excel files.
+* [{haven}](https://haven.tidyverse.org/) for reading and writing data for SAS, SPSS and Stata.
+
+#### I'll need my data to be compatible with anything
+
+Use a CSV file if you need to share data openly so that it is compatible with virtually all software. This is also the best solution if you need "human-readable" data files, that can be viewed and edited with software as simple as a text editor. Consider using the [{readr}](https://readr.tidyverse.org/index.html) package for importing and exporting CSV files.
+
+**Pros:**
+
+* Compatible with pretty much any software.
+* Human-readable.
+* Easy to get passed email virus scans as the file is essentially just plain text.
+
+**Cons:**
+
+* Largest file sizes as all values are stored in plain text.
+* Slowest and most memory-consuming when importing and exporting large CSV files.
+* You need to specify the value separator and any text delimiters on every import:
+  * Using commas (,) is not always appropriate as a value separator, as some countries use this to mark decimal places. Consider using tab (\t) or semi-colon (;) in those situations.
+  * Text entries that contain commas and line-breaks can break CSV files if the text is not delimited by quotation marks to mark the start and end of that entry.
+
+
+
+
+
+
+
+
+
