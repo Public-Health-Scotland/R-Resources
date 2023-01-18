@@ -254,6 +254,158 @@ SELECT Hospital, PatientCount, AvgWaitingTime
 
 ### Get R to make good use of the database
 
+If you aren’t that familiar with writing SQL code, then writing more advanced SQL queries can seem more daunting. The temptation then becomes to load all the data into R where you can perform all data manipulation in a language you’re more familiar with. But this may not be necessary.
 
+The [{dbplyr}](https://dbplyr.tidyverse.org/) package allows you to create SQL queries by writing the [{dplyr}](https://dplyr.tidyverse.org/) methods you would normally use to perform data manipulation. To use {dbplyr}:
+
+1. Run `library("dplyr")` at the start of your R script. Note that {dplyr} is loaded, but not {d**b**plyr}. When dplyr methods are applied to a database table connection instead of a data frame, {dbplyr} is automatically loaded in the background.
+2. Establish a connection to an SQL database as normal.
+3. Use common {dplyr} verbs to filter, select, join, summarise, etc. on the database table connection (not a data frame).
+4. Pipe this into the `collect()` method to pull the data from the database.
+
+Without the final `collect()` step, the result of your {dplyr} sequence of commands will be a "lazy data frame". This provides a preview of the first ten rows of your SQL query. You can use this to quickly preview what your data will look like, without accidentally causing an unnecessarily big query operation to occur and your computer memory to be filled. Once you are happy that your query is optimised, add `collect()` to get all the data from your query.
+
+We can create a dummy database for demonstration purposes and create a table containing the iris dataset.
+
+```r
+con = DBI::dbConnect(RSQLite::SQLite(), path = ":memory:")
+DBI::dbWriteTable(con, "iris_tbl", iris)
+```
+
+You would connect to your database in a similar method. Ask your database administrator for support if you don’t know the credentials needed to establish the database connection.
+
+We can get a _lazy_ preview of the table by querying the table. At thetop, it will display `??` for the number of rows, as it has only asked the database to find the first 10.
+
+```r
+iris_tbl <- tbl(con, "iris_tbl")
+iris_tbl
+```
+
+```
+# Source:   table<iris_tbl> [?? x 5]
+# Database: sqlite 3.39.2 []
+   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+          <dbl>       <dbl>        <dbl>       <dbl> <chr>  
+ 1          5.1         3.5          1.4         0.2 setosa 
+ 2          4.9         3            1.4         0.2 setosa 
+ 3          4.7         3.2          1.3         0.2 setosa 
+ 4          4.6         3.1          1.5         0.2 setosa 
+ 5          5           3.6          1.4         0.2 setosa 
+ 6          5.4         3.9          1.7         0.4 setosa 
+ 7          4.6         3.4          1.4         0.3 setosa 
+ 8          5           3.4          1.5         0.2 setosa 
+ 9          4.4         2.9          1.4         0.2 setosa 
+10          4.9         3.1          1.5         0.1 setosa 
+# … with more rows
+# ℹ Use `print(n = ...)` to see more rows
+```
+
+We can ask it to only show results for the "versicolor" species using {dplyr} functions:
+
+```r
+library("dplyr")
+iris_tbl %>% 
+  filter(Species == "versicolor")
+```
+
+```
+# Source:   SQL [?? x 5]
+# Database: sqlite 3.39.2 []
+   Sepal.Length Sepal.Width Petal.Length Petal.Width Species   
+          <dbl>       <dbl>        <dbl>       <dbl> <chr>     
+ 1          7           3.2          4.7         1.4 versicolor
+ 2          6.4         3.2          4.5         1.5 versicolor
+ 3          6.9         3.1          4.9         1.5 versicolor
+ 4          5.5         2.3          4           1.3 versicolor
+ 5          6.5         2.8          4.6         1.5 versicolor
+ 6          5.7         2.8          4.5         1.3 versicolor
+ 7          6.3         3.3          4.7         1.6 versicolor
+ 8          4.9         2.4          3.3         1   versicolor
+ 9          6.6         2.9          4.6         1.3 versicolor
+10          5.2         2.7          3.9         1.4 versicolor
+# … with more rows
+# ℹ Use `print(n = ...)` to see more rows
+```
+
+Or we can specify anything that’s not a "setosa" species that also has a sepal length > 5, ordered by petal length in descending order:
+
+```r
+iris_tbl %>% 
+  filter(Species != "setosa",
+         Sepal.Length > 5) %>% 
+  arrange(desc(Petal.Length))
+```
+
+```
+# Source:     SQL [?? x 5]
+# Database:   sqlite 3.39.2 []
+# Ordered by: desc(Petal.Length)
+   Sepal.Length Sepal.Width Petal.Length Petal.Width Species  
+          <dbl>       <dbl>        <dbl>       <dbl> <chr>    
+ 1          7.7         2.6          6.9         2.3 virginica
+ 2          7.7         3.8          6.7         2.2 virginica
+ 3          7.7         2.8          6.7         2   virginica
+ 4          7.6         3            6.6         2.1 virginica
+ 5          7.9         3.8          6.4         2   virginica
+ 6          7.3         2.9          6.3         1.8 virginica
+ 7          7.2         3.6          6.1         2.5 virginica
+ 8          7.4         2.8          6.1         1.9 virginica
+ 9          7.7         3            6.1         2.3 virginica
+10          6.3         3.3          6           2.5 virginica
+# … with more rows
+# ℹ Use `print(n = ...)` to see more rows
+```
+
+When we are happy with the preview provided, we collect all the results from our query using `collect()` and we'll notice the table knows how many rows it has since it will have all the data.
+
+```r
+iris_tbl %>% 
+  filter(Species != "setosa",
+         Sepal.Length > 5) %>% 
+  arrange(desc(Petal.Length)) %>% 
+  collect()
+```
+
+```
+# A tibble: 96 × 5
+   Sepal.Length Sepal.Width Petal.Length Petal.Width Species  
+          <dbl>       <dbl>        <dbl>       <dbl> <chr>    
+ 1          7.7         2.6          6.9         2.3 virginica
+ 2          7.7         3.8          6.7         2.2 virginica
+ 3          7.7         2.8          6.7         2   virginica
+ 4          7.6         3            6.6         2.1 virginica
+ 5          7.9         3.8          6.4         2   virginica
+ 6          7.3         2.9          6.3         1.8 virginica
+ 7          7.2         3.6          6.1         2.5 virginica
+ 8          7.4         2.8          6.1         1.9 virginica
+ 9          7.7         3            6.1         2.3 virginica
+10          6.3         3.3          6           2.5 virginica
+# … with 86 more rows
+# ℹ Use `print(n = ...)` to see more rows
+```
+
+Instead of collecting the values, we can ask it to print the SQL query it is making using `show_query()`, should we want to check what the query looks like behind-the-scenes:
+
+```r
+iris_tbl %>% 
+  filter(Species != "setosa",
+         Sepal.Length > 5) %>% 
+  arrange(desc(Petal.Length)) %>% 
+  show_query()
+```
+
+```sql
+<SQL>
+SELECT *
+FROM `iris_tbl`
+WHERE (`Species` != 'setosa') AND (`Sepal.Length` > 5.0)
+ORDER BY `Petal.Length` DESC
+```
+
+Of course, don't forget to disconnect your database connection when you’re finished.
+
+```r
+DBI::dbDisconnect(con)
+```
 
 ### Pick good file formats for storing data
