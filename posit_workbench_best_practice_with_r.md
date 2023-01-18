@@ -36,7 +36,7 @@ If you want to know if you’ve accidentally left sessions running, your home pa
 
 ![image](https://user-images.githubusercontent.com/45657289/213185308-ee5eed27-8622-478a-a80f-ae2edf63fa54.png)
 
-You will usually see this page when you log in to the RStudio platform, but if you are currently in an active session and want to view the home page, click on the home icon ![image](https://user-images.githubusercontent.com/45657289/213185415-f8ed533f-a3f2-49c5-be4b-e8bf5528eca8.png) in the
+You will usually see this page when you log in to Posit Workbench, but if you are currently in an active session and want to view the home page, click on the home icon ![image](https://user-images.githubusercontent.com/45657289/213185415-f8ed533f-a3f2-49c5-be4b-e8bf5528eca8.png) in the
 top-right of the workspace window, or navigate in the menus to _File → ![image](https://user-images.githubusercontent.com/45657289/213185415-f8ed533f-a3f2-49c5-be4b-e8bf5528eca8.png) RStudio Server Home_.
 
 ![image](https://user-images.githubusercontent.com/45657289/213185696-5b562c9a-c957-4de4-9043-5d61d1e81d3a.png)
@@ -72,5 +72,31 @@ To avoid accidentally using an existing variable in your environment, there are 
 * If you have the {usethis} package installed, you can run `usethis::use_blank_slate()` to automatically change the settings described above.
 
 By avoiding a .RData file, there are no large objects stored that are consuming storage space, and opening and closing sessions is faster, thanks to reduced loading and saving times.
+
+## Coding with R
+
+### Removing intermediate variables
+
+Suppose we have two large data frames, `a_data` and `b_data`, that we join together to create a third data frame, `combined_data` that we will use for the rest of our analysis. Our environment will now have 3 large data frames stored in memory, even though `a_data` and `b_data` may now be redundant. We can free up that occupied memory by deleting `a_data` and `b_data` from the environment using the `rm()` function:
+
+```
+rm(a_data, b_data)
+```
+
+This allows R to use that memory to store other potentially large objects without running out of memory.
+
+R will automatically perform _garbage collection_ — the process of freeing-up unused system memory that's no longer used — where necessary. But we can also manually trigger garbage collection by running `gc()` in the R console at any time, which can be especially effective after large objects have just been deleted from the environment.
+
+### Overwriting existing objects
+
+
+
+
+### Avoiding intermediate variables
+
+
+
+### Automatically close an R session
+
 
 
