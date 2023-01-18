@@ -69,7 +69,7 @@ To avoid accidentally using an existing variable in your environment, there are 
 
 ![image](https://user-images.githubusercontent.com/45657289/213186998-363ac925-5812-4d50-9bff-64c18f72f8bf.png)
 
-* If you have the {usethis} package installed, you can run `usethis::use_blank_slate()` to automatically change the settings described above.
+* If you have the [{usethis}](https://usethis.r-lib.org/) package installed, you can run `usethis::use_blank_slate()` to automatically change the settings described above.
 
 By avoiding a .RData file, there are no large objects stored that are consuming storage space, and opening and closing sessions is faster, thanks to reduced loading and saving times.
 
@@ -79,7 +79,7 @@ By avoiding a .RData file, there are no large objects stored that are consuming 
 
 Suppose we have two large data frames, `a_data` and `b_data`, that we join together to create a third data frame, `combined_data` that we will use for the rest of our analysis. Our environment will now have 3 large data frames stored in memory, even though `a_data` and `b_data` may now be redundant. We can free up that occupied memory by deleting `a_data` and `b_data` from the environment using the `rm()` function:
 
-```
+```r
 rm(a_data, b_data)
 ```
 
@@ -89,12 +89,135 @@ R will automatically perform _garbage collection_ — the process of freeing-up 
 
 ### Overwriting existing objects
 
+It's quite common to modify existing objects on a step-by-step basis. One strategy for reducing the amount of variables you create in your environment is to modify and overwrite the existing object, by saving the result into the same object.
 
+Let's imagine we are working with the iris dataset:
 
+```r
+data("iris")
+head(iris)
+```
+
+```
+  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa
+```
+
+and we want to approximate the area of the sepal and petal by multiplying "Length" × "Width", and convert the Species values to upper-case.
+
+When working with standard R methods, we could modify the existing iris by adding and modifying columns.
+
+```r
+data("iris")
+iris$Sepal.Area <- iris$Sepal.Length * iris$Sepal.Width
+iris$Petal.Area <- iris$Petal.Length * iris$Petal.Width
+iris$Species <- toupper(iris$Species)
+head(iris)
+```
+
+```
+  Sepal.Length Sepal.Width Petal.Length Petal.Width Species Sepal.Area
+1          5.1         3.5          1.4         0.2  SETOSA      17.85
+2          4.9         3.0          1.4         0.2  SETOSA      14.70
+3          4.7         3.2          1.3         0.2  SETOSA      15.04
+4          4.6         3.1          1.5         0.2  SETOSA      14.26
+5          5.0         3.6          1.4         0.2  SETOSA      18.00
+6          5.4         3.9          1.7         0.4  SETOSA      21.06
+  Petal.Area
+1       0.28
+2       0.28
+3       0.26
+4       0.30
+5       0.28
+6       0.68
+```
+
+Meanwhile, using tidyverse methods, we can use mutate to create the modified table and overwrite the original iris table:
+
+```r
+library("dplyr")
+data("iris")
+iris <- mutate(iris,
+               Sepal.Area = Sepal.Length * Sepal.Width,
+               Petal.Area = Petal.Length * Petal.Width,
+               Species = toupper(Species))
+head(iris)
+```
+
+```
+  Sepal.Length Sepal.Width Petal.Length Petal.Width Species Sepal.Area
+1          5.1         3.5          1.4         0.2  SETOSA      17.85
+2          4.9         3.0          1.4         0.2  SETOSA      14.70
+3          4.7         3.2          1.3         0.2  SETOSA      15.04
+4          4.6         3.1          1.5         0.2  SETOSA      14.26
+5          5.0         3.6          1.4         0.2  SETOSA      18.00
+6          5.4         3.9          1.7         0.4  SETOSA      21.06
+  Petal.Area
+1       0.28
+2       0.28
+3       0.26
+4       0.30
+5       0.28
+6       0.68
+```
+
+This overwriting action prevents unnecessary redundant datasets being stored. But care must be taken as the overwriting cannot be undone. If you accidentally overwrite some data you needed, you'll need to recreate it again using your R script.
 
 ### Avoiding intermediate variables
 
+It's common to perform a sequence of steps when preparing your data. This can lead to a series of intermediate variables being created to store the result of each step. Overwriting the results from the last step is one possible solution, but an alternative is to _pipe_ the result from one stage directly into the next.
 
+The [{magrittr}](https://magrittr.tidyverse.org/) package provides a _pipe_ operator, which is written in R as `%>%`. It takes the object to its left and "pipes" it into the function on the right as its first unset argument. In general terms, the following two lines of code are equivalent ways of running a function called `f`:
+
+```r
+f(x, y)
+x %>% f(y)
+```
+
+Typing Ctrl + Shift + M is a keyboard shortcut for inserting `%>%` in RStudio.
+
+This feature becomes very powerful in the tidyverse, where many of the commonly used functions take in a data frame as their first argument and output a data frame. This allows a chain of modifications to be made linked together without having to store the intermediate stages of the process.
+
+Suppose we want to plot the iris `Sepal.Area` against the `Petal.Area`. If we don't need to store these results for anything else, we can pipe the modified data frame directly into our plotting code, and avoid having to store any of the intermediate stages.
+
+ ```r
+library("ggplot2")
+data(iris)
+iris %>% 
+  transmute(Sepal.Area = Sepal.Length * Sepal.Width,
+            Petal.Area = Petal.Length * Petal.Width,
+            Species = toupper(Species)) %>% 
+  ggplot(mapping = aes(x = Petal.Area, y = Sepal.Area, colour = Species)) +
+  geom_point()
+ ```
+
+Avoiding the process of saving intermediate stages means your workspace does not get cluttered with unnecessary datasets that use up memory and you may have to remove later.
+
+But this does not mean you should should never save an intermediate stage in a calculation. If a single modified data frame needs to be used in two separate calculations, it's more efficient to store the value to use in both calculations rather than recalculating it twice from scratch. Store only what you need to prevent yourself repeating calculating the same thing twice:
+
+```r
+library("gridExtra")
+data(iris)
+iris_areas <- iris %>% 
+  transmute(Sepal.Area = Sepal.Length * Sepal.Width,
+            Petal.Area = Petal.Length * Petal.Width,
+            Species = toupper(Species))
+
+g1 <- ggplot(data = iris_areas,
+             mapping = aes(x = Petal.Area, y = Sepal.Area, colour = Species)) +
+  geom_point()
+
+g2 <- ggplot(data = iris_areas, mapping = aes(x = Sepal.Area)) +
+  geom_histogram(bins = 10) +
+  facet_wrap(Species ~ .)
+
+grid.arrange(g1, g2, nrow = 2)
+```
 
 ### Automatically close an R session
 
