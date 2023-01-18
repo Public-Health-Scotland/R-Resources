@@ -16,7 +16,7 @@ Posit Team comprises three applications:
 
 ## Purpose
 
-This document aims to provide users of Posit Workbench with contact information for support with Posit Team applications.
+This document aims to provide users of Posit Team applications with contact information for seeking support.
 
 ## Requesting a change to your Posit Workbench Kubernetes Profile
 
