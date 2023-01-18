@@ -32,6 +32,45 @@ You can close your session in a number of ways:
 
 ### View all open sessions
 
+If you want to know if you’ve accidentally left sessions running, your home page will display a list of currently active sessions.
 
+![image](https://user-images.githubusercontent.com/45657289/213185308-ee5eed27-8622-478a-a80f-ae2edf63fa54.png)
+
+You will usually see this page when you log in to the RStudio platform, but if you are currently in an active session and want to view the home page, click on the home icon ![image](https://user-images.githubusercontent.com/45657289/213185415-f8ed533f-a3f2-49c5-be4b-e8bf5528eca8.png) in the
+top-right of the workspace window, or navigate in the menus to _File → ![image](https://user-images.githubusercontent.com/45657289/213185415-f8ed533f-a3f2-49c5-be4b-e8bf5528eca8.png) RStudio Server Home_.
+
+![image](https://user-images.githubusercontent.com/45657289/213185696-5b562c9a-c957-4de4-9043-5d61d1e81d3a.png)
+
+It is recommended that the server home page be displayed when you log in, to list any active sessions. You can configure this to happen for your account by accessing the settings inside a session: In the menus, visit Tools → Global Options…, then under the "General" menu, click on the "Advanced" tab. Set the option for "Show server home page" to be "Always":
+
+![image](https://user-images.githubusercontent.com/45657289/213186007-16746c3d-bab0-45fe-81b7-fed363d94dfa.png)
+
+If you have no sessions running, then the home page will list no active sessions, and instead have a link to create a new session.
+
+![image](https://user-images.githubusercontent.com/45657289/213186065-769c4008-a4c3-47f6-9ed8-200d667c4e73.png)
 
 ### Leave a clean workspace
+
+It can feel counter-intuitive to exit a session without saving the variables in your environment, given the obvious fact that those values will be lost. But what really matters is the R script that you produced, which loaded or generated that data in the first place—this is what you want to save for a number of reasons:
+
+* A well-written R script can recreate your analysis in an automated way and using the most up-to-date datasets. You don't need to store old results as variables when you can quickly generate new ones on demand.
+* Good scripts will be portable, meaning they can be run in different sessions, on different computers and even by different people who want to perform your analysis.
+* R scripts have small file sizes, causing minimal impact to your available storage and making them easy to transfer to other computers or users.
+
+In order to write a good script that can run in any session by any computer, you should always assume the script is working in a brand-new, clean and empty environment, and is completely self-sufficient for the tasks it wants to do. If you create a script that uses a variable that only existed in your working environment and pass it onto someone else, they won’t be able to run the script since it relies on something only your session contains.
+
+To avoid accidentally using an existing variable in your environment, there are some steps we can take which all focus around keeping a clean working environment:
+
+* Set Posit Workbench to _never_ save your environment to an .RData file when exiting a session.
+  * Access the RStudio Global Options menu by going to _Tools → Global Options…_
+  * In the "General" menu, open the "Basic" tab.
+  * Untick the "Restore .RData into workspace at startup" tab.
+  * Set "Save workspace to .RData on exit" to "Never".
+
+![image](https://user-images.githubusercontent.com/45657289/213186998-363ac925-5812-4d50-9bff-64c18f72f8bf.png)
+
+* If you have the {usethis} package installed, you can run `usethis::use_blank_slate()` to automatically change the settings described above.
+
+By avoiding a .RData file, there are no large objects stored that are consuming storage space, and opening and closing sessions is faster, thanks to reduced loading and saving times.
+
+
