@@ -198,7 +198,7 @@ iris %>%
 
 Avoiding the process of saving intermediate stages means your workspace does not get cluttered with unnecessary datasets that use up memory and you may have to remove later.
 
-But this does not mean you should should never save an intermediate stage in a calculation. If a single modified data frame needs to be used in two separate calculations, it's more efficient to store the value to use in both calculations rather than recalculating it twice from scratch. Store only what you need to prevent yourself repeating calculating the same thing twice:
+But this does not mean you should should never save an intermediate stage in a calculation. If a single modified data frame needs to be used in two separate calculations, it's more efficient to store the value to use in both calculations rather than recalculating it twice from scratch. Store only what you _need_ to prevent yourself repeating calculating the same thing twice:
 
 ```r
 library("gridExtra")
@@ -221,5 +221,39 @@ grid.arrange(g1, g2, nrow = 2)
 
 ### Automatically close an R session
 
+If you want your script to end the session automatically when it completes all its tasks, then include the `q()` or `quit()` function in your script. Both functions perform the same task of terminating the current session.
+
+The first argument, `save`, specifies whether the current environment should be saved. The default behaviour will often ask you interactively, which means it won’t automatically close by itself. As discussed earlier, it’s considered best practice to never save your environment, so we should pre-emptively tell it not to save the workspace variables:
+
+```r
+quit(save = "no")
+```
+
+## Importing and exporting data
+
+### Make good use of databases
+
+A well designed database is purpose-built and highly optimised to reliably, rapidly and efficiently handle the storage and retrieval of large amounts of data. Databases often contain pre-computed indexes, which mean the database knows exactly where to find the data you need without having to wade through what could potentially be terabytes worth of data.
+
+Let's suppose you have a database containing 100,000 data points covering a whole country and you need to extract 1,000 data points corresponding to a certain region. There's two methods you could use to get those regional data points:
+
+1. Send a query to the database that loads all 100,000 data points from the database into R, then filter for the 1,000 data points you want in R.
+2. Send a query to the database to find the 1,000 regional data points out of its table of 100,000 entries, and send those to R.
+
+Of the two methods above, option 2 will _always_ be faster and more efficient; the database will always filter the data faster than R can. Even in the compromised situation where the region is not indexed in the database, the additional overhead of transferring 99,000 unnecessary data points to R — which have to be parsed and allocated memory in R — mean that the database will still be the faster and more efficient option.
+
+In short, querying the database for more than you need — for example, by using an SQL query of `SELECT * FROM HospitalRecords;` — wastes your time and everyone's shared resources.
+
+Make full use of your database's filtering and table-joining methods to take full advantage of the optimised algorithms and column indexing, before the data reaches R. In the case of SQL, that could be as simple as adding conditions, such as:
+
+```sql
+SELECT Hospital, PatientCount, AvgWaitingTime
+    FROM HospitalRecords
+    WHERE Region='NorthernArea';
+```
+
+### Get R to make good use of the database
 
 
+
+### Pick good file formats for storing data
