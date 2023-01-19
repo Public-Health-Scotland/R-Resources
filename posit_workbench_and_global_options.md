@@ -14,6 +14,12 @@ This document aims to provide users of Posit Workbench with guidance and best pr
 
 ## Global Options in Posit Workbench
 
+### How to change Global Options settings
+
+The Global Options window can be accessed from a Posit Workbench session through the Tools menu:
+
+![Tools_-_Global_Options PNG](https://user-images.githubusercontent.com/45657289/212679908-5cb53c40-de93-4010-8fae-6420d6bc4a64.png)
+
 ### Workspace
 
 The workspace contains all the objects (vectors, matrices, data frames, etc.) and their values that have been defined in the current R session.  There are two options that can be set in the Global Options window that affect the behaviour of sessions and their workspaces:
@@ -41,13 +47,3 @@ For example, imagine you are working on a project that uses a specific dataset a
 * The process of loading a .RData file into the R environment can, particularly if it is a large file, take a very long time.  In fact, the Posit Workbench session will crash, if the amount of memory required to restore the .RData file exceeds the amount of memory available to the session.
 
 **For these reasons, it is highly recommended that users untick the “Restore .RData into workspace at startup” option in the Global Options window.**
-
-## How to change Global Options settings
-
-The Global Options window can be accessed from a Posit Workbench session through the Tools menu:
-
-![Tools_-_Global_Options PNG](https://user-images.githubusercontent.com/45657289/212679908-5cb53c40-de93-4010-8fae-6420d6bc4a64.png)
-
-
-
-
