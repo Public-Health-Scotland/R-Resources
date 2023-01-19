@@ -12,7 +12,7 @@ The platform has been designed and implemented as a high-performance, high-avail
 
 ### Purpose
 
-This document sets out the acceptable practices regarding the use of Posit Workbench in order to protect the availability of this analytical environment for all users in Public Health Scotland.
+This document sets out the acceptable use of Posit Workbench in order to protect the availability of this analytical environment for all users in Public Health Scotland.
 
 ### Scope
 
@@ -20,19 +20,19 @@ This policy solely pertains to the acceptable use of the Posit Workbench analyti
 
 ## Accessing Posit Workbench
 
-### Authorisation
+### Authorised Users
 
-Line managers of PHS staff can authorise their requests for access to Posit Workbench.
+As per the System Security Plan (SSP) for Posit Workbench, only Public Health Scotland staff are permitted to access Posit Workbench, and specific named non-PHS users who are required to access Posit Workbench for System Administration purposes.
 
-Non-PHS users must seek authorisation from ...
+Line managers of PHS staff can authorise their staff's requests for access to Posit Workbench.
 
 ### Changing User Access
 
-Changes to users' access can be requested by ...
+Line managers of PHS staff can request and/or authorise changes to their staff's access to Posit Workbench.
 
-### User Access Tracking
+### Licenses
 
-Public Health Scotland have a fixed number of named-user licenses for Posit Workbench, and therefore users accessing Posit Workbench will be tracked for the sole purpose of ensuring compliance with the license agreement.
+Public Health Scotland have a fixed number of named-user licenses for Posit Workbench.  A user accessing Posit Workbench will be logged by the application.  These logs will be reviewed by authorised PHS staff and non-PHS System Administrators to ensure that PHS is compliant with the license agreement.
 
 ## Appropriate Usage
 
