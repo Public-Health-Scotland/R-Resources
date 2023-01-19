@@ -4,15 +4,19 @@ Original author(s): Terry McLaughlin
 
 Last updated: January 2023
 
-## Introduction
+## Background
 
+Posit Team enterprise applications have been deployed for Public Health Scotland (PHS) on the Microsoft Azure cloud computing platform.
 
+The platform has been designed and implemented as a high-performance, high-availability analytical environment to support the work of Public Health Scotland.
 
 ### Purpose
 
+This document sets out the acceptable practices regarding the use of Posit Workbench in order to protect the availability of this analytical environment for all users in Public Health Scotland.
 
 ### Scope
 
+This policy solely pertains to the acceptable use of the Posit Workbench analytical environment.
 
 ## Accessing Posit Workbench
 
