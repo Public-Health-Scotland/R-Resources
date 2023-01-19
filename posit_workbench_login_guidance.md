@@ -1,13 +1,9 @@
 # Guidance to log in and start a session on Posit Workbench
 
-Original Author: Ciara Gribben
-
-Last Updated: December 2022
-
 ## Logging in to Posit Workbench
-1. Ensure you are connected to the VPN.
+1. Ensure you are connected to the VPN (or connected to the internal network if you're on-site).
 
-2. Open a web browser (preferably Microsoft Edge).
+2. Open a web browser.
 
 3. Navigate to Posit Workbench at: https://pwb.publichealthscotland.org/
 
