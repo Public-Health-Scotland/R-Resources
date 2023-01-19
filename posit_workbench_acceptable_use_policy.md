@@ -42,9 +42,15 @@ Posit Workbench is hosted in Microsoft Azure, a cloud computing platform.  Micro
 
 Users must take steps to minimise these costs by ensuring that they only request the computing resources they need to carry out their work, and ensuring that their analyses are as efficient as possible at all times.
 
+Guidance on how to request only the computing resources needed, and information on how to request greater computing resources if required, can be found in the document [Posit Workbench and Kubernetes](https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_and_kubernetes.md)
+
 ### Shared Computing Resources
 
 Users must be mindful that, whilst Posit Workbench's implementation on Microsoft Azure allows for more separation between each user's Workbench sessions, the environment is still running on shared computing resources.  Therefore, users must not seek to monopolise the system for their own use, or unnecessarily overload the system by requesting excessive resources for their session.  The environment will automatically scale up and down as user demand dictates, but there is an upper limit to control overall costs to Public Health Scotland.
+
+### Following Best Practice
+
+Users must adhere to the best practice principles set out in the document [Best Practice with R in Posit Workbench](https://github.com/Public-Health-Scotland/R-Resources/blob/master_r/posit_workbench_best_practice_with_r.md), to ensure that code is as optimised and efficient as possible and that Posit Workbench is being used correctly and appropriately.
 
 ### Personal Usage
 
@@ -61,7 +67,7 @@ Access to these audit logs, dashboards and reports will be restricted to authori
 
 ## Training and Awareness
 
-Users can access appropriate training on the usage of Posit Workbench, R programming, GitHub and other Data Science topics related to use of Posit Workbench through the Data Science Knowledge Base.
+Users can access appropriate training on the usage of Posit Workbench, R programming, GitHub and other Data Science topics related to use of Posit Workbench through the [Data Science Knowledge Base](https://public-health-scotland.github.io/knowledge-base/).
 
 Users will be prompted to confirm that they have read and agree to this policy before they are permitted to start using the Posit Workbench environment.
 
