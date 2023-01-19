@@ -34,6 +34,8 @@ Line managers of PHS staff can request and/or authorise changes to their staff's
 
 Public Health Scotland have a fixed number of named-user licenses for Posit Workbench.  A user accessing Posit Workbench will be logged by the application.  These logs will be reviewed by authorised PHS staff and non-PHS System Administrators to ensure that PHS is compliant with the license agreement.
 
+Authorisation to these logs shall be granted by ...
+
 ## Appropriate Usage
 
 ### Cloud Services
@@ -58,12 +60,12 @@ Users are prohibited from using Posit Workbench for personal projects or activit
 
 ## Auditing
 
-User activity on Posit Workbench will be routinely collated in dashboards and reports solely for the purposes of
+User activity on Posit Workbench will be routinely collated in dashboards and reports for the purposes of
 
 * monitoring the stability and performance of the Posit Workbench environment hosted in Microsoft Azure, and
 * calculating costs accrued by usage of Posit Workbench.
 
-Access to these audit logs, dashboards and reports will be restricted to authorised staff.  Authorisation shall be granted by ...
+Access to these audit logs, dashboards and reports will be restricted to authorised PHS staff and non-PHS System Administrators.  Authorisation shall be granted by ...
 
 ## Training and Awareness
 
@@ -77,7 +79,7 @@ Users should ensure that they are compliant with mandatory training requirements
 
 Users are prohibited from bypassing the data security and encryption measures put in place for data in transit between Microsoft Azure and NSS servers.  Any attempt to do so will be considered a violation of the acceptable use policy.
 
-
+Users must not save any data, irrespective of its sensitivity, to their home directory on Posit Workbench.
 
 ## Policy Review
 
