@@ -34,6 +34,8 @@
 11. Due to the setup of the server, the session can take up to 1 min to become available. Once available, you may automatically join or can click on the session listed on the home page.
 
     <img src = "https://user-images.githubusercontent.com/45657289/199208971-bf977d57-b042-4e43-9e15-b9b107dc89bc.png" width = "600">.
+    
+    > If the session takes longer or fails to open, this could indicate an issue and should be raised through the appropriate support channels. Details of this here: [https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_team_contact_info.md]()
 
 12. Once the session has opened, read the prompt in the console pane and follow the instructions. Please note that the usage message is still being finalised, along with an Acceptable Usage Policy.
 
