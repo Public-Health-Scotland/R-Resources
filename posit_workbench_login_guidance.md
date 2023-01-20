@@ -25,9 +25,9 @@
 
 https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_and_kubernetes.md#best-practice
 
-10. Once you have selected a session size click the "Start Session" button.
+10. Once you are satisfied with the details include and selected a session size, click the "Start Session" button.
 
-11. If your Workbench session does not open automatically after a few seconds, click on the session listed on the home page.
+11. Due to the setup of the server, the session can take up to 1min to become available. Once available, you may automatically join or can click on the session listed on the home page.
 
 <img src = "https://user-images.githubusercontent.com/45657289/199208971-bf977d57-b042-4e43-9e15-b9b107dc89bc.png" width = "600">.
 
