@@ -37,5 +37,4 @@
     
     > If the session takes longer or fails to open, this could indicate an issue and should be raised through the appropriate support channels. Details of this here: [https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_team_contact_info.md]()
 
-12. Once the session has opened, read the prompt in the console pane and follow the instructions. Please note that the usage message is still being finalised, along with an Acceptable Usage Policy.
-
+12. Once the session has opened, read the prompt in the console pane, including the Acceptable Usage Policy, and follow the instructions.
