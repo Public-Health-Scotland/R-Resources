@@ -18,7 +18,7 @@ This document aims to offer guidance to users on good practices for efficient an
 
 All active users on the server are sharing a part of the available resources. By closing your session when you are not using it, you free up the resources your session was using, allowing other users the resources needed to perform their analyses.
 
-You can close your session in a number of ways:
+You can close your session in a number of ways, and may be prompted to save any unsaved changes before the session closes:
 
 1. By clicking on the Power button ![image](https://user-images.githubusercontent.com/45657289/213184464-3a7b5e72-ff03-4dac-b99b-bec0c79167fe.png) icon in the top right of the workspace window.
 
@@ -28,7 +28,7 @@ You can close your session in a number of ways:
 
 ![image](https://user-images.githubusercontent.com/45657289/213184913-ab491f74-c6a3-48ff-bce1-1195a0ae0d68.png)
 
-3. By typing `q()` in your R console. You may be prompted to save any unsaved changes before the session closes.
+3. By typing `q()` in your R console. 
 
 ### View all open sessions
 
