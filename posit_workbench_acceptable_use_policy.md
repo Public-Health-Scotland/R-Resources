@@ -1,9 +1,5 @@
 # Posit Workbench Acceptable Use Policy
 
-Original author(s): Terry McLaughlin
-
-Last updated: January 2023
-
 ## Background
 
 Posit Team enterprise applications have been deployed for Public Health Scotland (PHS) on the Microsoft Azure cloud computing platform.
@@ -16,7 +12,7 @@ This document sets out the acceptable use of Posit Workbench in order to protect
 
 ### Scope
 
-This policy solely pertains to the acceptable use of the Posit Workbench analytical environment.
+This policy solely pertains to the acceptable use of the Posit Workbench analytical environment.  This is a sub-policy of the NSS IT Acceptable Use Policy.
 
 ## Accessing Posit Workbench
 
@@ -34,7 +30,7 @@ Line managers of PHS staff can request and/or authorise changes to their staff's
 
 Public Health Scotland have a fixed number of named-user licenses for Posit Workbench.  A user accessing Posit Workbench will be logged by the application.  These logs will be reviewed by authorised PHS staff and non-PHS System Administrators to ensure that PHS is compliant with the license agreement.
 
-Authorisation to these logs shall be granted by ...
+Authorisation to these logs shall be granted by the organisation lead for IT or the system owner within PHS.
 
 ## Appropriate Usage
 
@@ -65,7 +61,7 @@ User activity on Posit Workbench will be routinely collated in dashboards and re
 * monitoring the stability and performance of the Posit Workbench environment hosted in Microsoft Azure, and
 * calculating costs accrued by usage of Posit Workbench.
 
-Access to these audit logs, dashboards and reports will be restricted to authorised PHS staff and non-PHS System Administrators.  Authorisation shall be granted by ...
+Access to these audit logs, dashboards and reports will be restricted to authorised PHS staff and non-PHS System Administrators.  Authorisation shall be granted by the organisation lead for IT or the system owner within PHS.
 
 ## Training and Awareness
 
@@ -85,10 +81,12 @@ Users must not save any data, irrespective of its sensitivity, to their home dir
 
 This policy will be reviewed two years from its effective date to ensure that arrangements put in place are appropriate to the operating requirements of Public Health Scotland. 
 
-Date policy is effective: January 2023
+Date policy is effective: 23rd January 2023
 
-Reviewed by: 
+Reviewed by: Kat Reid, Ciara Gribben, Russell McCreath, Monica Renicks
 
-Agreed by:
-Date:
-Position:
+Agreed by: Monica Renicks
+
+Date: 23rd January 2023
+
+Position: Organisational Lead for IT
