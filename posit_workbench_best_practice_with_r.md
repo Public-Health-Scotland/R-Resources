@@ -30,7 +30,7 @@ You can close your session in a number of ways, and may be prompted to save any 
 
 3. By typing `q()` in your R console. 
 
-### View all open sessions
+#### View all open sessions
 
 If you want to know if you’ve accidentally left sessions running, your home page will display a list of currently active sessions.
 
