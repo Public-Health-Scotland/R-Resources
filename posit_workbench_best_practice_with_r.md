@@ -172,7 +172,7 @@ This overwriting action prevents unnecessary redundant datasets being stored. Bu
 
 It's common to perform a sequence of steps when preparing your data. This can lead to a series of intermediate variables being created to store the result of each step. Overwriting the results from the last step is one possible solution, but an alternative is to _pipe_ the result from one stage directly into the next.
 
-The [{magrittr}](https://magrittr.tidyverse.org/) package provides a _pipe_ operator, which is written in R as `%>%`. It takes the object to its left and "pipes" it into the function on the right as its first unset argument. In general terms, the following two lines of code are equivalent ways of running a function called `f`:
+The [{magrittr}](https://magrittr.tidyverse.org/) package provides a _pipe_ operator, which is written in R as `%>%`. This is also made available through other packages, such as [{dplyr}]((https://dplyr.tidyverse.org/). It takes the object to its left and "pipes" it into the function on the right as its first unset argument. In general terms, the following two lines of code are equivalent ways of running a function called `f`:
 
 ```r
 f(x, y)
