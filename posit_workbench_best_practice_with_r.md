@@ -10,8 +10,7 @@ Last updated: January 2023
 
 ## Purpose
 
-This document aims to offer guidance to users on good practices for efficient and effective use of R and Posit Applications (in particular Posit Workbench) on Microsoft Azure.
-
+This document aims to offer guidance to users on good practices for efficient and effective use of R and Posit Applications (in particular Posit Workbench) on Microsoft Azure. This guidance provides a background and specific advice, for more guidance and training, please visit the [PHS Data Science Knowledge Base](https://public-health-scotland.github.io/knowledge-base/).
 ## Posit Workbench Sessions
 
 ### Close your session when you’re not using it
