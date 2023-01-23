@@ -145,7 +145,7 @@ data("iris")
 iris <- mutate(iris,
                Sepal.Area = Sepal.Length * Sepal.Width,
                Petal.Area = Petal.Length * Petal.Width,
-               Species = toupper(Species))
+               Species = str_to_upper(Species))
 head(iris)
 ```
 
