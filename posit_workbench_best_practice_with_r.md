@@ -85,7 +85,7 @@ rm(a_data, b_data)
 
 This allows R to use that memory to store other potentially large objects without running out of memory.
 
-R will automatically perform _garbage collection_ — the process of freeing-up unused system memory that's no longer used — where necessary. But we can also manually trigger garbage collection by running `gc()` in the R console at any time, which can be especially effective after large objects have just been deleted from the environment.
+R will automatically perform _garbage collection_ — the process of freeing-up unused system memory that's no longer used — where necessary. But we can also manually trigger garbage collection by running `gc()` in the R console at any time, which can be especially effective after large objects have just been deleted from the environment. _Garbage collection_ will never delete anything that is still in use and happens automatically, however if you have an automated process that involves large objects, building in _garbage collection_ with `gc()` may help freeing up system memory before the next step of the process.
 
 ### Overwriting existing objects
 
