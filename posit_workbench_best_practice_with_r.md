@@ -1,9 +1,5 @@
 # Best Practice with R in Posit Workbench
 
-Original author(s): Andrew Patterson (Jumping Rivers), Terry McLaughlin
-
-Last updated: January 2023
-
 ## Background
 
 [Posit Team](https://posit.co/products/enterprise/team/) enterprise applications have been deployed for [Public Health Scotland (PHS)](https://publichealthscotland.scot/) on the [Microsoft Azure](https://azure.microsoft.com/en-gb/) cloud computing platform. The platform has been designed and implemented as a high-performance, high-availability analytical environment to support the work of Public Health Scotland. However, despite the computing power available, we need to be mindful at all times that this is a shared resource with finite capacity, and as such, we each have individual responsibility to ensure our code is as optimised and efficient as possible, and that we use the Posit Team applications correctly and appropriately, to ensure what we all benefit from this resource equitably. Using inefficient code can cause your analysis to take longer or even cause the session to become unresponsive.
