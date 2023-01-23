@@ -1,9 +1,5 @@
 # Posit Team Applications - Contact Information
 
-Original author(s): Kat Reid, Terry McLaughlin
-
-Last updated: January 2023
-
 ## Background
 
 [Posit Team](https://posit.co/products/enterprise/team/) enterprise applications have been deployed for [Public Health Scotland (PHS)](https://publichealthscotland.scot/) on the [Microsoft Azure](https://azure.microsoft.com/en-gb/) cloud computing platform.
