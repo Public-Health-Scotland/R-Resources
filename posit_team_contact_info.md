@@ -10,6 +10,8 @@ Posit Team comprises three applications:
 * [Posit Package Manager](https://posit.co/products/enterprise/package-manager/) - a repository management server to organise and centralise R and Python packages across Public Health Scotland;
 * [Posit Connect](https://posit.co/products/enterprise/connect/) - publish the things you create in both R & Python, including interactive applications, documents, notebooks, and dashboards. Deploy models as APIs, and configure reports to run on a custom schedule.
 
+Please note that the deployment of Posit Connect for PHS is still in development.
+
 ## Purpose
 
 This document aims to provide users of Posit Team applications with contact information for seeking support.
