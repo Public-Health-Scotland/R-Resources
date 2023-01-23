@@ -273,7 +273,7 @@ DBI::dbWriteTable(con, "iris_tbl", iris)
 
 You would connect to your database in a similar method. Ask your database administrator for support if you don’t know the credentials needed to establish the database connection.
 
-We can get a _lazy_ preview of the table by querying the table. At thetop, it will display `??` for the number of rows, as it has only asked the database to find the first 10.
+We can get a _lazy_ preview of the table by querying the table. At the top, it will display `??` for the number of rows, as it has only asked the database to find the first 10.
 
 ```r
 iris_tbl <- tbl(con, "iris_tbl")
