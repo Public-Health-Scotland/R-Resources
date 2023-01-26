@@ -18,4 +18,7 @@ Going forward, nothing should be saved in your home directory apart from files e
 
 4. A pop up will appear (see screenshot below), give the zip file to be exported a suitable name and click 'Download'. The zip file will then be saved to the Dowloads folder on your device. 
 
+![download_pop_up](https://user-images.githubusercontent.com/36995878/214899786-f2b55fb3-5c66-455d-a1e7-78746f9b4a80.png)
+
+
 **Note that the exported files should not be uploaded to your home directory on Posit workbench and files should not be saved there going forward.**
