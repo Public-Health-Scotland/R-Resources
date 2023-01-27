@@ -14,7 +14,7 @@ This document aims to answer frequently asked questions from users in relation t
 
 #### How do I install the `{phsmethods}` package?
 
-The `{phsmethods}` package has a dependency on the the `{gdata}` package.  The `{gdata}` package cannot be intalled as a pre-compiled binary; attempting this gives an error.  Therefore, you need to force R to install the source version by specifiying the URL for the source version of packages on Package Manager: 
+The `{phsmethods}` package has a dependency on the the `{gdata}` package.  The `{gdata}` package cannot be installed as a pre-compiled binary; attempting this gives an error.  Therefore, you need to force R to install the source version by specifying the URL for the source version of packages on Package Manager: 
 
 ```
 install.packages("gdata", repos = c("https://ppm.publichealthscotland.org/phs-cran/latest"))
