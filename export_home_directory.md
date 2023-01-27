@@ -21,4 +21,4 @@ Going forward, nothing should be saved in your home directory apart from files e
 ![download_pop_up](https://user-images.githubusercontent.com/36995878/214899786-f2b55fb3-5c66-455d-a1e7-78746f9b4a80.png)
 
 
-**Note that the exported files should not be uploaded to your home directory on Posit workbench and files should not be saved there going forward. Saving any data (regardless of sensitivity) to your home directory is a violation of the [Posit Workbench Acceptable Use Policy](https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_acceptable_use_policy.md#information-governance-and-data-security). **
+**Note that the exported files should not be uploaded to your home directory on Posit workbench and files should not be saved there going forward. Saving any data (regardless of sensitivity) to your home directory is a violation of the ** [Posit Workbench Acceptable Use Policy](https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_acceptable_use_policy.md#information-governance-and-data-security).
