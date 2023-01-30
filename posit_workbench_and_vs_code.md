@@ -6,7 +6,7 @@
 
 Posit Workbench is an [Integrated Development Environment](https://en.wikipedia.org/wiki/Integrated_development_environment) (IDE) for R and Python.  Posit Workbench has been configured with the following code editors:
 
-* RStudio (the default Posit Workbench development environment for R)
+* RStudio (the default development environment for R)
 * JupyterLab (a Python development environment)
 * Jupyter Notebook (a notebook-based Python development environment)
 * VS Code (an extensible programming language-agnostic development environment)
@@ -37,3 +37,4 @@ Make sure to select _VS Code_ as the editor.
 
 ### How do I close a VS Code session?
 
+Navigate to the Posit Workbench homepage at [https://pwb.publichealthscotland.org/](https://pwb.publichealthscotland.org/) and click the _Quit_ button next to the VS Code session you want to close.
