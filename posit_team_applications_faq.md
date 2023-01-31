@@ -26,6 +26,12 @@ You can then install the `{phsmethods}` package and all of its other dependencie
 install.packages("phsmethods")
 ```
 
+### Projects
+
+#### What is a project (in Posit Workbench)?
+
+#### How do I open or switch to another project?
+
 ## Posit Package Manager
 
 
