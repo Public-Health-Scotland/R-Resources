@@ -57,6 +57,8 @@ Doing so will almost always result in the following error:
 
 ![image](https://user-images.githubusercontent.com/45657289/215759609-fa3ecbd3-36fc-4985-8abe-bd05af07bba4.png)
 
+This is a [known issue](https://github.com/rstudio/rstudio/issues/11914) in older versions of Posit Workbench which will likely be fixed when the Posit Workbench environment is next updated.
+
 ## Posit Package Manager
 
 
