@@ -10,6 +10,12 @@ This document aims to answer frequently asked questions from users in relation t
 
 ## Posit Workbench
 
+### Accessing Posit Workbench
+
+####  What web browser should I use?
+
+Microsoft Edge is the recommended, and supported, web browser for accessing Posit Workbench.
+
 ### Installing Packages
 
 #### How do I install the `{phsmethods}` package?
@@ -61,7 +67,16 @@ This is a [known issue](https://github.com/rstudio/rstudio/issues/11914) in olde
 
 ## Posit Package Manager
 
+### Accessing Posit Package Manager
 
+####  What web browser should I use?
+
+Microsoft Edge is the recommended, and supported, web browser for accessing Posit Package Manager.
 
 ## Posit Connect
 
+### Accessing Posit Connect
+
+####  What web browser should I use?
+
+Microsoft Edge is the recommended, and supported, web browser for accessing Posit Connect.
