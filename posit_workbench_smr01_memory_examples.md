@@ -29,7 +29,6 @@ Remember that there are 1,024 Megabytes (MB) in 1 Gigabyte (GB).
 | 2 years | 6.49 GB | between 8 GB (8192 MB) and 16 GB (16384 MB) |
 | 5 years | 21.06 GB | between 23 GB (23552 MB) and 32 GB (32768 MB) |
 | 10 years | 41.64 GB | between 43 GB (44032 MB) and 64 GB (65536 MB) |
-| All of SMR01 | xxx.xx GB | xxx GB (xxxxxx MB) |
 
 If you have applied filters in your query, then the memory requirements to read these data into your R session and to work with that data will be reduced.
 
