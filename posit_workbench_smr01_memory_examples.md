@@ -21,7 +21,7 @@ The extracts include all episodes in that time period, and all variables in the 
 Remember that there are 1,024 Megabytes (MB) in 1 Gigabyte (GB).
 
 | Time Period | Memory Usage (no R packages loaded) | Session Memory Recommendation |
-|---|---|---|---|---|
+|---|---|---|
 | 1 month | 660.16 MB | between 2 GB (2048 MB) and 4 GB (4096 MB) |
 | 3 months | 980.97 MB | between 2 GB (2048 MB) and 4 GB (4096 MB) |
 | 6 months | 1.82 GB | between 3 GB (3072 MB) and 8 GB (8192 MB) |
