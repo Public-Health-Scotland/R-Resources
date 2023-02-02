@@ -33,6 +33,23 @@ Remember that there are 1,024 Megabytes (MB) in 1 Gigabyte (GB).
 
 If you have applied filters in your query, then the memory requirements to read these data into your R session and to work with that data will be reduced.
 
+## Further Recommendations
+
+Memory requirements in R can be reduced by querying the database for as small an initial dataset as possible.  This can be achieved by selecting only those variables required e.g.
+
+```sql
+SELECT LINK_NO,
+       UPI_NUMBER,
+       CIS_MARKER,
+       ADMISSION_DATE,
+       DISCHARGE_DATE,
+       ADMISSION,
+       DISCHARGE,
+       URI,
+       MAIN_CONDITION AS DIAG1
+FROM   ANALYSIS.SMR01_PI
+```
+
 ## Other Resources
 
 Please also refer to the document [Posit Workbench and Kubernetes](https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_and_kubernetes.md) for further guidance on memory usage in Posit Workbench.
