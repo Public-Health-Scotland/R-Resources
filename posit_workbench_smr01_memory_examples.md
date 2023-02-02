@@ -50,6 +50,24 @@ SELECT LINK_NO,
 FROM   ANALYSIS.SMR01_PI
 ```
 
+and filtering to only return those episodes that you are specifically interested in e.g.
+
+```sql
+SELECT LINK_NO,
+       UPI_NUMBER,
+       CIS_MARKER,
+       ADMISSION_DATE,
+       DISCHARGE_DATE,
+       ADMISSION,
+       DISCHARGE,
+       URI,
+       MAIN_CONDITION AS DIAG1
+FROM   ANALYSIS.SMR01_PI
+WHERE  DISCHARGE_DATE >= TO_DATE('01-01-2021', 'DD-MM-YYYY')
+AND    DISCHARGE_DATE <= TO_DATE('31-01-2021', 'DD-MM-YYYY')
+AND    MAIN_CONDITION LIKE 'I48%'
+```
+
 ## Other Resources
 
 Please also refer to the document [Posit Workbench and Kubernetes](https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_and_kubernetes.md) for further guidance on memory usage in Posit Workbench.
