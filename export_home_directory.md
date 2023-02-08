@@ -1,7 +1,7 @@
 # Exporting Contents of Home Directory from RStudio Server
 
 ## Background
-If you have logged in to [Posit Workbench](https://pwb.publichealthscotland.org/) you may have noticed that your home directory is empty. This is because the contents of your home directory on the current [RStudio Server](https://rstudio.nhsnss.scot.nhs.uk/auth-sign-in) **have not and will not** be transferred across to the new infrastructure. Additionally, once we migrate fully to the new system, your home directory on the current server will no longer be accessible. 
+If you have logged in to [Posit Workbench](https://pwb.publichealthscotland.org/) you may have noticed that your home directory is empty. This is because the contents of your home directory on the old [RStudio Server](https://rstudio.nhsnss.scot.nhs.uk/auth-sign-in) **have not and will not** be transferred across to the new infrastructure. Additionally, once we migrate fully to the new system, your home directory on the current server will no longer be accessible. 
 
 Going forward, nothing should be saved in your home directory apart from files explicitly listed as exceptions in the [Posit Workbench Acceptable Use Policy](https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_acceptable_use_policy.md). There is very little space allocated to home drives and using these areas for storage will have an impact on both the performance of the system and on storage costs. In addition, the home drive is **not an authorised storage location for data**.
 
