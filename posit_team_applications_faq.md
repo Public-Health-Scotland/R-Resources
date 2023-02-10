@@ -32,6 +32,10 @@ You can then install the `{phsmethods}` package and all of its other dependencie
 install.packages("phsmethods")
 ```
 
+#### I can't install / use a package because it needs `{rJava}`
+
+Some packages, e.g. `{xlsx}`, `{XLconnect}`, depend on an installation of [Java](https://en.wikipedia.org/wiki/Java_(software_platform)) in order to work.  There are no plans to support Java on Posit Workbench.  Alternative packages such as `{openxlsx}` that do not rely on Java can be used instead.
+
 ### Projects
 
 #### What is a project (in Posit Workbench)?
