@@ -6,7 +6,7 @@
 
 ## Purpose
 
-This document aims to offer guidance to users on the [Posit Package Manager](https://posit.co/products/enterprise/package-manager/) application, including a brief introduction to what Posit Package Manager is, how a user might interact with the application and a summary of its benefits.
+This document aims to offer guidance to users on the [Posit Package Manager](https://posit.co/products/enterprise/package-manager/) application, including a brief introduction to what Posit Package Manager is, how a user might interact with the application and highlight some of its features.
 
 ## Extending the funtionality of R and Python
 
@@ -58,3 +58,12 @@ install.packages("gdata", repos = c("https://ppm.publichealthscotland.org/all-r/
 ```
 
 The URL in the example above points to the "source" repo on Posit Workbench.
+
+## Web front-end
+
+Posit Package Manager has a web front-end available at [https://ppm.publichealthscotland.org/](https://ppm.publichealthscotland.org/).  If you visit this URL from your web browser, you will be presented with the following page:
+
+_insert screenshot_
+
+_I think this could do with a video tutorial_
+
