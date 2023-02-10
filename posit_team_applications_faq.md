@@ -16,6 +16,10 @@ This document aims to answer frequently asked questions from users in relation t
 
 Microsoft Edge is the recommended, and supported, web browser for accessing Posit Workbench.
 
+#### Do I need to be connected to the VPN?
+
+If you are working remotely, yes: ensure that when you login to Windows that you first connect to the VPN by selecting "vpn1.nss.scot" or "vpn2.nss.scot".  If these VPN servers are not available to you, please raise a call to have this rectified in ServiceNow.
+
 ### Installing Packages
 
 #### How do I install the `{phsmethods}` package?
