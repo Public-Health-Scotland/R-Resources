@@ -75,7 +75,9 @@ Users should ensure that they are compliant with mandatory training requirements
 
 Users are prohibited from bypassing the data security and encryption measures put in place for data in transit between Microsoft Azure and NSS servers.  Any attempt to do so will be considered a violation of the acceptable use policy.
 
-Users must not save any data, irrespective of its sensitivity, to their home directory on Posit Workbench.
+Users must not save any data, irrespective of its sensitivity, to their home directory on Posit Workbench, with the following exceptions:
+
+* An encrypted [`{keyring}`](https://r-lib.github.io/keyring/index.html) file
 
 ## Policy Review
 
