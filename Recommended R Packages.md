@@ -22,7 +22,7 @@ Package | Description
 
 Package | Description
 --- | ---
-[phsmethods](https://github.com/Public-Health-Scotland/phsmethods_ | PHS package for common data manipulation methods.
+[phsmethods](https://github.com/Public-Health-Scotland/phsmethods) | PHS package for common data manipulation methods.
 [tidyverse](https://github.com/tidyverse) | A collection of related R packages used for data manipulation.
 [dplyr](https://github.com/tidyverse/dplyr) | For selecting, filtering, aggregating and other basic operations.
 [tidyr](https://github.com/tidyverse/tidyr) | For 'tidying' data, primarily by converting columns to rows and vice-versa.
