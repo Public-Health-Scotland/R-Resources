@@ -1,0 +1,208 @@
+---
+title: "dbplyr Guidance"
+output: 
+  html_document:
+    css: R Guidance for PHI Formatting/custom.css
+    number_sections: true
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+  word_document:
+    toc: yes
+    toc_depth: '4'
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# What is dbplyr
+
+The [`{dbplyr}` package](https://dbplyr.tidyverse.org/) is intended to make extracting data from SQL databases as easy and efficient as possible. It achieves this by 'translating' usual R functions, including many from `{dplyr}` and other tidyverse packages, into SQL in the background.
+
+Using `dbplyr` means you can write code to extract data using the same tools you are used to, this will be easier to write and easier to be read and maintained by others. Because of this, it is very easy to write more complicated queries which would be hard to write, read and maintain in 'raw' SQL, whilst keeping the advantages i.e. less data and computation for R to handle meaning faster extraction and lower memory usage!
+
+# Set-up
+  
+Install some packages (if not already done).
+
+```{r package_install, eval=FALSE}
+# Install libraries (if required)
+install.packages("dplyr")
+install.packages("odbc") # Used for connecting to databases
+install.packages("dbplyr") # Extract from databases using dplyr code
+```
+
+Load the packages and set up a connection to a database in the usual way. Note that once we've installed `{dbplyr}` we don't need to load it every time (but sometimes we might want to).
+
+```{r load_packages, message=FALSE}
+#  Load packages
+library(dplyr) # We only need to load dplyr (not dbplyr)
+library(odbc)
+```
+
+```{r db_connection, cache=TRUE}
+# Create a connection to SMRA
+smra_connection <- odbc::dbConnect(
+  drv = odbc::odbc(),
+  dsn = "SMRA",
+  uid = Sys.getenv("USER"),
+  pwd = rstudioapi::askForPassword("SMRA Password:")
+)
+```
+
+# Simple SQL vs dbplyr
+
+We'll do a very simple SQL query, that people might be comfortable writing from scratch.
+
+```{r basic_sql_1}
+# Save some SQL as a character
+sql <- "Select UPI_NUMBER, ADMISSION_DATE, DISCHARGE_DATE from ANALYSIS.SMR01_PI where DISCHARGE_DATE >= To_date('2023-01-01', 'YYYY-MM-DD')"
+
+# Do the extract using the usual dbGetQuery (from odbc)
+simple_1_extract <- dbGetQuery(smra_connection, sql) %>%
+  as_tibble()
+
+# Have a quick look at the data (sanitised for public consumption)
+simple_1_extract %>%
+  mutate(id = consecutive_id(UPI_NUMBER), .before = UPI_NUMBER) %>%
+  arrange(UPI_NUMBER, ADMISSION_DATE) %>%
+  select(-UPI_NUMBER) %>%
+  head(10)
+```
+
+Now using dbplyr, we just write our code using dplyr functions. Note that we
+have to use the correct variable names, as they are in the database.
+
+There's three key functions here:
+
+ * `tbl()` - This starts our query, it takes the connection object as the first argument and the table / view name as the second.
+ * `show_query()` - This isn't require but can be nice to see what's going on. It will simply print the SQL that dbplyr has generated. This function can be used at any point in the pipeline to see the generated SQL as it always returns it's input.
+ * `collect()` - This tells dbplyr to take the generated SQL and use it to return the data. This will always be need but the later we use it the more processing will happen on the database. `as_tibble()` will do the same, but I think `collect` is more readable.
+
+```{r basic_sql_2}
+# Use dbplyr
+# Note we have to use upper case variable names
+simple_2_query <- tbl(smra_connection, "SMR01_PI") %>%
+  select(UPI_NUMBER, ADMISSION_DATE, DISCHARGE_DATE) %>%
+  filter(DISCHARGE_DATE >= as.Date("2023-01-01"))
+
+# This will print the 'translated' SQL for us to see
+simple_2_query %>%
+  show_query()
+
+# Up until this point we haven't actually got the data
+simple_2_extract <- collect(simple_2_query)
+```
+We can use the `waldo` package to make sure the two results are identical.
+
+```{r basic_sql_compare}
+# Let's make sure the extracts are really identical
+waldo::compare(
+  simple_1_extract,
+  simple_2_extract,
+  x_arg = "SQL",
+  y_arg = "dbplyr"
+)
+```
+# More complicated extracts in dbplyr
+
+Here we want to get activity for people that have died in a certain time frame. Doing this without dbplyr we'd probably take all the extracts separately (hopefully doing some filtering in SQL) and then join them all together to finally drop all the hospital activity we don't need.
+
+We can see that the code is the same, but instead of it running in R on object in our environment it will be translated to SQL and all ran in one go on the database.
+
+## Set up an extract for the deaths
+
+`SMR01_PI` was very simple, here however we have to specify the 'schema' that the deaths table is in. This is something to do with the set-up of our databases and in my experience we will have to use  `in_schema()` more often than not!
+
+```{r advanced_dbplyr_deaths}
+deaths <- tbl(
+  smra_connection,
+  dbplyr::in_schema("ANALYSIS", "GRO_DEATHS_C")
+) %>%
+  select(UPI_NUMBER, DATE_OF_DEATH) %>%
+  filter(between(DATE_OF_DEATH, as.Date("2023-01-01"), as.Date("2023-01-31"))) %>%
+  filter(!is.na(UPI_NUMBER)) %>%
+  # See what the SQL looks like
+  show_query()
+```
+## Set up the SMR01 extract
+
+This is very similar to above except we're filtering out records we won't be able to link.
+
+Note at this point we still don't actually have any data extracted.
+
+```{r advanced_dbplyr_smr01}
+smr01_query <- tbl(smra_connection, "SMR01_PI") %>%
+  select(UPI_NUMBER, RECORD_TYPE, ADMISSION_DATE, DISCHARGE_DATE) %>%
+  filter(between(DISCHARGE_DATE, as.Date("2023-01-01"), as.Date("2023-01-31"))) %>%
+  filter(!is.na(UPI_NUMBER)) %>%
+  show_query()
+```
+
+## Link the Deaths and SMR01 data
+
+The SQL needed to do both extracts and a join all in one statement is already quite complicated, dbplyr does some nice syntax highlighting and indenting to make it easier for us to follow though.
+
+```{r advanced_dbplyr_deaths_smr01}
+smr01_deaths_only_query <- smr01_query %>%
+  inner_join(deaths, by = "UPI_NUMBER") %>%
+  show_query()
+```
+At this point we could take the extract using `collect()`. The larger the extracts the faster this method is compared to joining separate extracts in R.
+
+```{r advanced_dbplyr_link}
+smr01_deaths_only_extract <- collect(smr01_deaths_only_query)
+```
+
+Alternatively we could continue our analysis using dbplyr to make it super efficient.
+
+## Extend the analysis to include SMR04
+
+```{r advanced_dbplyr_smr04}
+smr04_query <- tbl(smra_connection, "SMR04_PI") %>%
+  select(UPI_NUMBER, RECORD_TYPE, ADMISSION_DATE, DISCHARGE_DATE) %>%
+  filter(between(DISCHARGE_DATE, as.Date("2023-01-01"), as.Date("2023-01-31"))) %>%
+  filter(!is.na(UPI_NUMBER)) %>%
+  show_query()
+```
+
+## Bringing it all together
+
+We can now generate a complicated SQL query without having to know any SQL and having just written fairly standard dplyr code.
+
+```{r sm01_04_deaths}
+smr01_04_deaths_only_query <- smr04_query %>%
+  # union_all() will just put all the rows together like rbind() or bind_rows()
+  union_all(smr01_query) %>%
+  inner_join(deaths, by = "UPI_NUMBER") %>%
+  show_query()
+```
+To bring this data into R we would just need to run `collect(smr01_04_deaths_only_query)`.
+
+## Finish it off
+
+If we were just looking for a simple summary, instead of extracting the data at this point we could do the entire analysis in dbplyr and just extract the final aggregation.
+
+```{r aggregation_example}
+library(lubridate)
+
+smr01_04_deaths_only_query %>%
+  mutate(
+    death_day = day(DATE_OF_DEATH),
+    los = DISCHARGE_DATE - ADMISSION_DATE
+  ) %>%
+  group_by(death_day, RECORD_TYPE) %>%
+  summarise(
+    patients = n_distinct(UPI_NUMBER),
+    total_los = sum(los),
+    median_los = median(los)
+  ) %>%
+  ungroup() %>%
+  arrange(death_day, RECORD_TYPE) %>%
+  show_query() %>%
+  collect()
+```
