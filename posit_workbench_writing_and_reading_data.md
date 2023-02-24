@@ -54,3 +54,37 @@ The key takeaway from the example above is that `{arrow}` does not need to read 
 ## Detail
 
 *to follow...*
+
+### Results of benchmarking
+
+#### Writing to Stats
+
+Writing an extract of 1 million rows from the SMR01 dataset to the Stats server.  Each method of writing was run three times, and the median time taken to write the file to Stats calculated.  Times presented below are in seconds.
+
+|Package|File Format|Compression|Minimum Time|Median Time|
+|---|---|---|---|---|
+|{arrow}|parquet|ZStandard|39.57|39.77|
+|{arrow}|parquet|Snappy|46.53|46.59|
+|{qs}|qs|ZStandard|4.69|46.92|
+|{vroom}|csv|ZStandard|72|73.2|
+|{vroom}|csv|Gzip|150|150|
+|{readr}|csv|Uncompressed|174|174|
+|{vroom}|csv|Uncompressed|172.8|174|
+|{base}|rds|Default Compression|222.6|227.4|
+|{fst}|fst|Default Compression|978|980.4|
+
+#### Reading from Stats
+
+Reading an extract of the SMR01 dataset containing 1 million rows, and aggregating to present a count of the number of episodes by location.  Each method was run three times to calculate the median time taken to read the file and aggregate the data.  Times presented below are in seconds.
+
+|Package|File Format|Compression|Minimum Time|Median Time|
+|---|---|---|---|---|
+|{fst}|fst|Default Compression|0.34799|0.35548|
+|{arrow}|parquet|ZStandard|0.37768|0.38025|
+|{arrow}|parquet|Snappy|0.38535|0.3921|
+|{vroom}|csv|ZStandard|3.97|4.02|
+|{vroom}|csv|Uncompressed|4.03|4.11|
+|{readr}|csv|Uncompressed|4.06|4.13|
+|{vroom}|csv|Gzip|4.15|4.16|
+|{qs}|qs|ZStandard|6.3|6.31|
+|{base}|rds|Default Compression|17.43|17.52|
