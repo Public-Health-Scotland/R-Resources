@@ -14,7 +14,7 @@ Benchmarking of various methods for writing data to, and reading data from Stats
 
 The optimum method uses the `{arrow}` package to read and write *parquet* files, using *ZStandard* compression.
 
-The `parquet` files are smaller than both .rds and .csv files, and `{arrow}` is optimised to work with larger-than-memory datasets.  The result is faster reading and writing, with a much smaller memory footprint.
+The *parquet* files are smaller than both .rds and .csv files, and `{arrow}` is optimised to work with larger-than-memory datasets.  The result is faster reading and writing, with a much smaller memory footprint.
 
 ### Example
 
