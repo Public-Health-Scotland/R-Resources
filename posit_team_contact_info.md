@@ -39,7 +39,7 @@ Public Health Scotland's Data Science team will be providing first-line support 
 - [ ] **Check Access Permissions**: Ensure that you have access permissions to the server or specific data sets. Check with someone else in your team, or DaS (via [Service Now](https://nhsnss.service-now.com/phs/)) to confirm your access permissions. _All databases connections that were available on the old server infrastructure have been migrated and made available for testing during UAT._
 - [ ] **Check Browser**: Sometimes, the issue might be related to the browser you are using. This has been identified in a couple of areas already with Mozilla Firefox. Try using a different browser to see if the issue persists; all Chromium based browsers are tested and work as expected (i.e. Microsoft Edge and Google Chrome).
 
-If you have followed these troubleshooting steps and the issue still persists, please raise a support request by providing the following details (you can also use this form to reach out with questions about the infrastructure) :
+If you have followed these troubleshooting steps and the issue still persists, please raise a support request by providing the following details (you can also use this form to reach out with questions about the infrastructure).:
 
 - Specific steps taken that led to the issue
 - Error messages or symptoms
@@ -50,7 +50,7 @@ If you have followed these troubleshooting steps and the issue still persists, p
 
 In essence, please provide as much detail as possible in your request.  The more detail, the easier it will be to find the cause of the issue you are experiencing.
 
-Please complete the form at [https://forms.office.com/e/pqmmNMkhT6](https://forms.office.com/e/pqmmNMkhT6).
+Please complete the form at [https://forms.office.com/e/pqmmNMkhT6](https://forms.office.com/e/pqmmNMkhT6). **Any request/query must use this process to ensure that they can be assigned and followed through by someone in the team, but also to ensure wider problems are identfied and resolved.**
 
 The team aim to respond to all queries and requests for support submitted via this form as quickly as possible.
 
