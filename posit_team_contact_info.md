@@ -28,23 +28,26 @@ Authorisation for the request is required from the person's line manager, and wi
 
 ## All other types of support request
 
-Public Health Scotland's Data Science team will be providing first-line support for Posit Team applications and will be triaging all queries and requests for support with Posit applications. Before raising a support request, please consider the following:
+Public Health Scotland's Data Science team will be providing first-line support for Posit Team applications and will be triaging all queries and requests for support with Posit applications. Before raising a support request, please make sure to try the following troubleshooting steps that may resolve the issue you are experiencing more quickly:
 
-- [ ] **Check Error Messages**: Analytical servers generate error messages when something goes wrong, this is expected behaviour in many cases and can be related to the codebase, connected infrastructure such as databases or publishing platforms, or the system itself. Error messages can be confusing and steps-removed from the code, but can help you understand the issue and suggest the steps to take to resolve the issue. Make sure to read the error message carefully and try to understand its meaning, even just pasting into Google will often return similar problems _and solutions_.
-- [ ] **Restart Session**: Oh yeah, the old _turn it off and on again..._ - it does help though, restarting the session or logging out and logging in again can fix the issue. This can clear up any temporary issues that might be causing the problem, sometimes as a result of cumulative build-up or overwriting.
+- [ ] **Check Error Messages**: The Posit Team applications, R, Shiny, Python and any other programming language you may be using all generate error messages when something goes wrong. This is expected behaviour in many cases and can be related to the code you have written, a malfunction in a connected system such as a database or publishing platform, or the application or infrastructure itself. Error messages can be confusing and may not initially appear to bear any resemblance or connection to your code, but they can help you understand the issue and suggest the steps to take to resolve it. Make sure to read the error message carefully and try to understand what it is telling you, even by just pasting it into Google to see if anybody else has experienced a similar problem _and found a solution_.  The [Stack Overflow](https://stackoverflow.com/) website really can be your friend in these instances.
+- [ ] **Restart Session**: Oh yeah, the old _turn it off and on again..._ - it does help though, restarting the session or logging out and logging in again can fix the issue. This can clear up any temporary issues that might be causing the problem.
 - [ ] **Consult with Peers**: The [PHS R User Group on Teams](https://teams.microsoft.com/l/team/19%3ae9f55a12b7d94ef49877ff455a07f035%40thread.tacv2/conversations?groupId=ec4250f9-b70a-4f32-9372-a232ccb4f713&tenantId=10efe0bd-a030-4bca-809c-b5e6745e499a) has many of your colleagues, some of which may be familiar with the issue you're experiencing, consider reaching out to them when coding issues occur - they're a friendly bunch! 😉
 - [ ] **Search Documentation**: Extensive online documentation with troubleshooting guides, tutorials, and user forums where you can ask questions and get answers from other users are available for Posit Workbench and specific coding problems. Some of this is internal, available on the [PHS Data Science Knowledge Base](https://public-health-scotland.github.io/knowledge-base/).
 - [ ] **Check Connectivity**: If you're experiencing connectivity issues, check your internet connection or network settings. You might need to check firewalls, VPN settings, or other network configurations. This might be the case if you're having issues connecting to other internal systems, in which case, contact DaS directly through [Service Now](https://nhsnss.service-now.com/phs/).
 - [ ] **Check Access Permissions**: Ensure that you have access permissions to the server or specific data sets. Check with someone else in your team, or DaS (via [Service Now](https://nhsnss.service-now.com/phs/)) to confirm your access permissions. _All databases connections that were available on the old server infrastructure have been migrated and made available for testing during UAT._
-- [ ] **Check Browser**: Sometimes, the issue might be related to the browser you are using. This has been identified in a couple of areas already with Mozilla Firefox. Try using a different browser to see if the issue persists, all Chromium based browsers are tested and work as expected (i.e. Microsoft Edge and Google Chrome).
+- [ ] **Check Browser**: Sometimes, the issue might be related to the browser you are using. This has been identified in a couple of areas already with Mozilla Firefox. Try using a different browser to see if the issue persists; all Chromium based browsers are tested and work as expected (i.e. Microsoft Edge and Google Chrome).
 
 If you have followed these troubleshooting steps and the issue still persists, please raise a support request by providing the following details (you can also use this form to reach out with questions about the infrastructure) :
 
 - Specific steps taken that led to the issue
 - Error messages or symptoms
+- As exact a time as possible when the error occurred (to the second if possible)
 - Steps you have already taken to resolve the issue
 - Any recent changes made to your system or the server
 - Any relevant log files or screenshots that can help identify the issue
+
+In essence, please provide as much detail as possible in your request.  The more detail, the easier it will be to find the cause of the issue you are experiencing.
 
 Please complete the form at [https://forms.office.com/e/pqmmNMkhT6](https://forms.office.com/e/pqmmNMkhT6).
 
