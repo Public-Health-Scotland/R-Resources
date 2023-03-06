@@ -36,6 +36,63 @@ You can then install the `{phsmethods}` package and all of its other dependencie
 install.packages("phsmethods")
 ```
 
+#### How do I install and use geospatial packages?
+
+##### Setting environment variables
+
+For R packages to find the geospatial libraries, the session's environment variables need to be updated to point to where the geospatial libraries are installed:
+
+```r
+old_ld_path <- Sys.getenv("LD_LIBRARY_PATH") 
+
+Sys.setenv(LD_LIBRARY_PATH = paste(old_ld_path,
+                                   "/usr/gdal34/lib",
+                                   "/usr/proj81/lib",
+                                   sep = ":"))
+
+# Specify additional proj path in which pkg-config should look for .pc files
+Sys.setenv("PKG_CONFIG_PATH" = "/usr/proj81/lib/pkgconfig")
+
+# Specify the path to GDAL data
+Sys.setenv("GDAL_DATA" = "/usr/gdal34/share/gdal")
+```
+
+The above code should be run first before anything else.  It would be a good idea to include the above code in a project-level `.Rprofile` file so that it is run every time the project is loaded.
+
+##### Installing the `{sf}` and `{sp}` packages
+
+Both the `{sf}` and `{sp}` packages require to be installed from source, and pointed to where the GDAL and PROJ libraries are installed:
+
+```r
+install.packages(
+    c("sf", "sp"),
+    configure.args = c("--with-gdal-config=/usr/gdal34/bin/gdal-config",
+                       "--with-proj-include=/usr/proj81/include",
+                       "--with-proj-lib=/usr/proj81/lib"),
+    INSTALL_opts = "--no-test-load",
+    repos = c("https://ppm.publichealthscotland.org/all-r/latest")
+)
+```
+
+##### Installing the `{rgeos}` package
+
+The `{rgeos}` package needs to be installed from source, as follows:
+
+```r
+install.packages("rgeos", repos = c("https://ppm.publichealthscotland.org/all-r/latest"))
+```
+
+##### Loading geospatial R packages
+
+It is necessary to load the GDAL library module before loading the `{sf}` package
+
+```r
+dyn.load("/usr/gdal34/lib/libgdal.so")
+library(sf)
+```
+
+Otherwise, geospatial R packages can be loaded as normal, with calls to the `library()` function.
+
 ### Projects
 
 #### What is a project (in Posit Workbench)?
