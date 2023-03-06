@@ -22,6 +22,10 @@ If you are working remotely, yes: ensure that when you login to Windows that you
 
 ### Installing Packages
 
+#### Where are all my packages?
+
+Unlike the old RStudio Server Pro environment, there are no pre-installed packages in Posit Workbench.  This gives you full control over what packages, and versions of packages, you want to use, rather than those dictated by the administrator.
+
 #### How do I install the `{phsmethods}` package?
 
 The `{phsmethods}` package has a dependency on the the `{gdata}` package.  The `{gdata}` package cannot be installed as a pre-compiled binary; attempting this gives an error.  Therefore, you need to force R to install the source version by specifying the URL for the source version of packages on Package Manager: 
