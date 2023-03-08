@@ -24,7 +24,7 @@ If you are working remotely, yes: ensure that when you login to Windows that you
 
 #### How do I install the `{hablar}` package?
 
-The `{hablar}` cannot be installed as a pre-compiled binary; attempting this gives an error.  Therefore, you need to force R to install the source version by specifying the URL for the source version of packages on Package Manager.  However, `{hablar}`'s dependencies can be installed as binaries first.
+The `{hablar}` package cannot be installed as a pre-compiled binary; attempting this gives an error.  Therefore, you need to force R to install the source version by specifying the URL for the source version of packages on Package Manager.  However, `{hablar}`'s dependencies can be installed as binaries first.
 
 ```r
 # Get list of dependencies and imports for {hablar}
