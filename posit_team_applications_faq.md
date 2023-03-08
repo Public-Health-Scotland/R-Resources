@@ -22,6 +22,33 @@ If you are working remotely, yes: ensure that when you login to Windows that you
 
 ### Installing Packages
 
+#### How do I install the `{hablar}` package?
+
+The `{hablar}` package cannot be installed as a pre-compiled binary; attempting this gives an error.  Therefore, you need to force R to install the source version by specifying the URL for the source version of packages on Package Manager.  However, `{hablar}`'s dependencies can be installed as binaries first.
+
+```r
+# Get list of dependencies and imports for {hablar}
+available_pkgs <- available.packages()
+
+deps <- tools::package_dependencies(
+  packages = available_pkgs["hablar", "Package"],
+  recursive = TRUE)[[1]]
+
+# Install these dependencies as binaries
+install.packages(
+  pkgs = deps,
+  repos = c(
+    "https://ppm.publichealthscotland.org/all-r/__linux__/centos7/latest"))
+
+# Compile and install the {hablar} package from source
+install.packages(
+  pkgs = "hablar",
+  repos = c("https://ppm.publichealthscotland.org/all-r/latest"))
+
+# Test if {hablar} can be loaded
+library(hablar)
+```
+
 #### How do I install the `{phsmethods}` package?
 
 The `{phsmethods}` package has a dependency on the the `{gdata}` package.  The `{gdata}` package cannot be installed as a pre-compiled binary; attempting this gives an error.  Therefore, you need to force R to install the source version by specifying the URL for the source version of packages on Package Manager: 
