@@ -28,31 +28,23 @@ To upload the new html file, you need to perform the following steps:
 
 ### Links to documentation and guidance for Posit Team applications
 
-#### Posit Workbench Acceptable Use Policy
+#### [Posit Workbench Acceptable Use Policy](https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_acceptable_use_policy.md)
 
 Purpose - This document sets out the acceptable use of Posit Workbench in order to protect the availability of this analytical environment for all users in Public Health Scotland.
 
-<https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_acceptable_use_policy.md>
-
-#### Best Practice with R in Posit Workbench
+#### [Best Practice with R in Posit Workbench](https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_best_practice_with_r.md)
 
 Purpose - This document aims to offer guidance to users on good practices for efficient and effective use of R and Posit Applications (in particular Posit Workbench) on Microsoft Azure. This guidance provides a background and specific advice, for more guidance and training, please visit the [PHS Data Science Knowledge Base](https://public-health-scotland.github.io/knowledge-base/).
-
-<https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_best_practice_with_r.md>
  
-#### Posit Team Applications - Contact Information
+#### [Posit Team Applications - Contact Information](https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_team_contact_info.md)
 
 Purpose - This document aims to provide users of Posit Team applications with contact information for seeking support.
 
-<https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_team_contact_info.md>
- 
-#### Guidance to log in and start a session on Posit Workbench
+#### [Guidance to log in and start a session on Posit Workbench](https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_login_guidance.md)
 
 Purpose - This document aims to provide users of Posit Workbench with a step-by-step guide to logging in and starting a session.
-
-<https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_login_guidance.md>
  
-#### Posit Workbench and Kubernetes
+#### [Posit Workbench and Kubernetes](https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_and_kubernetes.md)
 
 Purpose - This document aims to provide users of Posit Workbench with high-level information on
 
@@ -60,23 +52,15 @@ Purpose - This document aims to provide users of Posit Workbench with high-level
 - why Posit Workbench has been deployed using Kubernetes and how it works,
 - the importance of optimal use of cloud computing resources in respect of financial cost to PHS, and
 - best practice for using Posit Workbench deployed using Kubernetes.
-
-<https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_and_kubernetes.md>
  
-#### Posit Workbench, SMR01 and Memory Usage
+#### [Posit Workbench, SMR01 and Memory Usage](https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_smr01_memory_examples.md)
 
 Purpose - This document aims to provide users with information on the minimum memory requirements in an R session for various sizes of extracts from the SMR01 dataset.
-
-<https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_smr01_memory_examples.md>
  
-#### Recommendations on Global Options in Posit Workbench
+#### [Recommendations on Global Options in Posit Workbench](https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_and_global_options.md)
 
 Purpose - This document aims to provide users of Posit Workbench with guidance and best practice on setting Global Options in Posit Workbench.
-
-<https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_and_global_options.md>
  
-#### Posit Team Applications - Frequently Asked Questions
+#### [Posit Team Applications - Frequently Asked Questions](https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_team_applications_faq.md)
 
 Purpose - This document aims to answer frequently asked questions from users in relation to the use of Posit Team applications.
-
-<https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_team_applications_faq.md>
