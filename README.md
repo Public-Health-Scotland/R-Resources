@@ -25,3 +25,12 @@ To upload the new html file, you need to perform the following steps:
 - Knit the .Rmd file to html output
 - Upload the new R_Guidance_for_PHI.html and R_Guidance_for_PHI.Rmd files to your branch - uploading these files will overwrite the current files listed in the branch
 - Once these files have been merged into the master branch the url above will automatically update with any changes
+
+### Links to documentation and guidance for Posit Team applications
+
+#### Posit Workbench Acceptable Use Policy
+
+Purpose - This document sets out the acceptable use of Posit Workbench in order to protect the availability of this analytical environment for all users in Public Health Scotland.
+
+<https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_acceptable_use_policy.md>
+ 
