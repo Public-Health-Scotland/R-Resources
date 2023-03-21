@@ -48,7 +48,7 @@ Users must be mindful that, whilst Posit Workbench's implementation on Microsoft
 
 ### Following Best Practice
 
-Users must adhere to the best practice principles set out in the document [Best Practice with R in Posit Workbench](https://github.com/Public-Health-Scotland/R-Resources/blob/master_r/posit_workbench_best_practice_with_r.md), to ensure that code is as optimised and efficient as possible and that Posit Workbench is being used correctly and appropriately.
+Users must adhere to the best practice principles set out in the document [Best Practice with R in Posit Workbench](https://github.com/Public-Health-Scotland/R-Resources/blob/master/posit_workbench_best_practice_with_r.md), to ensure that code is as optimised and efficient as possible and that Posit Workbench is being used correctly and appropriately.
 
 ### Personal Usage
 
