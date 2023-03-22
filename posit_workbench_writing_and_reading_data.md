@@ -1,3 +1,6 @@
+> **Warning**
+> This repository has been archived and is no longer maintained. All documentation has moved to (and maintained on) the [technical-docs](https://github.com/Public-Health-Scotland/technical-docs) repo and now available on the [PHS Data Science Knowledge Base](https://public-health-scotland.github.io/knowledge-base/). Please see these resources for up-to-date guidance.
+
 # Optimum method for writing data to, and reading data from Stats
 
 ## Background

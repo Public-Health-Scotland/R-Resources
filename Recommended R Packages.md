@@ -1,3 +1,6 @@
+> **Warning**
+> This repository has been archived and is no longer maintained. All documentation has moved to (and maintained on) the [technical-docs](https://github.com/Public-Health-Scotland/technical-docs) repo and now available on the [PHS Data Science Knowledge Base](https://public-health-scotland.github.io/knowledge-base/). Please see these resources for up-to-date guidance.
+
 # Recommended R packages
 
 This non-exhaustive list of recommended R packages is aimed primarily at beginners. It introduces some commonly used R packages across PHS and groups them into relevant categories. The majority of packages listed cover routine tasks such as reading and writing data files and data manipulation, however there are also recommendations for more specialised areas such as statistical modelling and spatial analysis. If you or your team use a package that isn't mentioned, feel free to recommend it through an [Issue](https://github.com/Public-Health-Scotland/R-Resources/issues) or Pull Request here.
