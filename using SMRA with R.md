@@ -18,17 +18,17 @@
 [Cohort method](#cohort-method)
 
 # Introduction and definitions
-The purpose of this paper is to set out guidance for using the SMRA databases with RStudio, specifically RStudio server (although the code examples and much of the other information are transferable to RStudio desktop).  It is intended to be understandable to first time users of R/SMRA/SQL, and includes step by step instructions to access the server and basic examples of R and SQL code to allow new users to get started using SMRA with R. It is NOT intended to be a comprehensive introduction to R, RStudio or SQL, although it does include links to further resources on these topics.
+The purpose of this paper is to set out guidance for using the SMRA databases with RStudio, specifically RStudio server (although the code examples and much of the other information are transferable to RStudio desktop).  It is intended to be understandable to first-time users of R/SMRA/SQL, and includes step-by-step instructions to access the server and basic examples of R and SQL code to allow new users to get started using SMRA with R. It is NOT intended to be a comprehensive introduction to R, RStudio or SQL, although it does include links to further resources on these topics.
 
 ## Definitions
 ### The SMRA database  
 The SMRA database is a relational database, specifically an Oracle database. The data contained in the SMRA database is secondary care data in the form of the Scottish Morbidity Records (SMRs). The SMRs record hospital activity (including outpatient clinics). The SMRA also contains NRS death records, which can similarly be linked to hospital records. 
 
 ### SQL
-SQL stands for Structured Query Language. It is a language used in programming and designed for managing and extracting data held in a relational database management system. We use SQL to 'query' the database to extract data. It is rare that you would ever want to extract all the information held in a database, so SQL queries will contain instructions so that only data you need. NSS databases use the Oracle system, therefore we use Oracle SQL to access it. 
+SQL stands for Structured Query Language. It is a language used in programming and designed for managing and extracting data held in a relational database management system. We use SQL to 'query' the database to extract data. Rarely, you would ever want to extract all the information held in a database, so SQL queries will contain instructions so that only data you need. NSS databases use the Oracle system, therefore we use Oracle SQL to access it. 
 
 ### RStudio server
-R is a system for statistical computation and graphics. RStudio is a software application for the R language. It is essentially a more user friendly and versatile way to use R than the basic R environment. RStudio can be run as a desktop version or on a server accessible through a webpage. An introduction to use of RStudio can be accessed for free [here](https://www.datacamp.com/courses/working-with-the-rstudio-ide-part-1).
+R is a system for statistical computation and graphics. RStudio is a software application for the R language. It is essentially a more user-friendly and versatile way to use R than the basic R environment. RStudio can be run as a desktop version or on a server accessible through a webpage. An introduction to the use of RStudio can be accessed for free [here](https://www.datacamp.com/courses/working-with-the-rstudio-ide-part-1).
 
 ### Advantages of using RStudio server to access SMRA
 Why use SMRA with RStudio server? 
@@ -44,9 +44,9 @@ Why use SMRA with RStudio server?
 # Requesting access 
 ## Databases
 
-•	First you need to be able to access some or all of the SMR datasets. Request access using the Access to Data form in the usual way (ask your line manger if you are not sure how to do this/where to find the form).
+•	First you need to be able to access some or all of the SMR datasets. Request access using the Access to Data form in the usual way (ask your line manager if you are not sure how to do this/where to find the form).
 
-•	If you already have access to the SMR databases you need, e.g. you already access these data sources through SPSS or business objects, you can move onto the next step.
+•	If you already have access to the SMR databases you need, e.g. you already access these data sources through SPSS or business objects, you can move on to the next step.
 
 ## R /RStudio Desktop.
 •	If you wish to access SMRA via the desktop version of RStudio, you will need R and RStudio installed on your machine. 
@@ -72,13 +72,13 @@ See ["Intro to R NSS.md"](Intro%20to%20R-NSS.md) for detailed instructions.
 # RStudio server: Logging in and basic navigation. 
 ## Logging in
 
-The RStudio server is located at: http://nssRStudio.csa.scot.nhs.uk/. Login using your username and the password you normally use to access the stats area through the file system and through SPSS.
+The RStudio server is located at: http://nssRStudio.csa.scot.nhs.uk/. Log in using your username and the password you normally use to access the stats area through the file system and SPSS.
 
-If you are unfamiliar with RStudio, a basic introduction to finding your way around RStudio can be found here. Many articles on use of RStudio are available on the RStudio support website. 
+If you are unfamiliar with RStudio, a basic introduction to finding your way around RStudio can be found here. Many articles on the use of RStudio are available on the RStudio support website. 
 
 ## Accessing Files on the Stats Server 
 
-The default directory on the RStudio server that is displayed in the bottom right pane is the 'Home' directory', which is only accessible to the logged in user. You will normally want to use and save files from the rest of the network. To navigate to these other areas using the file browser in RStudio Server, click on the icon with the 3 dots to the right hand side of the files pane.
+The default directory on the RStudio server that is displayed in the bottom right pane is the 'Home directory', which is only accessible to the logged-in user. You will normally want to use and save files from the rest of the network. To navigate to these other areas using the file browser in RStudio Server, click on the icon with the 3 dots to the right-hand side of the files pane.
 
 In the box that appears type in the appropriate directory name (e.g. the 'PHI_conf' area or the older 'conf' area containing subdirectories belonging to different teams. Files in cl-out can be found at /conf/linkage/output). The Files tab will then show the directory you have linked through and you can click through to access files in subdirectories. 
 
@@ -99,10 +99,10 @@ There are two ways to exit RStudio Server:
 1. Sign Out 
 2. Quit Session 
 
-Signing out of RStudio Server leaves your R session open, and if you are currently running R code, this will continue to run in the background. Leaving your R session open allows you to return to where you left off next time you log in. To sign out of RStudio Server, click on the close window button of your web browser or click the “Sign out” button in the RStudio Server interface 
+Signing out of RStudio Server leaves your R session open, and if you are currently running R code, this will continue to run in the background. Leaving your R session open allows you to return to where you left off the next time you log in. To sign out of RStudio Server, click on the close window button of your web browser or click the “Sign out” button in the RStudio Server interface 
 
 
-Signing out and leaving your R session open has the downside of continuing to consume server processing time and memory even if you are not actively running any R code, consequently reducing the available server resources for other users. It is therefore recommended that if you have finished an analysis that you quit your R session. 
+Signing out and leaving your R session open has the downside of continuing to consume server processing time and memory even if you are not actively running any R code, consequently reducing the available server resources for other users. It is therefore recommended that if you have finished an analysis you quit your R session. 
 
 
 You can quit your R session by selecting the “Quit Session…” option in the File menu, selecting the “Quit Session…” option in the Session menu or clicking the “Quit Session” button at the top-right of the RStudio Server interface.
@@ -110,7 +110,7 @@ You can quit your R session by selecting the “Quit Session…” option in the
 
 # Opening a connection to SMRA
 ## Loading required packages
-First, load the required libraries using the following code. Copy the following code into the upper left hand pane in RStudio, highlight all the text and hit ctrl+return or click on the Run icon above the pane:
+First, load the required libraries using the following code. Copy the following code into the upper left-hand pane in RStudio, highlight all the text and hit ctrl+return or click on the Run icon above the pane:
 
     library(dplyr) 
     library(readr) 
@@ -119,7 +119,7 @@ First, load the required libraries using the following code. Copy the following 
 The odbc package is required to connect to the database. The readr and dplyr packages (both belonging to the tidyverse set of packages) are also recommended if you would like to execute SQL queries saved in external files and store data in tibbles. 
 
 
-N.B. if you don't already have these packages installed, you will get an error saying that there is no such package in the library. In this case, click the "install" button in the 'Packages' tab in the lower right hand pane of the RStudio server. Type odbc(or other required package name) in the pop up and it will be installed. Then run the library(package) code again. Alternatively, you can use code to install the package(s), e.g.: 
+N.B. if you don't already have these packages installed, you will get an error saying that there is no such package in the library. In this case, click the "install" button in the 'Packages' tab in the lower right hand pane of the RStudio server. Type odbc(or other required package name) in the pop-up up and it will be installed. Then run the library(package) code again. Alternatively, you can use code to install the package(s), e.g.: 
 
     install.packages("odbc")
 
@@ -152,11 +152,11 @@ At the end of the session close the channel and remove the object:
 
 Code to get information on the views and variables available to you in SMRA
 
-Now the connection is open, you can inspect the data views available to you and the variables contained within those views. The analysis 'views' can be thought of as tables in the database containing a category of information. For example the Scottish morbidity records (SMR00, SMR01, SMR02, SMR04) each have their separate views. 
+Now the connection is open, you can inspect the data views available to you and the variables contained within those views. The analysis 'views' can be thought of as tables in the database containing a category of information. For example, the Scottish morbidity records (SMR00, SMR01, SMR02, SMR04) each have their separate views. 
 
 ## Getting started
 
-1.	Show all tables/views available - N.B. this is a large output and takes some time to run. 
+1.	Show all tables/views available - N.B. This is a large output and takes some time to run. 
 
 `dbListTables(channel)[1:50]`
 
@@ -176,11 +176,11 @@ Look at the table 'scheme' types that are available by running the code below
 
 You can now see the names of the analysis views, these are the same names/data as can be viewed in SPSS through the wizard. Most of the views are versions of the various SMR databases: SMR00 (outpatients), SMR01 (Acute hospital activity), SMR04 etc. 
 
-The "_PI" suffix means that these views contain personally identifying information (names, dates of birth etc). SMRXX_PI is the usual version used for analyses. SMRA also includes NRS death records (GRO_DEATHS_C). 
+The "_PI" suffix means that these views contain personally identifying information (names, dates of birth etc.). SMRXX_PI is the usual version used for analyses. SMRA also includes NRS death records (GRO_DEATHS_C). 
 Other files are reference files which contain information about coded fields e.g. if you have a list of codes referring to hospitals and you want to know the hospital names or postcodes, you would use the LOCATION view to look up this information. 
 
-3.	Viewing variables names
-In order to view the variables, we can preview the table. Further details of variable names and attributes in each of the SMR views can also be found in the relevant file.
+3.	Viewing variable names
+To view the variables, we can preview the table. Further details of variable names and attributes in each of the SMR views can also be found in the relevant file.
 
     `odbcPreviewObject(channel, table="ANALYSIS.SMR01_PI", rowLimit=0)`
 
@@ -191,13 +191,13 @@ To extract data from SMRA, you need to use SQL code, to 'query' the database.
 To make an SQL query of the database through RStudio server, you need to use the dbGetQuery function. 
 
 You will need to give the channel name and the SQL query (statement). Other parameters are optional. 
-The SMRA connection was simply called "channel" in code above, so we can fill in dbGetQuery (conn=channel, statement=..)
+The SMRA connection was simply called "channel" in the code above, so we can fill in dbGetQuery (conn=channel, statement=..)
 
 When filling in the "statement" argument, you have two choices.
 1.	Write the SQL query in a separate SQL script file and import it to R
-2.	Write the query directly into the statemtent option in the dbGetQuery function.
+2.	Write the query directly into the statement option in the dbGetQuery function.
 
-The choice of which method to use is personal choice, as it doesn’t affect efficiency. Writing the SQL query into the R script means that all the code is kept in one file. On the other hand, you may find it easier to write and edit the SQL query in a separate file. If SQL is saved in a separate file, it is easier to open it in an SQL editor to check and debug. Even in RStudio, once the text is saved as an SQL file, RStudio will recognise this, and commands and functions will be shown in different colours, making reading and editing the syntax easier.
+The choice of which method to use is a personal choice, as it doesn’t affect efficiency. Writing the SQL query into the R script means that all the code is kept in one file. On the other hand, you may find it easier to write and edit the SQL query in a separate file. If SQL is saved in a separate file, it is easier to open it in an SQL editor to check and debug. Even in RStudio, once the text is saved as an SQL file, RStudio will recognise this, and commands and functions will be shown in different colours, making reading and editing the syntax easier.
 The two methods are illustrated below. 
  
 ### Method 1.
@@ -214,13 +214,13 @@ E.g. To extract age, sex and location (i.e. hospital code) from all SMR01 record
 
 Save the file with a ".sql" extension.
 
-NB AND  ROWNUM<=10 is used to limit the number of rows returned to 10. This will reduce the time it takes to run this example. In practice, you may want to retrieve a limited number of rows when setting up a query in order to check that the query is returning the expected information/ the variables selected are the correct ones.
+NB AND  ROWNUM<=10 is used to limit the number of rows returned to 10. This will reduce the time it takes to run this example. In practice, you may want to retrieve a limited number of rows when setting up a query to check that the query is returning the expected information/ the variables selected are the correct ones.
 
 3.	Read the SQL query to execute against the SMRA database from an external file: 
 
     `SQL <- read_file("/path/to/file/query.sql") `
 
-4.	Execute the SQL query against the SMRA database, fetch the records and store in a tibble: 
+4.	Execute the SQL query against the SMRA database, fetch the records and store them in a tibble: 
 
    ` table1 <- dbGetQuery (channel, query=SQL)) `
 
@@ -233,12 +233,12 @@ NB AND  ROWNUM<=10 is used to limit the number of rows returned to 10. This will
     FROM ANALYSIS.SMR01_PI 
     WHERE AGE_IN_YEARS>100 AND SEX=1 AND  ROWNUM<=10"))
 
-The SQL code is exactly the same as written in a separate file, but in this case it is wrapped in paste(""). 
+The SQL code is the same as written in a separate file, but in this case, it is wrapped in paste(""). 
 
 
 ## Viewing the result
 
-With either method the returned object "table1" can be viewed by typing ' table1' into the code window and running, or clicking on  'table1' in the Environment tab.
+With either method, the returned object "table1" can be viewed by typing ' table1' into the code window and running, or clicking on  'table1' in the Environment tab.
 It should look something like this:
 
 
@@ -457,7 +457,7 @@ Syntax:
 
     dbRemoveTable(SMRA, "test")
 
-To check it has been removed:
+To check if it has been removed:
 
     dbListTables(SMRA,schema="<USERNAME>")
 
@@ -465,19 +465,19 @@ NB It is of course possible to extract information based on a personal table con
 
 6. Important note on uploading dates
 
-Uploading dates from R to SMRA is a little complicated, you will need to do some formatting in SQL. Before uploading, you first need to convert the dates in the cohort file to a numeric field in CCYYMMDD format. You will then nee to alter the type of the SMR dates to the same numeric format during the extraction. 
+Uploading dates from R to SMRA is a little complicated, you will need to do some formatting in SQL. Before uploading, you first need to convert the dates in the cohort file to a numeric field in CCYYMMDD format. You will then need to alter the type of the SMR dates to the same numeric format during the extraction. 
 
 The example below extracts SMR00 data in the year to infection. The uploaded file contains a list of UPI numbers and two dates, indicating a sample date and a date one year before the sample, and these dates are used to limit the data extracted.
  
- Create table with dates in CCYYMMDD format.:
+ Create a table with dates in CCYYMMDD format.:
 
     LINK_NO<-c(00000119, 75881029, 45960570, 00019300, 01959251, 01959200, 11949200, 02939132, 00000383)
     SPECDATE<-c(20141114, 20140412, 20130530, 20130607, 20140125, 20141118, 20130701, 20141212, 20140503)
     SPECDATE1YR<-  SPECDATE-10000` 
    
-    test<-as.data.frame(cbind(UPI_NUMBER, SPECDATE, SPECDATE1YR))`
+    test<-as.data.frame(cbind(UPI_NUMBER, SPECDATE, SPECDATE1YR))
  
-    dbWriteTable(SMRA, "test", x)`
+    dbWriteTable(SMRA, "test", x)
   
   
     data <- tbl_df(dbGetQuery(channel, statement=
