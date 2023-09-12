@@ -29,11 +29,11 @@ SQL stands for Structured Query Language. It is a language used in programming a
 ### RStudio server
 R is a system for statistical computation and graphics. RStudio is a software application for the R language. It is essentially a more user-friendly and versatile way to use R than the basic R environment. RStudio can be run as a desktop version or on a server accessible through a webpage. An introduction to the use of RStudio can be accessed for free [on datacamp](https://www.datacamp.com/courses/working-with-the-rstudio-ide-part-1).
 
-### Advantages of using RStudio server to access SMRA
-Why use SMRA with RStudio server? 
- * The ability to access SMRA through RStudio means that if further analysis is to be done in R, there is no break in the workflow through having to access SMRA through another program (e.g. SPSS). 
+### Advantages of using the RStudio server to access SMRA
+Why use SMRA with the RStudio server? 
+ * The ability to access SMRA through RStudio means that if further analysis is to be done in R, there is no break in the workflow by having to access SMRA through another program (e.g. SPSS). 
  * There is often pressure on SPSS licences in ISD, using R and RStudio instead, which is available on a free software licence, will help relieve this pressure
- * On RStudio desktop, the size and complexity of analyses that can be run is limited by the processing power and memory of your PC or laptop as all the R code executes locally. Accessing the server allows you to access greater processing power and more memory, permitting larger and more complex analyses to be run than on the desktop. 
+ * On RStudio Desktop, the size and complexity of analyses that can be run are limited by the processing power and memory of your PC or laptop as all the R code executes locally. Accessing the server allows you to access greater processing power and more memory, permitting larger and more complex analyses to be run than on the desktop. 
  * Accessing the server allows analyses to be run on larger datasets even on slower internet connections (an advantage when working at home), as all the data is accessed and processed remotely.
 
 # Requesting access 
@@ -50,7 +50,7 @@ See [Intro to R NSS](Intro%20to%20R-NSS.md) for detailed instructions.
  * To assist the Customer Support Desk with your request, it may be helpful to mention that your request can be actioned by the UNIX team. 
 
 ### ODBC connection
- * For RStudio server, make a request (through the NSS service portal) to be set up with a connection to the SMRA ODBC on the server, giving your username.
+ * For the RStudio server, make a request (through the NSS service portal) to be set up with a connection to the SMRA ODBC on the server, giving your username.
  * For RStudio desktop, connecting to the SMRA database relies on an SMRA ODBC DSN being set up on your PC by NSS IM&T. 
     * You can check if the DSN is present on your PC in the ODBC Data Source Administrator. Click on the Start button and search for Microsoft ODBC Administrator. Click on the link with the same name to open the ODBC Data Source Administrator. 
     * On the System DSN tab you should see an entry called SMRA. If not, raise a Change Request with the Customer Support Desk to have the SMRA ODBC DSN installed on your PC. 
@@ -61,7 +61,7 @@ The RStudio server is located at: [https://pwb.publichealthscotland.org/](). Log
 If you are unfamiliar with RStudio, a basic introduction to finding your way around RStudio can be found here. Many articles on the use of RStudio are available on the RStudio support website. 
 
 ## Accessing Files on the Stats Server 
-The default directory on the RStudio server that is displayed in the bottom right pane is the 'Home directory', which is only accessible to the logged-in user. You will normally want to use and save files from the rest of the network. To navigate to these other areas using the file browser in RStudio Server, click on the icon with the 3 dots to the right-hand side of the files pane.
+The default directory on the RStudio server that is displayed in the bottom right pane is the 'Home directory', which is only accessible to the logged-in user. You will normally want to use and save files from the rest of the network. To navigate to these other areas using the file browser in RStudio Server, click on the icon with the 3 dots on the right-hand side of the files pane.
 
 In the box that appears type in the appropriate directory name (e.g. the 'PHI_conf' area or the older 'conf' area containing subdirectories belonging to different teams. Files in cl-out can be found at `/conf/linkage/output`). The Files tab will then show the directory you have linked through and you can click through to access files in subdirectories. 
 
@@ -78,7 +78,7 @@ There are two ways to exit RStudio Server:
  1. Sign Out 
  2. Quit Session 
 
-Signing out of RStudio Server leaves your R session open, and if you are currently running R code, this will continue to run in the background. Leaving your R session open allows you to return to where you left off the next time you log in. To sign out of RStudio Server, click on the close window button of your web browser or click the "Sign out" button in the RStudio Server interface 
+Signing out of RStudio Server leaves your R session open, and if you are currently running R code, this will continue to run in the background. Leaving your R session open allows you to return to where you left off the next time you log in. To sign out of the RStudio Server, click on the close window button of your web browser or click the "Sign out" button in the RStudio Server interface 
 
 Signing out and leaving your R session open has the downside of continuing to consume server processing time and memory even if you are not actively running any R code, consequently reducing the available server resources for other users. It is therefore recommended that if you have finished an analysis you quit your R session. 
 
@@ -90,14 +90,14 @@ First, load the required libraries using the following code. Copy the following 
 
 ``` r
 library(dplyr) 
-library(readr) 
+library(read) 
 library(odbc)
 ```
 
 The [`{odbc}`](https://r-dbi.github.io/odbc/) package is required to connect to the database. The [`{readr}`](https://readr.tidyverse.org/) and [`{dplyr}`](https://dplyr.tidyverse.org/) packages (both belonging to the tidyverse set of packages) are also recommended if you would like to execute SQL queries saved in external files and store data in tibbles. 
 
 
-N.B. if you don't already have these packages installed, you will get an error saying that there is no such package in the library. In this case, click the "install" button in the 'Packages' tab in the lower right hand pane of the RStudio server. Type `odbc` (or other required package name) in the pop-up up and it will be installed. Then run the library(package) code again. Alternatively, you can use code to install the package(s), e.g.: 
+N.B. If you don't already have these packages installed, you will get an error saying that there is no such package in the library. In this case, click the "install" button in the 'Packages' tab in the lower right-hand pane of the RStudio server. Type `odbc` (or another required package name) in the pop-up and it will be installed. Then run the library(package) code again. Alternatively, you can use code to install the package(s), e.g.: 
 
 ``` r
 install.packages("odbc")
@@ -105,7 +105,7 @@ install.packages("odbc")
 
 ## Problems and alternatives to odbc
 
-There are several R packages which provide the functionality to connect to external ODBC databases.  The odbc package is currently the recommended package for connecting to ODBC databases, it is faster and more efficient than alternatives. You should use odbc with the SMRA datasets, and all code in this document pertains to the odbc package. However, there are known problems with using odbc with some of the other datasets used in ISD (e.g. Ecossstats). If you experience problems using odbc with your database (and you are certain it is not a coding error), try using package RODBC instead.
+There are several R packages which provide the functionality to connect to external ODBC databases.  The odbc package is currently the recommended package for connecting to ODBC databases, it is faster and more efficient than alternatives. You should use odbc with the SMRA datasets, and all code in this document pertains to the odbc package. However, there are known problems with using odbc with some of the other datasets used in ISD (e.g. Ecossstats). If you experience problems using odbc with your database (and you are certain it is not a coding error), try using the package [`{RODBC}`](https://cran.r-project.org/web/packages/RODBC/index.html) instead.
 
 ## Set up the connection 
 
@@ -122,8 +122,7 @@ smra_connection <- dbConnect(
 
 When you run the code popup boxes will appear for you to enter your username and password. 
 
-If the connection is successful an object called 'smra_connection' will appear in the upper right hand pane (Environment tab).
-Wrapping the dbConnect function inside the suppressWarnings function prevents your password for connecting to the SMRA database being shown in clear text on the console should the connection attempt be unsuccessful. 
+If the connection is successful an object called `smra_connection` will appear in the environment pane.
 
 ## Close the connection
 
@@ -179,7 +178,7 @@ odbcPreviewObject(smra_connection, table = "ANALYSIS.SMR01_PI", rowLimit = 0)
 
 To extract data from SMRA, you need to use SQL code, to 'query' the database. 
 
-To make an SQL query of the database through RStudio server, you need to use the dbGetQuery function. 
+To make an SQL query of the database through the RStudio server, you need to use the dbGetQuery function. 
 
 You will need to give the connection name and the SQL query (statement). Other parameters are optional. 
 The SMRA connection was simply called `smra_connection` in the code above, so we can fill in `dbGetQuery(conn = smra_connection, statement = ...`
@@ -223,7 +222,7 @@ table1 <- dbGetQuery(smra_connection, query = SQL))
 
 ### Method 2
 
- 1.	In your existing `.R` script file, give the query to the `dbGetQuery()` function.
+ 1.	In your existing `.R` script file, give the query to `dbGetQuery()`.
 ``` r
 table1 <- as_tibble(dbGetQuery(
   conn = smra_connection,
@@ -237,8 +236,7 @@ The SQL code is the same as written in a separate file, but in this case, it is 
 
 ## Viewing the result
 
-With either method, the returned object "table1" can be viewed by running `table1` into the console, or clicking on  'table1' in the Environment pane.
-It should look something like this:
+With either method, the returned object `table1` should look something like this:
 
 ``` r
 table1
@@ -263,14 +261,14 @@ It is best practice to make good use of SQL code to reduce the amount of data yo
 
  * The most important rule is to minimise your extract as much as possible, i.e. only extract the data you need and as little extra as you can. Extracting a large amount of data which you then immediately refine to discard values is inefficient in terms of both computing time and memory, it is better to limit your extract in the first place. 
 
- * the two functions you are likely to use most are:
+ * The two functions you are likely to use most are:
 
     * `WHERE` – to extract records based on certain conditions e.g. date of record, age of patient
     * `JOIN` or match records from different tables to avoid having to perform multiple extracts
 
 Examples of these two operations are shown below. 
 
-  * If you are extracting information about a particular group of patients for whom you have a LINK_NO or UPI or other identifying information, it is best to use the cohort method. This involves uploading a table to the SMRA database and using this table to match records in other table. See next section for the cohort method.
+  * If you are extracting information about a particular group of patients for whom you have a LINK_NO or UPI or other identifying information, it is best to use the cohort method. This involves uploading a table to the SMRA database and using this table to match records in other table. See the next section for the cohort method.
 
 IMPORTANT: When retrieving data from SMRA you must also SORT the data in a certain order first. SMRA data must always be sorted on the following fields: LINK_NO, ADMISSION_DATE, DISCHARGE_DATE, ADMISSION, DISCHARGE, URI. See SAG guidance here.
 Do this by including these variables in the ORDER BY command e.g. 
@@ -351,16 +349,16 @@ Matching information from two or more tables.
 
  * This is called a `JOIN` in SQL language. 
 
-e.g. if you want to know when (or if) a patient has died, you can match death records data onto hospital records using the LINK_NO field. 
+e.g. If you want to know when (or if) a patient has died, you can match death records data to hospital records using the `LINK_NO` field. 
 
- * There are a number of things you have to specify in the SQL query when you extract data from more than one table:
+ * There are some things you have to specify in the SQL query when you extract data from more than one table:
 
  1.	You must specify, for each variable, which table it comes from
  2.	You must specify on which variable(s) the join is to be made
  3.	You must specify the type of join
 
 Example: 
-We wish to `JOIN` death dates on to a group of SMR01 records.
+We wish to `JOIN` death dates onto a group of SMR01 records.
 
 ``` r
 SMR_Join <- dbGetQuery(conn = smra_connection, statement = "SELECT 
@@ -374,7 +372,7 @@ SMR_Join <- dbGetQuery(conn = smra_connection, statement = "SELECT
 head(SMR_Join)
 ```
 
- * We label ANALYSIS.SMR01_PI as "T1" and ANALYSIS.GRO_DEATHS_C as "T2" . The variables are then named as T1.var1, T2, var2 etc...
+ * We label `ANALYSIS.SMR01_PI` as `"T1"` and `ANALYSIS.GRO_DEATHS_C` as `"T2"`. The variables are then referred to as `T1.var1`, `T2.var2` etc.
 
  * You can perform joins without labelling the tables and just use the original names, in which case the SQL query would read 
 
@@ -386,7 +384,7 @@ This is cumbersome and harder to read than assigning a shorthand name.
 
  * The `WHERE` clause specifies the fields to be used in the join. The fields do not have to have the same name in both tables as you specify both names in the query.
 
- * The join type is specified as a LEFT JOIN, i.e. return all records matching other conditions from the first table, and only matching records from the second table. (So SMR01 records are returned whether or not there is a matching death record, however death records with no corresponding hospital record are not returned).
+ * The join type is specified as a LEFT JOIN, i.e. return all records matching other conditions from the first table, and only matching records from the second table. (So SMR01 records are returned whether or not there is a matching death record, however, death records with no corresponding hospital record are not returned).
 
     * See [www.sql-join.com/sql-join-types]() for a visual illustration of the available join types.
 
@@ -431,8 +429,6 @@ The table name must be enclosed in double quotes, this only applies to your uplo
 
 Example:
 
-This syntax works:
-
 ``` r
 test <- dbGetQuery(conn = smra_connection, statement = 'SELECT * FROM <USERNAME>."test_cohort"') 
 ```
@@ -444,8 +440,6 @@ test <- dbGetQuery(conn = smra_connection, statement = "select * from <USERNAME>
 ```
 
   4.	Using the table to retrieve information from SMRA using a JOIN command.
-
-Syntax:
 
 ``` r
 SMR_cohort <- as_tibble(dbGetQuery(conn = smra_connection, statement = 'SELECT 
@@ -471,9 +465,9 @@ To check if it has been removed:
 dbListTables(conn = smra_connection, schema = "<USERNAME>")
 ```
 
-NB It is of course possible to extract information based on a personal table containing other fields in addition to `LINK_NO` to further refine the selection, perhaps years of interest in combination with `LINK_NO`. 
+**NB.** It is possible to extract information based on a personal table containing other fields in addition to `LINK_NO` to further refine the selection, perhaps years of interest in combination with `LINK_NO`. 
 
-  6. Important note on uploading dates
+  6. Important note on uploading dates.
 
 Uploading dates from R to SMRA is a little complicated, you will need to do some formatting in SQL. Before uploading, you first need to convert the dates in the cohort file to a numeric field in `CCYYMMDD` format. You will then need to alter the type of the SMR dates to the same numeric format during the extraction. 
 
