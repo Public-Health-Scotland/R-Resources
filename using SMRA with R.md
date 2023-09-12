@@ -112,25 +112,26 @@ There are several R packages which provide the functionality to connect to exter
 The code to set up the connection is:
 
 ``` r
-channel <- suppressWarnings(dbConnect(odbc(),
+smra_connection <- dbConnect(
+  drv = odbc(),
   dsn = "SMRA",
-  uid = .rs.askForPassword("SMRA Username:"),
-  pwd = .rs.askForPassword("SMRA Password:")
+  uid = rstudioapi::userIdentity(),
+  pwd = rstudioapi::askForPassword("SMRA Password:")
 ))
 ```
 
 When you run the code popup boxes will appear for you to enter your username and password. 
 
-If the connection is successful an object called 'channel' will appear in the upper right hand pane (Environment tab).
+If the connection is successful an object called 'smra_connection' will appear in the upper right hand pane (Environment tab).
 Wrapping the dbConnect function inside the suppressWarnings function prevents your password for connecting to the SMRA database being shown in clear text on the console should the connection attempt be unsuccessful. 
 
 ## Close the connection
 
-At the end of the session close the channel and remove the object:
+At the end of the session close the connection and remove the object:
 
 ```
-dbDisconnect(channel)
-rm(channel)
+dbDisconnect(smra_connection)
+rm(smra_connection)
 ```
 
 # Views and variables in SMRA
@@ -143,7 +144,7 @@ Now the connection is open, you can inspect the data views available to you and 
 1.	Show all tables/views available - N.B. This is a large output and takes some time to run. 
 
 ``` r
-dbListTables(channel)[1:50]
+dbListTables(smra_connection)[1:50]
 ```
 
 The `[1:50,]` restricts the output to the first 50 views available
@@ -151,7 +152,7 @@ The `[1:50,]` restricts the output to the first 50 views available
 Look at the table 'scheme' types that are available by running the code below
 
 ``` r
-odbcListObjects(channel)  
+odbcListObjects(smra_connection)  
 ```
 
 "Analysis" schemes are the  analysis views, likely the ones you want to use. Tables with a 'scheme' which is a username are data uploaded by individual users. If you are unsure which view you require, consult the information in this folder. 
@@ -159,7 +160,7 @@ odbcListObjects(channel)
 2.	Show tables/views again, but this time restrict to "Analysis" views only.
 
 ``` r
-odbcListObjects(channel, schema = "ANALYSIS")
+odbcListObjects(smra_connection, schema = "ANALYSIS")
 ```
 
 You can now see the names of the analysis views, these are the same names/data as can be viewed in SPSS through the wizard. Most of the views are versions of the various SMR databases: SMR00 (outpatients), SMR01 (Acute hospital activity), SMR04 etc. 
@@ -171,7 +172,7 @@ Other files are reference files which contain information about coded fields e.g
 To view the variables, we can preview the table. Further details of variable names and attributes in each of the SMR views can also be found in the relevant file.
 
 ``` r
-odbcPreviewObject(channel, table = "ANALYSIS.SMR01_PI", rowLimit = 0)
+odbcPreviewObject(smra_connection, table = "ANALYSIS.SMR01_PI", rowLimit = 0)
 ```
 
 # Extracting data from SMRA
@@ -180,10 +181,10 @@ To extract data from SMRA, you need to use SQL code, to 'query' the database.
 
 To make an SQL query of the database through RStudio server, you need to use the dbGetQuery function. 
 
-You will need to give the channel name and the SQL query (statement). Other parameters are optional. 
-The SMRA connection was simply called "channel" in the code above, so we can fill in dbGetQuery (conn=channel, statement=..)
+You will need to give the connection name and the SQL query (statement). Other parameters are optional. 
+The SMRA connection was simply called `smra_connection` in the code above, so we can fill in `dbGetQuery(conn = smra_connection, statement = ...`
 
-When filling in the "statement" argument, you have two choices.
+When filling in the `statement` argument, you have two choices.
  1.	Write the SQL query in a separate SQL script file and import it to R
  2.	Write the query directly into the statement option in the dbGetQuery function.
 
@@ -192,7 +193,7 @@ The two methods are illustrated below.
  
 ### Method 1.
 
- 1.	Open a new text file in RStudio. Go to  File>New File> Text File
+ 1.	Open a new text file in RStudio. Go to  File > New File > Text File
 
 This opens a new blank text file
 
@@ -201,7 +202,7 @@ This opens a new blank text file
 E.g. To extract age, sex and location (i.e. hospital code) from all SMR01 records for men over 100:
 
 ``` sql
-SELECT AGE_IN_YEARS, SEX, LOCATION FROM ANALYSIS.SMR01_PI WHERE AGE_IN_YEARS > 100 AND SEX = 1 AND  ROWNUM <= 10`
+SELECT AGE_IN_YEARS, SEX, LOCATION FROM ANALYSIS.SMR01_PI WHERE AGE_IN_YEARS > 100 AND SEX = 1 AND  ROWNUM <= 10
 ```
 
 Save the file with a ".sql" extension.
@@ -217,27 +218,26 @@ SQL <- read_file("/path/to/file/query.sql")
  4.	Execute the SQL query against the SMRA database, fetch the records and store them in a tibble: 
 
 ``` r
-table1 <- dbGetQuery(channel, query = SQL))
+table1 <- dbGetQuery(smra_connection, query = SQL))
 ```
 
 ### Method 2
 
- 1.	In your existing `.R` script file, write the query into the `sqlQuery()` function.
+ 1.	In your existing `.R` script file, give the query to the `dbGetQuery()` function.
 ``` r
 table1 <- as_tibble(dbGetQuery(
-  channel,
+  conn = smra_connection,
   statement = "SELECT AGE_IN_YEARS, SEX, LOCATION 
               FROM ANALYSIS.SMR01_PI 
               WHERE AGE_IN_YEARS > 100 AND SEX = 1 AND  ROWNUM <= 10"
 ))
 ```
 
-The SQL code is the same as written in a separate file, but in this case, it is wrapped in paste(""). 
-
+The SQL code is the same as written in a separate file, but in this case, it is given directly as a character to the `statement` argument. 
 
 ## Viewing the result
 
-With either method, the returned object "table1" can be viewed by typing ' table1' into the code window and running, or clicking on  'table1' in the Environment tab.
+With either method, the returned object "table1" can be viewed by running `table1` into the console, or clicking on  'table1' in the Environment pane.
 It should look something like this:
 
 ``` r
@@ -276,14 +276,14 @@ IMPORTANT: When retrieving data from SMRA you must also SORT the data in a certa
 Do this by including these variables in the ORDER BY command e.g. 
 
 ``` r
-table1 <- as_tibble(sqlQuery(channel = channel, query = paste("
+table1 <- as_tibble(dbGetQuery(conn = smra_connection, statement = paste("
                         SELECT AGE_IN_YEARS, SEX, LOCATION
                         FROM
                         ANALYSIS.SMR01_PI
                         WHERE
                         AGE_IN_YEARS>100 AND SEX=1
                         ORDER BY LINK_NO, ADMISSION_DATE,
-                        DISCHARGE_DATE, ADMISSION, DISCHARGE, URI"), max = 10))
+                        DISCHARGE_DATE, ADMISSION, DISCHARGE, URI")))
 ```
 
 You do not have to include the variables in the select part of your query for this to work.
@@ -301,7 +301,7 @@ This is possibly the most important basic function to master.
 You can select data based on one condition or many using the WHERE command e.g. in the previous examples records were only extracted WHERE the conditions sex=1 (i.e. men) and age over 100 were met. The conditions are specified after the WHERE command.
 
 ``` r
-table1 <- as_tibble(dbGetQuery(SMRA, statement = "SELECT 
+table1 <- as_tibble(dbGetQuery(conn = smra_connection, statement = "SELECT 
                   AGE_IN_YEARS, SEX, LOCATION 
                   FROM 
                   ANALYSIS.SMR01_PI 
@@ -313,7 +313,7 @@ table1 <- as_tibble(dbGetQuery(SMRA, statement = "SELECT
  * You can also limit extracts by date. The following code restricts the extract to a time period of BETWEEN 1st January 2010  AND 30th of April 2010.
 
 ``` r
-SMR_date <- as_tibble(dbGetQuery(SMRA, statement = "SELECT 
+SMR_date <- as_tibble(dbGetQuery(conn = smra_connection, statement = "SELECT 
         LPAD(LINK_NO,10,0) AS LINK_NO ,LOCATION, ADMISSION_DATE, DISCHARGE_DATE, 
         MAIN_CONDITION, CIS_MARKER
         FROM ANALYSIS.SMR01_PI
@@ -333,7 +333,7 @@ Any number with leading zeros will have these dropped by default when you query 
 e.g. for the variable "LINK_NO" in the query above, which should be 10 characters long and sometimes contains leading zeros:
 
 ``` sql
-    SELECT LPAD(LINK_NO,10,0), ...
+SELECT LPAD(LINK_NO,10,0), ...
 ```
 
 Will return `1234` as `0000001234`.
@@ -342,7 +342,7 @@ A further point to note on the use of `LPAD`, is that `SELECT LPAD(LINK_NO, 10, 
 The `AS` clause can be used to rename any variable. 
 
 ``` sql
-SELECT VAR1 AS V_ONE, VAR2 AS V_TWO`
+SELECT VAR1 AS V_ONE, VAR2 AS V_TWO
 ```
 
 Would give the first variable the name `"V_ONE"` and the second variable the name `"V_TWO"`.
@@ -363,7 +363,7 @@ Example:
 We wish to `JOIN` death dates on to a group of SMR01 records.
 
 ``` r
-SMR_Join <- dbGetQuery(channel, statement = "SELECT 
+SMR_Join <- dbGetQuery(conn = smra_connection, statement = "SELECT 
                        LPAD(T1.Link_NO,10,0) AS LINK_NO, T1.LOCATION, T1.SPECIALTY, T1.ADMISSION_TYPE, T1.ADMISSION_DATE, 
                        T1.DISCHARGE_DATE, T1.MAIN_CONDITION, T2.DATE_OF_DEATH
                        FROM ANALYSIS.SMR01_PI T1 
@@ -379,7 +379,7 @@ head(SMR_Join)
  * You can perform joins without labelling the tables and just use the original names, in which case the SQL query would read 
 
 ``` sql
-    SELECT ANALYSIS.SMR01_PI.Link_NO, ANALYSIS.SMR01_PI.LOCATION, ... ANALYSIS.GRO_DEATHS_C.DATE_OF_DEATH ...
+SELECT ANALYSIS.SMR01_PI.Link_NO, ANALYSIS.SMR01_PI.LOCATION, ... ANALYSIS.GRO_DEATHS_C.DATE_OF_DEATH ...
 ```
 
 This is cumbersome and harder to read than assigning a shorthand name.
@@ -390,21 +390,22 @@ This is cumbersome and harder to read than assigning a shorthand name.
 
     * See [www.sql-join.com/sql-join-types]() for a visual illustration of the available join types.
 
- * 	It is also possible to join more than two tables at once
+    * It is also possible to join more than two tables at once
 
 # Cohort method
 
 This method is used to extract data from SMRA based on individual patient identifiers this might be used to extract information about a study cohort for example.
 The process of uploading and using a table is as follows:
 
-  1.	Create a  table of UPI or LINK numbers in R as a datatable
+  1.	Create a  table of UPI or LINK numbers in R as a tibble.
 
 Example:
 
 ``` r 
-LINK_NO <- c(00000119, 75881029, 45960570, 00019300, 01959251, 01959200, 11949200, 02939132, 00000383)
-INCOHORT <- rep("yes", 9)
-x <- as.data.frame(cbind(LINK_NO, INCOHORT))
+cohort <- tibble(
+  "LINK_NO" = c(00000119, 75881029, 45960570, 00019300, 01959251, 01959200, 11949200, 02939132, 00000383),
+  "INCOHORT" = rep("yes", 9)
+)
 ```
 
 ### IMPORTANT NOTE
@@ -414,12 +415,12 @@ Variable names must be in ALL CAPITALS to be used in an SQL query later. Tables 
   2.	Upload to SMRA using the dbWriteTable function 
 
 ``` r
-dbWriteTable(SMRA, "test", x)
+dbWriteTable(conn = smra_connection, name = "test_cohort", value = cohort)
 ```
 The table will be uploaded to a schema that is your username. To see a list of tables that you have uploaded run:
 
 ``` r
-dbListTables(SMRA, schema = "<USERNAME>")
+dbListTables(conn = smra_connection, schema_name = "<USERNAME>")
 ```
 
 Replacing `<USERNAME>` with the username you use to access SMRA, in all capitals.
@@ -433,13 +434,13 @@ Example:
 This syntax works:
 
 ``` r
-test <- dbGetQuery(SMRA, statement = 'SELECT * FROM <USERNAME>."test"') 
+test <- dbGetQuery(conn = smra_connection, statement = 'SELECT * FROM <USERNAME>."test_cohort"') 
 ```
 
 This syntax, with the double and single quote positions inverted, will result in an error.
 
 ``` r
-test <- dbGetQuery(SMRA, statement = "select * from '<USERNAME>.test'")
+test <- dbGetQuery(conn = smra_connection, statement = "select * from <USERNAME>.'test_cohort'")
 ```
 
   4.	Using the table to retrieve information from SMRA using a JOIN command.
@@ -447,11 +448,11 @@ test <- dbGetQuery(SMRA, statement = "select * from '<USERNAME>.test'")
 Syntax:
 
 ``` r
-SMR_cohort <- as_tibble(dbGetQuery(SMRA, statement = 'SELECT 
+SMR_cohort <- as_tibble(dbGetQuery(conn = smra_connection, statement = 'SELECT 
                          T2.LINK_NO,T2.LOCATION, T2.ADMISSION_DATE, T2.DISCHARGE_DATE, 
                          T2.MAIN_CONDITION, T2.CIS_MARKER, T1.INCOHORT
                          FROM
-                         <USERNAME>."test" T1 
+                         <USERNAME>."test_cohort" T1 
                          LEFT JOIN
                          ANALYSIS.SMR01_PI T2
                          ON T1.LINK_NO = T2.LINK_NO
@@ -461,13 +462,13 @@ SMR_cohort <- as_tibble(dbGetQuery(SMRA, statement = 'SELECT
 5.	Delete the table once you have finished using it using dbRemoveTable 
 
 ``` r
-dbRemoveTable(SMRA, "test")
+dbRemoveTable(conn = smra_connection, name = "test_cohort")
 ```
 
 To check if it has been removed:
 
 ``` r
-dbListTables(SMRA, schema = "<USERNAME>")
+dbListTables(conn = smra_connection, schema = "<USERNAME>")
 ```
 
 NB It is of course possible to extract information based on a personal table containing other fields in addition to `LINK_NO` to further refine the selection, perhaps years of interest in combination with `LINK_NO`. 
@@ -481,23 +482,22 @@ The example below extracts SMR00 data in the year to infection. The uploaded fil
 Create a table with dates in CCYYMMDD format.:
 
 ``` r
-LINK_NO <- c(00000119, 75881029, 45960570, 00019300, 01959251, 01959200, 11949200, 02939132, 00000383)
-SPECDATE <- c(20141114, 20140412, 20130530, 20130607, 20140125, 20141118, 20130701, 20141212, 20140503)
-SPECDATE1YR <- SPECDATE - 10000
+example_cohort <- tibble(
+  "LINK_NO" = c(00000119, 75881029, 45960570, 00019300, 01959251, 01959200, 11949200, 02939132, 00000383),
+  "SPECDATE" = c(20141114, 20140412, 20130530, 20130607, 20140125, 20141118, 20130701, 20141212, 20140503),
+  "SPECDATE1YR" = SPECDATE - 10000
+)
 
-test <- as.data.frame(cbind(UPI_NUMBER, SPECDATE, SPECDATE1YR))
+dbWriteTable(conn = smra_connection, name = "test_cohort", value = example_cohort)
 
-dbWriteTable(SMRA, "test", x)
-
-
-data <- tbl_df(dbGetQuery(channel,
+data <- as_tibble(dbGetQuery(conn = smra_connection,
   statement = 'SELECT T0.LINK_NO, T0.SPECDATE, T0.SPECDATE1YR,  
                    T1.LINK_NO, T1.CLINIC_DATE, to_number(to_char(T1.CLINIC_DATE,\'YYYYMMDD\')) AS CLINIC_DATE_NUM, 
                    T1.LOCATION, T1.SPECIALTY, T1.SIGNIFICANT_FACILITY,
                    T1.MAIN_OPERATION, T1.OTHER_OPERATION_1, T1.OTHER_OPERATION_2, T1.OTHER_OPERATION_3,
                    T1.DATE_OF_MAIN_OPERATION, T1.DATE_OF_OTHER_OPERATION_1, T1.DATE_OF_OTHER_OPERATION_2, 
                    T1.DATE_OF_OTHER_OPERATION_3
-                   FROM <USERNAME>."TEMP" T0, ANALYSIS.SMR00_PI T1 
+                   FROM <USERNAME>."test_cohort" T0, ANALYSIS.SMR00_PI T1 
                    WHERE T0.LINK_NO = T1.LINK_NO (+)
                    AND to_number(to_char(T1.CLINIC_DATE,\'YYYYMMDD\')) >= T0.SPECDATE1YR 
                    AND to_number(to_char(T1.CLINIC_DATE,\'YYYYMMDD\')) <= T0.SPECDATE
